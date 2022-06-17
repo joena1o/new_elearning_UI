@@ -1,0 +1,170 @@
+.home-layout{
+    position: fixed;
+    width: 68.6vw;
+    left: 7vw;
+    overflow-y: scroll;
+    top: 9.4vh;
+    z-index: 1;
+    height: 91vh;
+    background-color: white;
+}
+
+.home-layout::-webkit-scrollbar, .upload-layout::-webkit-scrollbar{
+    width: 6px;
+    height: 20px;
+    background-color: white;
+}
+.home-layout::-webkit-scrollbar-thumb, .upload-layout::-webkit-scrollbar-thumb{
+    background: rgb(226, 225, 225);
+    height: 20px;
+}
+
+
+.chat-layout{
+
+    position: fixed;
+    width: 22vw;
+    right: 0;
+    top: 18.4vh;
+    height: 86vh;
+    background-color: white;
+    border-left: 1px solid rgb(230, 228, 228);
+
+}
+
+.chat-header{
+    padding: 20px;
+}
+
+.lecture-layout{
+    top: 20.4vh;
+    height: 86vh;
+}
+
+.attendance-layout{
+    top:18.4vh;
+    position: fixed;
+    left: 7vw;
+    border-right: 1px solid rgb(230, 228, 228);
+    width: 17vw;
+    height: 86vh;
+}
+
+.attendance-header{
+    padding: 20px;
+}
+
+.video-call-area{
+    left: 24vw;
+    height: 86vh;
+    padding: 20px;
+    position: fixed;
+    top: 18.4vh;
+    width: 54vw;
+}
+
+
+
+.upload-layout{
+    position: fixed;
+    width: 68.6vw;
+    left: 7vw;
+    overflow-y: scroll;
+    top: 9.4vh;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 91vh;
+    background-color: white;
+}
+
+.upload-inner{
+   
+    padding: 40px;
+    display: inline-flex;
+    width:80%;
+    border: 1px solid rgb(219, 218, 218);
+    justify-content: space-between;
+}
+
+.upload-section form{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.upload-section input{
+    padding: 10px 10px;
+    margin: 7px 0px;
+    border: 1px solid rgb(219, 218, 218);
+    width: 100%;
+}
+
+.upload-layout select{
+    padding: 10px 5px;
+    margin: 7px 0px;
+    border: 1px solid rgb(219, 218, 218);
+    width: 90%;
+}
+.upload-section button{
+    width: 100%;
+    padding: 10px;
+    margin: 20px 0px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: 1px solid rgb(241, 241, 241);
+}
+
+
+.upload-section{
+    width: 60%;
+}
+
+.upload-section form{
+    width: 100%;
+}
+
+.drag-area{
+    width: 30%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.drag-card{
+    width: 60%;
+    background-color: rgb(245, 243, 240);
+    padding: 30px;
+}
+
+.select-area div{
+    width: 50%;
+}
+
+.select-area{
+    width: 100%;
+    margin-top: 10px;
+    display: inline-flex;
+    justify-content: space-between;
+   
+}
+
+
+.book-layout-inner{
+    position: fixed;
+    width: 68.6vw;
+    left: 7vw;
+    background-color: red;
+    overflow-y: scroll;
+    top: 9.4vh;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 91vh;
+    background-color: white;
+}
+
+
