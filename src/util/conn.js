@@ -1,0 +1,1 @@
+export const conn = 'http://localhost:3000';

@@ -1,349 +1,68 @@
-*{
-    font: 1em sans-serif;
-    
+.side-navs{
+    font-size: 30px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 90%;
+    letter-spacing: 1px;
+    /* text-transform: uppercase; */
+    z-index: 2;
 }
 
+.side-navs div{
+    display: inline-flex;
+    justify-content: space-evenly;
+    cursor: pointer;
+    align-items: flex-start;
+   
+    align-items: center;
+}
 
-.navbar{
-    width: 100vw;
+.side-navs div span{
+    display: none;
+    font-size: 15px;
+    font-weight: bold;
+    padding-left:15px ;
+
+}
+
+.department{
+    width: 100%;
     height: 8vh;
     display: inline-flex;
-    z-index: 1;
-    align-items: center;
-    left: 0;
-    position: fixed;
-    top: 0;
-    z-index: 2;
-    padding: 5px;
-    border-bottom: 1px solid rgb(238, 236, 236);
-    justify-content: space-evenly;
-}
-
-.navbar-search input{
-    padding: 10px 50px;
-
-    border: 1px solid grey;
-    border-radius: 5px;
-    font-size: 16px;
-
-}
-
-.navbar-navs{
-    display: inline-flex;
-    justify-content: space-between;
-    font-size: 33px;
-    color: grey;
-}
-
-
-.lecture-card-inner{
-    margin: 10px 0px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 100%;
    
-}
-
-.notice-body{
-    margin-bottom: 40px;
-}
-
-.lecture-card{
-    border: 1px solid #e5e5e7;
-    padding: 20px;
-    margin: 10px 0px;
-    border-radius: 10px;
-}
-
-
-
-.lecturer-details{
-    width: 65%;
-    font-size: 14px;
-}
-
-.lecture-card .footer{
-    display: inline-flex;
-    justify-content: flex-end;
-    font-size: 14px;
-    width: 100%;
-}
-
-.lecture_dp{
-    width: 50px;
-    height: 50px;
-    border-radius: 100px;
-    background-color: #000;
-}
-
-
-.navbar-navs div{
-    padding-right: 20px;
-}
-
-
-
-.side-bar{
-    position: fixed;
-    left: 0;
-    top: 9vh;
-    z-index: 1;
-    font-size: 30px;
-    width: 7vw;
-    z-index: 2;
-    color: #000;
-    border-right: 1px solid rgb(238, 236, 236);
-    height: 91vh;
-    display: inline-flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: space-evenly;
-}
-
-.side-bar-inner{
-    /* padding: 10px; */
-    overflow: hidden;
-    flex-direction: column;
-    display: inline-flex;
-    justify-content: space-evenly;
-}
-
-.side-bar:hover{
-
-    width: 17vw;
-    background-color: white;
-    transition: 0.4s ease-in-out;
-    padding: 0px 10px;
-    z-index: 2;
-}
-
-.side-bar-inner .nav{
-    /* padding: 10px; */
-    font-size: 34px;
-    display: inline-flex;
-    overflow: hidden;
-    text-align: start;
-    justify-content: center;
-    padding: 20px;
-    transition: 0.4s ease-in-out;
     align-items: center;
-    color:  #8B2CF5;
-
+    justify-content: space-between;
 }
 
-.side-bar-inner .nav .label{
-    transition: 1s ease-in-out;
-}
-
-
-.bar{
+.department-inner{
+    width: 88%;
+    overflow-x: scroll;
     display: inline-flex;
-    align-items: center;
-    width: 100%;
-    height: 7vh;
-    justify-content: end;
-    /* background-color: red; */
-    background-color: rgb(255, 250, 250);
 }
 
-.bar button{
-    padding: 5px;
-    background-color: transparent;
-    margin: 5px;
-    border: none;
-    display: inline-flex;
-    align-items: center;
-    color: grey;
-    font-weight: bold;
-    font-size: 17px;
-    border-radius: 5px;
-}
+.department-inner::-webkit-scrollbar{
 
-.bar span{
-    padding: 0px 10px;
+    display: none;
+
 }
 
 
-.filter-bar{
-    display: inline-flex;
-    align-items: center;
-    width: 100%;
-    height: 7vh;
-    background-color: white;
-}
-
-
-.filter-inner{
-    justify-content: center;
-    display: inline-flex;
-    align-items: center;
-}
-
-
-.badge{
-    padding: 10px;
-    margin: 20px;
-    width: 50px;
-    background: #EDEEFF;
-    font-size: 15px;
-    /* background: #f5f3f3; */
-    border-radius: 15px;
-}
-
-
-.card-layout{
-    display: inline-flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+.feed{
+    width: 60%;
+    margin: 15px 0px;
     
 }
 
-.card{
-    width: 40vw;
-    margin: 20px 0px;
-    padding: 20px;
-    border: 1px solid rgb(212, 208, 208);
-    border-radius: 10px;
-    font-size: 15px;
+.Banner{
     display: inline-flex;
-    justify-content: flex-start;
-    text-align: start;
-}
-
-.card-inner{
-    width: 100%;
-}
-
-.card-header, .card-body, .card-footer{
-    padding: 20px 0px;
-}
-
-.card-dp{
-    padding: 20px;
-    background-color: #000;
-    width: 15px;
-    height: 15px;
-    margin-right: 15px;
-    border-radius: 100px;
-}
-.card-body{
-    padding: 20px 5px;
-}
-.card-header{
-    display: inline-flex;
-    /* align-items: center; */
     justify-content: space-between;
+    align-items: center;
+    background-color: #f8f5f5;
     width: 100%;
+    padding: 5px 20px;
 }
-
-.card-hd1{
-    display: inline-flex;
-    justify-content: start;
-    align-items: flex-start;
-}
-
-.card-title{
-    display: inline-flex;
-    flex-direction: column;
-}
-
-.card-title span{
+.Banner button{
     padding: 5px;
-}
-
-.card-body{
-    padding: 0px 70px ;
-}
-
-.card-footer{
-    display: inline-flex;
-    justify-content: flex-end;
-    align-items: center;
-    width: 100%;
-    text-align: end;
-}
-
-.card-footer span{
-    padding: 0px 10px;
-    font-size: 20px;
-    display: inline-flex;
-    justify-content: center;
-}
-
-.card-hd1{
-    display: inline-flex;
-    align-items: center;
-}
-
-
-.notice{
-    width: 22vw;
-    position: fixed;
-    right: 0;
-    
-    padding: 20px;
-    overflow-y: scroll;
-    z-index: 0;
-    text-align: start;
-    top: 9vh;
-    height: 91vh;
-    border-left: 1px solid #f0f0f3;
-}
-
-notice::-webkit-scrollbar-thumb{
-    background-color: #e5e5e7;
-    width: 5px;
-}
-
-notice::-webkit-scrollbar{
-    width: 10px;
-    height: 10px;
-    background-color: #e5e5e7;
-}
-
-
-
-.notice-header{
-    display: inline-flex;
-    align-items: center;
-    font-size: 16px;
-}
-
-.notice-header div{
-    padding: 10px;
-}
-
-.lecture-header{
-    display: inline-flex;
-    position: fixed;
-    top: 9.4vh;
-    left: 0;
-    width: 100vw;
-    align-items: center;
-    background-color: rgb(245, 244, 244);
-    height: 7vh;
-    z-index: 1;
-    justify-content: space-around;
-    /* padding: 20px; */
-}
-
-
-.chat-card-inner{
-    width: 100%;
-    padding: 10px;
-    display: inline-flex;
-    font-size: 14px;
-    align-self: initial;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-
-.chat-body{
-    padding: 10px;
-}
-
-.chat-card-inner .col1{
-    text-align: start;
+    margin: 10px;
 }

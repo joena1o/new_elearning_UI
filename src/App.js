@@ -1,11 +1,12 @@
 import './App.css';
-import './Styles/components.css';
+import './Styles/landing.css';
 import './Styles/Layouts.css';
+import './Styles/Components.css';
+import './Styles/Routes.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import DashHomeRoute from './Routes/dashhomeRoutes';
-import LectureRoutes from './Routes/LectureRoute';
-import ResourceRoute from './Routes/ResourceRoute';
-import BookRoute from './Routes/BookRoute';
+import LandingPage from './Routes/LandingPageRoute';
+import LoginRoute from './Routes/LoginRoute';
+import HomeRoute from './Routes/HomeRoute';
 
 function App() {
   return (
@@ -16,13 +17,13 @@ function App() {
 
         <Routes>
 
-          <Route path='/' element={<DashHomeRoute />} />
+          <Route path='/' element={<LandingPage />} />
 
-          <Route path='/lecture' element={<LectureRoutes />} />
+          <Route path='/login' element={<LoginRoute />} />
 
-          <Route path='/resource' element={<ResourceRoute/>} />
+          <Route path='/home/*' element={<HomeRoute />}  />
 
-          <Route path='/book' element={<BookRoute />} />
+        
 
         </Routes>
 
