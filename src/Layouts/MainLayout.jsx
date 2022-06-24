@@ -5,6 +5,7 @@ import { Route, Routes} from 'react-router-dom';
 import {LectureRoute} from '../Routes/HomeRoutes/LectureRoute';
 import { ResourceRoute } from '../Routes/HomeRoutes/ResourceRoute';
 import { PastQA } from '../Routes/HomeRoutes/PastQA';
+import { AssessmentRoute } from '../Routes/HomeRoutes/AssessmentRoute';
 import { BookView } from '../Routes/HomeRoutes/bookView';
 
 export const MainLayout = ()=>{
@@ -38,6 +39,8 @@ export const MainLayout = ()=>{
             <Route path='past' element={<PastQA />} />
 
             <Route path='bookview' element={<BookView />} />
+
+            <Route path='Quiz' element={<AssessmentRoute  />} />
 
 
 

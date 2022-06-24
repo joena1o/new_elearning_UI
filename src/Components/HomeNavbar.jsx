@@ -11,7 +11,6 @@ export default function HomeNavbar() {
         color: "black",
         justifyContent: "space-evenly",
         padding: '10px',
-       
         alignItems: 'center'
     }
 
@@ -73,7 +72,7 @@ export default function HomeNavbar() {
                             </IconButton>
                         </Box>
 
-                        <Box sx={{ display: { xs: 'flex', md: 'flex' } }}>
+                        {/* <Box sx={{ display: { xs: 'flex', md: 'flex' } }}>
                             <IconButton
                                 size="large"
                                 aria-label="show more"
@@ -84,7 +83,7 @@ export default function HomeNavbar() {
                             >
                                 <BiCloudUpload />
                             </IconButton>
-                        </Box>
+                        </Box> */}
 
 
                         <Box sx={{ display: { xs: 'flex', md: 'flex' } }}>

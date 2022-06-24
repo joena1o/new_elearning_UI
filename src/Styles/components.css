@@ -1,9 +1,11 @@
 .side-navs{
-    font-size: 30px;
+    font-size: 32px;
     display: inline-flex;
     flex-direction: column;
     justify-content: space-evenly;
     height: 90%;
+   
+    align-items: flex-start;
     letter-spacing: 1px;
     /* text-transform: uppercase; */
     z-index: 2;
@@ -60,9 +62,25 @@
     align-items: center;
     background-color: #f8f5f5;
     width: 100%;
-    padding: 5px 20px;
+    padding: 15px 20px;
 }
 .Banner button{
     padding: 5px;
     margin: 10px;
+}
+
+.profile-row{
+    display: inline-flex;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: start;
+}
+
+.profile-row .dp{
+    width: 20%;
+}
+
+.profile-row .column{
+    width: 70%;
 }

@@ -8,7 +8,9 @@ export const Feed = () => {
 
     return (
 
-        <Box className="feed" sx={{width:{md:"75%", sm:"80%", lg:"64%", xs:"90%"}}} onClick={()=>navigate("bookview")}>
+        // onClick={()=>navigate("bookview")}
+
+        <Box className="feed" sx={{width:{md:"75%", sm:"80%", lg:"60%", xs:"90%"}}} >
             <Card variant='outlined'>
 
 
@@ -18,7 +20,7 @@ export const Feed = () => {
 
                         <Grid item lg={1} md={2} sm={2} xs={2}  sx={{alignItems:"center", justifyContent:"flex-end", width:"90%"}}>
 
-                            <Avatar sx={{ width: {xl:56, lg:50, sm:56, xs:56}, height:{xl:56, lg:50, sm:56, xs:56} }}>H</Avatar>
+                            <Avatar sx={{ width: {xl:56, lg:50, sm:56, xs:56}, height:{xl:56, lg:50, sm:56, xs:56}, backgroundColor:"antiquewhite", color:"black", fontWeight:"bold" }}>H</Avatar>
 
                         </Grid>
 

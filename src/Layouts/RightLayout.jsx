@@ -17,7 +17,7 @@ export const RightLayout = () => {
         
                 <div className='header'>
 
-                    Get To Know Your Lecturers
+                    <b>Get to know your lecturers</b>
 
                 </div>
 

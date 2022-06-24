@@ -7,12 +7,13 @@ import { AiOutlineFundProjectionScreen } from 'react-icons/ai';
 import { SiGoogleclassroom } from 'react-icons/si';
 import {Link, useNavigate} from 'react-router-dom';
 import {AiOutlineUsergroupAdd} from 'react-icons/ai'
+import {GrTest} from 'react-icons/gr';
 
 export const SideBar = () => {
 
 
     const style1 = {
-        height: "90vh", backgroundColor: "white", borderRight: '1px solid #d1d1d1',
+        height: "90vh",  backgroundColor: "antiquewhite", borderRight: '1px solid #d1d1d1',
         transition: "0.5s ease-in-out", zIndex:"2"
     }
 
@@ -73,7 +74,7 @@ export const SideBar = () => {
         <Box sx={style1} className="side-navbar" onMouseEnter={() => Pop()} onMouseLeave={Close} >
 
 
-            <Box sx={{ justifyContent: 'space-evenly', height: "100%" }}>
+            <Box sx={{ justifyContent: 'space-evenly', height: "100%", alignItems:"flex-start" }}>
 
                 <div className='side-navs'>
 
@@ -100,6 +101,10 @@ export const SideBar = () => {
 
                     <Box>
                         <AiOutlineFundProjectionScreen /> <span>Projects</span>
+                    </Box>
+
+                    <Box onClick={()=>navigate("quiz")}>
+                        <GrTest /> <span>Assessment</span>
                     </Box>
 
                     <div onClick={()=>navigate("lecture")}>

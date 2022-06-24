@@ -3,6 +3,10 @@ import { Button, Box, Modal, Typography } from "@mui/material";
 import { useState } from "react";
 import { conn } from '../../util/conn';
 import { HomeFeed } from "../../Layouts/HomeFeed";
+import { ResourceLayout } from "../../Layouts/ResourceLayout";
+import {MdFormatListBulleted} from 'react-icons/md';
+import {TbUpload} from 'react-icons/tb';
+
 
 
 
@@ -52,16 +56,16 @@ export const ResourceRoute = () => {
 
                 Resources
 
-                <div>
-                    <Button variant="outlined" color='warning' onClick={handleOpen} >Upload</Button>
-                    
+                <div style={{fontSize:"30px"}}>
+                    <MdFormatListBulleted />
+                    <TbUpload />
                 </div>
 
             </div>
 
 
 
-            <HomeFeed />
+           <ResourceLayout />
 
 
 
