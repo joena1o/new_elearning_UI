@@ -8,7 +8,7 @@ import { PastQA } from '../Routes/HomeRoutes/PastQA';
 import { AssessmentRoute } from '../Routes/HomeRoutes/AssessmentRoute';
 import { BookView } from '../Routes/HomeRoutes/bookView';
 
-export const MainLayout = ()=>{
+export const HomeCenterLayout = ()=>{
 
     return(
 

@@ -41,7 +41,6 @@ export const ResourceRoute = () => {
         transform: 'translate(-50%, -50%)',
         width: 380,
         bgcolor: 'background.paper',
-        // border: '2px solid #000',
         boxShadow: 24,
         p: 4,
     };
@@ -56,9 +55,9 @@ export const ResourceRoute = () => {
 
                 Resources
 
-                <div style={{fontSize:"30px"}}>
-                    <MdFormatListBulleted />
-                    <TbUpload />
+                <div  className='resource-route-icons'>
+                    <span><MdFormatListBulleted /></span>
+                    <span onClick={()=>handleOpen()}><TbUpload /></span>
                 </div>
 
             </div>
@@ -112,10 +111,6 @@ export const ResourceRoute = () => {
                                 <option value="lecturenote">Lecture Notes</option>
                             
                             </select>
-
-                            {/* <label>
-                                Author
-                            </label> */}
 
                             <br></br>
                             <input  onChange={(e)=>saveFile(e)} className="form-control" type='file' />

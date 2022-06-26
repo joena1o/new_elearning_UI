@@ -15,8 +15,13 @@
     
 }
 
-
 .assessment-route{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.assessment-route .inner_{
     width: 100%;
     height: 89vh;
     display: inline-flex;
@@ -53,7 +58,7 @@
 }
 
 
-.lecture-route div, .assessment-route div{
+.lecture-route div, .assessment-route .inner_ div{
     padding: 30px;
 }
 

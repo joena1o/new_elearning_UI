@@ -1,9 +1,9 @@
 import { Grid, Box } from "@mui/material";
 import { SideBar } from "../Components/Sidebar";
-import { HomeCenterLayout } from "./HomeCenterLayout";
-import {RightLayout} from './RightLayout';
+import { LectureCenterLayout } from "./LectureCenterLayout";
+import { LectureChatLayout } from "./LectureChatLayout";
 
-export const HomeLayout = ()=>{
+export const LectureLayout = ()=>{
 
     return(
 
@@ -13,10 +13,10 @@ export const HomeLayout = ()=>{
                     <SideBar />
                 </Grid>
                 <Grid item lg={8} md={7} sm={10} xs={10}>
-                <HomeCenterLayout />
+                <LectureCenterLayout />
                 </Grid>
                 <Grid item lg={3} md={4}  sx={{display:{sm:"none",lg:"block",md:"block", xs:"none"}}}>
-                <RightLayout />
+                <LectureChatLayout />
                 </Grid>
             </Grid>
 

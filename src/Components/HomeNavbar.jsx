@@ -1,25 +1,25 @@
-import { AppBar, Box, Toolbar, IconButton } from "@mui/material";
+import { AppBar, Box, Toolbar, IconButton, Badge } from "@mui/material";
 import { SearchBar } from "../MuiComponents/searchbar";
 import { FaRegUserCircle } from 'react-icons/fa'
-import {RiNotification2Line} from 'react-icons/ri';
+import { RiNotification3Line } from 'react-icons/ri';
 import { BiCloudUpload } from 'react-icons/bi';
-import {BsSearch} from 'react-icons/bs';
+import { BsSearch } from 'react-icons/bs';
 
 export default function HomeNavbar() {
 
     const style = {
-        color: "black",
+        color: "antiquewhite",
         justifyContent: "space-evenly",
         padding: '10px',
         alignItems: 'center'
     }
 
     const appBar = {
-        backgroundColor:'white',
+        backgroundColor: 'rgb(143, 62, 62)',
         boxShadow: 'none',
         justifyContent: 'space-evenly',
         height: "10vh",
-        borderBottom:"1px solid #d1d1d1"
+        borderBottom: "1px solid #d1d1d1"
     }
 
     return (
@@ -33,18 +33,18 @@ export default function HomeNavbar() {
                     Navbar
 
 
-                   
-                    <SearchBar />
-                       
 
-                   
+                    <SearchBar />
+
+
+
 
 
 
                     <Box sx={{ display: "flex" }}>
 
 
-                    <Box sx={{ display: { xs: 'block', sm:"none", md: 'none', lg:"none" } }}>
+                        <Box sx={{ display: { xs: 'block', sm: "none", md: 'none', lg: "none" } }}>
                             <IconButton
                                 size="large"
                                 aria-label="show more"
@@ -95,8 +95,12 @@ export default function HomeNavbar() {
 
                                 color="inherit"
                             >
-                                <RiNotification2Line
-                                 />
+
+                                <Badge badgeContent={4} color="error">
+                                <RiNotification3Line
+                                />
+                                </Badge>
+                              
                             </IconButton>
                         </Box>
 

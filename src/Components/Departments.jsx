@@ -6,7 +6,8 @@ export const Departments = () => {
 
     const style = {
         padding:"0px 5x",
-        margin: '0px 5px'
+        margin: '0px 5px',
+        // backgroundColor:"antiquewhite"
     }
 
 

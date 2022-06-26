@@ -18,7 +18,7 @@ export const LecturerCard = () => {
 
                     <Grid item  lg={3} md={3}>
                     
-                    <Avatar sx={{width:54, height:54, fontSize:"27px"}}> <FiUser /></Avatar>
+                    <Avatar sx={{width:54, height:54, fontSize:"27px", backgroundColor:"antiquewhite", color:"black"}}> <FiUser /></Avatar>
 
                     </Grid>
 
@@ -33,7 +33,7 @@ export const LecturerCard = () => {
                        </div>
 
                        <div className='card-foot' style={{textAlign:"end", fontSize:"14px"}}>
-                        <Button>Connect</Button>
+                        <Button variant="text" color='primary'>Connect</Button>
                        </div>
                        
                     </Grid>

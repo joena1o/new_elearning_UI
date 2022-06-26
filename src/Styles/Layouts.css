@@ -26,22 +26,24 @@
     padding: 0;
 }
 
-.main-layout::-webkit-scrollbar, .right-layout::-webkit-scrollbar{
+.main-layout::-webkit-scrollbar, .right-layout::-webkit-scrollbar, .lecture-center-layout::-webkit-scrollbar{
     width: 10px;
     background-color: white;
 }
 
-.main-layout::-webkit-scrollbar-thumb, .right-layout::-webkit-scrollbar-thumb{
+.main-layout::-webkit-scrollbar-thumb, .right-layout::-webkit-scrollbar-thumb, .lecture-center-layout::-webkit-scrollbar-thumb{
     width: 10px;
     background-color: rgb(250, 245, 240);
 }
 
+.lecture-center-layout{
+    border-right: 1px solid #d1d1d1;
+}
+
 
 .home-feed{
-    /* height: 75vh; */
     width: 100%;
     display: inline-flex;
-    /* overflow-y: scroll; */
     padding: 0;
     margin: 0;
     justify-content: center;

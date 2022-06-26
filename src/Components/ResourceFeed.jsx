@@ -4,9 +4,9 @@ export const ResourceFeed = () => {
 
     return (
 
-        <Box>
+        <Box sx={{width:"100%"}}>
 
-            <Card variant='outlined' sx={{ padding: "20px" }}>
+            <Card variant='outlined' sx={{ padding: "10px", width:"100%" }}>
 
 
                 <CardMedia
@@ -18,16 +18,22 @@ export const ResourceFeed = () => {
                 />
 
 
-                <Grid container direction='row' spacing={2} sx={{ alignItems: "flex-start", justifyContent: "flex-start", textAlign: "start" }}>
+                <Grid container direction='row' spacing={7} sx={{ alignItems: "flex-start", justifyContent: "flex-start", textAlign: "start" }}>
 
-                    <Grid item>
-                        <Avatar >H</Avatar>
+                    <Grid item sx={{width:"18%", display:{md:"none",lg:'block',sm:"none",xs:"none"}}}>
+                        <Avatar>H</Avatar>
                     </Grid>
 
-                    <Grid item>
+                    <Grid item sx={{width:{md:"100%", lg:"79%", sm:"100%", xs:"100%"}}}>
 
-                        <p>Joe Doe</p>
-                        <p>Department</p>
+                        <p><b>Joe Doe</b></p>
+                        <p><small>Electrical / Electronics Engineering</small></p>
+
+                        <div>
+                            <p>EEE202</p>
+                            <p>Description of the book is supposed to be shown here</p>
+                        </div>
+
 
                     </Grid>
 

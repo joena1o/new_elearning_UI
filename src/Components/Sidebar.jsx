@@ -13,8 +13,8 @@ export const SideBar = () => {
 
 
     const style1 = {
-        height: "90vh",  backgroundColor: "antiquewhite", borderRight: '1px solid #d1d1d1',
-        transition: "0.5s ease-in-out", zIndex:"2"
+        height: "90vh",  backgroundColor: "white", borderRight: '1px solid #d1d1d1',
+        transition: "0.5s ease-in-out", zIndex:"2", color:"grey"
     }
 
 
@@ -74,7 +74,9 @@ export const SideBar = () => {
         <Box sx={style1} className="side-navbar" onMouseEnter={() => Pop()} onMouseLeave={Close} >
 
 
-            <Box sx={{ justifyContent: 'space-evenly', height: "100%", alignItems:"flex-start" }}>
+            <Box sx={{ justifyContent: 'space-evenly', height: "100%", alignItems:"flex-start", fontSize: {lg:"32px"
+    , md:"32px", sm:"25px", xs:"25px"
+    } }}>
 
                 <div className='side-navs'>
 
@@ -91,9 +93,9 @@ export const SideBar = () => {
                     </div>
 
 
-                    <div onClick={()=>navigate("past")}>
+                    {/* <div onClick={()=>navigate("past")}>
                         <GoQuestion /> <span>Past Q/A</span>
-                    </div>
+                    </div> */}
 
                     <Box sx={{display:{xs:"block",lg:"none",md:"none"}}}>
                         <AiOutlineUsergroupAdd /> <span>Lecturers</span>

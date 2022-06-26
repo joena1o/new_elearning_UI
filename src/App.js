@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LandingPage from './Routes/LandingPageRoute';
 import LoginRoute from './Routes/LoginRoute';
 import HomeRoute from './Routes/HomeRoute';
+import { LectureRoute } from './Routes/LectureRoute';
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
           <Route path='/login' element={<LoginRoute />} />
 
           <Route path='/home/*' element={<HomeRoute />}  />
+
+
+          <Route path='/lecture/*' element={<LectureRoute />} />
 
         
 
