@@ -9,31 +9,10 @@ export const ResourceLayout = ()=>{
         <div className="resource-layout" style={{padding:"20px", width:"100%"}}>
 
 
-                <Grid container direction='row' spacing={2} sx={{flexGrew:"1", width:"100%"}}>
+                <Grid container direction='row' sx={{flexGrow:"1", width:"100%"}}>
 
 
-                    <Grid item lg={4} md={6} sm={6} xs={12} sx={{width:"100%"}}>
-
-                       <ResourceFeed />
-
-                    </Grid>
-
-
-                    <Grid item lg={4} md={6} sm={6} xs={12}>
-
-                    <ResourceFeed />
-
-                    </Grid>
-
-
-                    <Grid item lg={4} md={6} sm={6} xs={12}>
-
-                    <ResourceFeed />
-
-                    </Grid>
-
-
-                    <Grid item lg={4} md={6} sm={6} xs={12} sx={{width:"100%"}}>
+                    <Grid item lg={4} md={6} sm={6} xs={12} sx={{width:"90%", marginBottom:"10px"}}>
 
                        <ResourceFeed />
 
@@ -54,25 +33,9 @@ export const ResourceLayout = ()=>{
                     </Grid>
 
 
-                    <Grid item lg={4} md={6} sm={6} xs={12} sx={{width:"100%"}}>
+                
 
-                       <ResourceFeed />
-
-                    </Grid>
-
-
-                    <Grid item lg={4} md={6} sm={6} xs={12}>
-
-                    <ResourceFeed />
-
-                    </Grid>
-
-
-                    <Grid item lg={4} md={6} sm={6} xs={12}>
-
-                    <ResourceFeed />
-
-                    </Grid>
+                   
 
 
                 </Grid>

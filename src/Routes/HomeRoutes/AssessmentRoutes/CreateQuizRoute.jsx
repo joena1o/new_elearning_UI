@@ -19,9 +19,7 @@ export const CreateQuizRoute = ()=>{
 
                 <Form className="form-group">
 
-                    
-
-
+                
 
                 </Form>
 

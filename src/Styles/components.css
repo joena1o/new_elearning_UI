@@ -9,6 +9,7 @@
     z-index: 2;
 }
 
+
 .side-navs div{
     display: inline-flex;
     justify-content: space-evenly;
@@ -103,4 +104,12 @@
 
 .resource-route-icons span:hover{
     color: black;
+}
+
+.resource-right-card{
+    display: inline-flex;
+    justify-content: center;
+   align-items: center;
+   text-align: start;
+    width: 100%;
 }

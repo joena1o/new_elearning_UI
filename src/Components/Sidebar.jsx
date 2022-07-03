@@ -9,6 +9,7 @@ import {Link, useNavigate} from 'react-router-dom';
 import {AiOutlineUsergroupAdd} from 'react-icons/ai'
 import {GrTest} from 'react-icons/gr';
 
+import {GiClassicalKnowledge} from 'react-icons/gi';
 export const SideBar = () => {
 
 
@@ -88,18 +89,13 @@ export const SideBar = () => {
                         <GiBookshelf /> <span>Resources</span>
                     </div>
 
-                    <div>
-                        <BsJournalArrowDown /> <span>Journal</span>
-                    </div>
-
-
-                    {/* <div onClick={()=>navigate("past")}>
-                        <GoQuestion /> <span>Past Q/A</span>
-                    </div> */}
-
-                    <Box sx={{display:{xs:"block",lg:"none",md:"none"}}}>
-                        <AiOutlineUsergroupAdd /> <span>Lecturers</span>
+                    <Box sx={{display:{xs:"block",lg:"none",md:"none"}}} onClick={()=>navigate("course")}>
+                        <GiClassicalKnowledge /> <span>Courses</span>
                     </Box>
+
+                    <div onClick={()=>navigate("lecture")}>
+                        <SiGoogleclassroom /> <span>Lecture</span>
+                    </div>
 
                     <Box>
                         <AiOutlineFundProjectionScreen /> <span>Projects</span>
@@ -109,9 +105,7 @@ export const SideBar = () => {
                         <GrTest /> <span>Assessment</span>
                     </Box>
 
-                    <div onClick={()=>navigate("lecture")}>
-                        <SiGoogleclassroom /> <span>Lecture</span>
-                    </div>
+                   
 
                     
 

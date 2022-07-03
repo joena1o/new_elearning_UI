@@ -1,9 +1,8 @@
 import {Button,  Box, Modal, Typography } from '@mui/material';
 import { useState } from "react";
-import { AssessmentHeader } from '../../Components/AssessmentHeader';
 
 
-export const AssessmentRoute = () => {
+export const CourseRoute = () => {
 
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
@@ -21,8 +20,6 @@ export const AssessmentRoute = () => {
         p: 4,
     };
 
-
-
     const [title, setTitle] = useState("");
     const [department, setDepartment] = useState("");
     const [school, setSchool] = useState("");
@@ -32,19 +29,17 @@ export const AssessmentRoute = () => {
 
     return (
 
-        <div className="assessment-route" style={{width:"100%"}}>
-
-            <AssessmentHeader />
+        <div className="course-route">
 
             <div className='inner_'>
 
-            No Previous Assessments
+                No Courses created
 
-            <div>
-                <Button variant="outlined" onClick={()=>setOpen(true)}>Create New Assessment</Button>
+                <div>
+                    <Button variant="outlined" onClick={() => setOpen(true)}>Create New Assessment</Button>
+                </div>
+
             </div>
-
-
 
 
             <Modal
@@ -97,15 +92,8 @@ export const AssessmentRoute = () => {
                 </Box>
             </Modal>
 
-            </div>
+         </div>   
 
-
-        </div>
-
-
-
-
-    );
-
+            );
 
 }

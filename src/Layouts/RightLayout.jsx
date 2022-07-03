@@ -1,6 +1,6 @@
 
 import {Box} from '@mui/material';
-import { LecturerCard } from '../Components/LecturerCard';
+import { ResourceRightCard } from '../Components/ResourceRightCard';
 
 export const RightLayout = () => {
 
@@ -17,21 +17,21 @@ export const RightLayout = () => {
         
                 <div className='header'>
 
-                    <b>Get to know your lecturers</b>
+                    <b>Join Lectures</b>
 
                 </div>
 
 
                 <div>
-                    <LecturerCard />
-                    <LecturerCard />
-                    <LecturerCard />
-                </div>
+                    <ResourceRightCard />
+                    <ResourceRightCard />
+                    <ResourceRightCard />
+                    <ResourceRightCard />
+                    <ResourceRightCard />
+                    <ResourceRightCard />
+                    <ResourceRightCard />
+                    <ResourceRightCard />
 
-                <div>
-                    <LecturerCard />
-                    <LecturerCard />
-                    <LecturerCard />
                 </div>
 
                 

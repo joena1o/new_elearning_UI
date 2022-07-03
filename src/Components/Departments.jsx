@@ -67,11 +67,11 @@ export const Departments = () => {
 
 
 
-            {/* {
+            {
                 dept.map((val)=>{
                     <Chip style={style} label={val} />
                 })
-            } */}
+            }
             
 
         </div>

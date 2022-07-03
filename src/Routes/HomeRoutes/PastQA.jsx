@@ -1,7 +1,6 @@
 
 import { Button, Box, Modal, Typography } from "@mui/material";
 import {useState} from 'react';
-import { PastQAapi } from "../../Apis/PastQA/PastQA";
 import { HomeFeed } from "../../Layouts/HomeFeed";
 
 
@@ -38,11 +37,11 @@ export const PastQA = () => {
     formData.append("school", school);
 
 
-    PastQAapi(formData).then((value)=>{
+    // PastQAapi(formData).then((value)=>{
         
 
 
-    });
+    // });
 
 
   }

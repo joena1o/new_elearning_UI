@@ -1,12 +1,10 @@
-
 import { Button, Box, Modal, Typography } from "@mui/material";
 import { useState } from "react";
 import { conn } from '../../util/conn';
-import { HomeFeed } from "../../Layouts/HomeFeed";
 import { ResourceLayout } from "../../Layouts/ResourceLayout";
-import {MdFormatListBulleted} from 'react-icons/md';
-import {TbUpload} from 'react-icons/tb';
-
+import { MdFormatListBulleted } from 'react-icons/md';
+import { TbUpload } from 'react-icons/tb';
+import axios from "axios";
 
 
 
@@ -16,14 +14,55 @@ export const ResourceRoute = () => {
     const [title, setTitle] = useState("");
     const [department, setDepartment] = useState("");
     const [school, setSchool] = useState("");
-    const [author, setAuthor] = useState("");
+    const [descript, setDescript] = useState("");
     const [category, setCategory] = useState("");
 
     const [file, setFile] = useState();
     const [filename, setFilename] = useState("");
 
 
-    const saveFile = (e)=>{
+    const UploadResource_ = (event) => {
+
+        event.preventDefault();
+
+
+        if (title.length === 0 && department.length === 0 && school.length === 0 && descript.length === 0 && category.length === 0) {
+
+            alert("Empty Fields");
+
+            return;
+
+        }else {
+
+            const formData = new FormData();
+            // formData.append("file", file);
+            // formData.append("filename", filename);
+            formData.append("title", title);
+            formData.append("department", department);
+            formData.append("school", school);
+            formData.append("description", descript)
+            formData.append("category", category);
+
+            console.log(JSON.stringify(formData));
+
+
+            // axios.post(conn + '/api/v1/resources',
+            //     formData
+            // ).then((value) => {
+            //     console.log(value);
+            // });
+
+
+
+        }
+
+
+
+
+    }
+
+
+    const saveFile = (e) => {
         setFile(e.target.files[0]);
         setFilename(e.target.files[0].name);
     }
@@ -55,16 +94,16 @@ export const ResourceRoute = () => {
 
                 Resources
 
-                <div  className='resource-route-icons'>
+                <div className='resource-route-icons'>
                     <span><MdFormatListBulleted /></span>
-                    <span onClick={()=>handleOpen()}><TbUpload /></span>
+                    <span onClick={() => handleOpen()}><TbUpload /></span>
                 </div>
 
             </div>
 
 
 
-           <ResourceLayout />
+            <ResourceLayout />
 
 
 
@@ -88,36 +127,36 @@ export const ResourceRoute = () => {
                             <label>
                                 Title
                             </label>
-                            <input value={title} onChange={(e)=>setTitle(e.target.value)} className="form-control" type='text' placeholder="Title" />
+                            <input value={title} required onChange={(e) => setTitle(e.target.value)} className="form-control" type='text' placeholder="Title" />
                             <label>
                                 Department
                             </label>
-                            <input value={department} onChange={(e)=>setDepartment(e.target.value)} className="form-control" type='text' placeholder="Department" />
+                            <input value={department} required onChange={(e) => setDepartment(e.target.value)} className="form-control" type='text' placeholder="Department" />
                             <label>
                                 School
                             </label>
-                            <input value={school} onChange={(e)=>setSchool(e.target.value)} className="form-control" type='text' placeholder="School" />
+                            <input value={school} required onChange={(e) => setSchool(e.target.value)} className="form-control" type='text' placeholder="School" />
                             <label>
-                                Author
+                                Description
                             </label>
-                            <input value={author} onChange={(e)=>setAuthor(e.target.value)} className="form-control" type='text' placeholder="Author" />
+                            <input value={descript} required onChange={(e) => setDescript(e.target.value)} className="form-control" type='text' placeholder="Author" />
                             <label>
                                 Category
                             </label>
-                            <select value={category} onChange={(e)=>setCategory(e.target.value)} className="form-control">
+                            <select value={category} required onChange={(e) => setCategory(e.target.value)} className="form-control">
 
                                 <option value="books">Books</option>
                                 <option value="handout">Handout</option>
                                 <option value="lecturenote">Lecture Notes</option>
-                            
+
                             </select>
 
                             <br></br>
-                            <input  onChange={(e)=>saveFile(e)} className="form-control" type='file' />
-                           
-                            
+                            <input onChange={(e) => saveFile(e)} className="form-control" type='file' />
+
+
                             <br></br>
-                            <Button variant='outlined'>Upload Resource</Button>
+                            <Button variant='outlined' onClick={(e) => UploadResource_(e)}>Upload Resource</Button>
                             <Button variant='outlined' color='error' onClick={handleClose}>Cancel</Button>
                         </form>
                     </Typography>

@@ -7,6 +7,7 @@ import { ResourceRoute } from '../Routes/HomeRoutes/ResourceRoute';
 import { PastQA } from '../Routes/HomeRoutes/PastQA';
 import { AssessmentRoute } from '../Routes/HomeRoutes/AssessmentRoute';
 import { BookView } from '../Routes/HomeRoutes/bookView';
+import { CourseRoute } from '../Routes/HomeRoutes/CourseRoute';
 
 export const HomeCenterLayout = ()=>{
 
@@ -36,11 +37,12 @@ export const HomeCenterLayout = ()=>{
 
             <Route path='resource' element={<ResourceRoute />} />
 
-            <Route path='past' element={<PastQA />} />
 
             <Route path='bookview' element={<BookView />} />
 
             <Route path='Quiz' element={<AssessmentRoute  />} />
+
+            <Route path='course' element={<CourseRoute />}  />
 
 
 

@@ -21,7 +21,7 @@
     margin: 0;
 }
 
-.assessment-route .inner_{
+.assessment-route .inner_, .course-route .inner_{
     width: 100%;
     height: 89vh;
     display: inline-flex;
@@ -58,11 +58,11 @@
 }
 
 
-.lecture-route div, .assessment-route .inner_ div{
+.lecture-route div, .assessment-route .inner_ div, .course-route .inner_ div{
     padding: 30px;
 }
 
-.lecture-route div button{
+.lecture-route div button, .course-route div button{
     margin: 10px;
 }
 

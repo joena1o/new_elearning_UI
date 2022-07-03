@@ -8,14 +8,15 @@ import { BsSearch } from 'react-icons/bs';
 export default function HomeNavbar() {
 
     const style = {
-        color: "antiquewhite",
+        color: "#FCE266",
         justifyContent: "space-evenly",
         padding: '10px',
         alignItems: 'center'
     }
 
     const appBar = {
-        backgroundColor: 'rgb(143, 62, 62)',
+        backgroundColor: '#CE7248',
+        //backgroundColor:"white",
         boxShadow: 'none',
         justifyContent: 'space-evenly',
         height: "10vh",
