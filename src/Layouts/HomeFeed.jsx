@@ -1,51 +1,94 @@
 import { Feed } from "../Components/Feed";
 import { useNavigate } from "react-router";
-import TimelineItem from '@mui/lab/TimelineItem';
-import TimelineSeparator from '@mui/lab/TimelineSeparator';
-import TimelineConnector from '@mui/lab/TimelineConnector';
-import TimelineDot from '@mui/lab/TimelineDot';
-import {GiBookshelf} from 'react-icons/gi';
 import {BsQuestion} from 'react-icons/bs';
 import { Box } from "@mui/material";
 import { useEffect } from "react";
-
+import {TimeLineComponent} from '../MuiComponents/TimeLine';
+import axios from "axios";
+import { conn } from "../util/conn";
+import {config} from "../util/config";
+import {useState} from 'react';
+import {CircularProgress} from '@mui/material';
+import { Loader } from "../Components/Loader";
 
 export const HomeFeed =()=>{
 
 
-    // useEffect(()=>{
+  useEffect(()=>{
 
-    //   HomeFeedData().then((res)=>{
-    //     console.log(res);
-    //   });
+    FetchFeed();
 
-    // }, []);
+  });
+
+  const [feeds, setFeeds] = useState([]);
+  const [isloading, setStatus] = useState(true);
+
+
+  const FetchFeed = async ()=>{
+
+    await axios.get(conn+"/api/resources", config).then((value)=>{
+
+      if(value.status == "200"){
+        setFeeds(value.data);
+        setStatus(false);
+        //console.log(value.data);
+        
+      }else{
+
+      }
+
+      
+
+      
+
+    })
+
+
+  }
 
 
     return(
 
         <div className="home-feed" style={{width:"100%"}}>
+
+
+          {
+
+            (isloading)?(
+             <Loader />
+            ):(
+
+              feeds.map((values, key)=>
+
+                <span style={{display:"inline-flex", width:"100%", justifyContent:"center", padding:"10px"}}>
+
+                <TimeLineComponent />       
+        
+                <Feed data={values} key={key} />
+        
+                </span>
+
+              )
+
+            )
+
+          }
           
       
 
-      <span style={{display:"inline-flex", width:"100%", justifyContent:"center", padding:"10px"}}>
+      
 
-        <Box sx={{display:{sm:"none",xs:"none",lg:"block", md:"block"}, color:"grey"}}>
-        <TimelineItem sx={{height:"100%"}}>
-      <TimelineSeparator sx={{padding:"0 20px",fontSize:"22px"}} >
-          <TimelineDot  sx={{backgroundColor:"transparent", color:"black"}}>
-          <GiBookshelf  />
-            </TimelineDot>
-          <TimelineConnector  sx={{backgroundColor:"#e9e9e6"}} />
-        </TimelineSeparator>
-        </TimelineItem>
-        </Box>
+
+
+        {/* <span style={{display:"inline-flex", width:"100%", justifyContent:"center", padding:"10px"}}>
+
+        <TimeLineComponent />
 
 
         <Feed />
 
 
-      </span>
+      </span> */}
 
 
      

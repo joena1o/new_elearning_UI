@@ -5,6 +5,7 @@
 .main-layout, .right-layout{
     width: 100%;
     padding: 0;
+    border-right: 1px solid #d1d1d1;
     margin: 0;
     
 }
@@ -33,7 +34,8 @@
 
 .main-layout::-webkit-scrollbar-thumb, .right-layout::-webkit-scrollbar-thumb, .lecture-center-layout::-webkit-scrollbar-thumb{
     width: 10px;
-    background-color: rgb(250, 245, 240);
+    background-color: rgb(199, 198, 196);
+    height: 40px;
 }
 
 .lecture-center-layout{

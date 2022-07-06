@@ -1,14 +1,23 @@
 import { Button, Box, Modal, Typography } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { conn } from '../../util/conn';
 import { ResourceLayout } from "../../Layouts/ResourceLayout";
 import { MdFormatListBulleted } from 'react-icons/md';
 import { TbUpload } from 'react-icons/tb';
 import axios from "axios";
+import {Departments} from '../../Components/Departments';
 
 
 
 export const ResourceRoute = () => {
+
+
+
+    useEffect(()=>{
+
+        //getResource();
+
+    });
 
 
     const [title, setTitle] = useState("");
@@ -20,44 +29,68 @@ export const ResourceRoute = () => {
     const [file, setFile] = useState();
     const [filename, setFilename] = useState("");
 
+    const [resource, setResource] = useState([]);
 
-    const UploadResource_ = (event) => {
+
+    const token = window.localStorage.getItem('token');
+
+
+    const config = {
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': 'Bearer ' + JSON.parse(token)
+          }
+    };
+
+
+    const getResource = async (event) =>{
+
+        await axios.get(conn+"/api/resources", config).then((value)=>{
+
+
+            setResource(JSON.stringify(value.data));
+
+            console.log(value.data)
+
+
+
+        })
+
+    }
+
+
+    const UploadResource_ = async (event) => {
 
         event.preventDefault();
 
 
-        if (title.length === 0 && department.length === 0 && school.length === 0 && descript.length === 0 && category.length === 0) {
-
-            alert("Empty Fields");
-
-            return;
-
-        }else {
-
             const formData = new FormData();
-            // formData.append("file", file);
-            // formData.append("filename", filename);
+            formData.append("attach", file);
+            formData.append("filename", filename);
             formData.append("title", title);
             formData.append("department", department);
             formData.append("school", school);
             formData.append("description", descript)
             formData.append("category", category);
 
-            console.log(JSON.stringify(formData));
 
+        if (title.length === 0 && department.length === 0 && school.length === 0 && descript.length === 0 && category.length === 0) {
 
-            // axios.post(conn + '/api/v1/resources',
-            //     formData
-            // ).then((value) => {
-            //     console.log(value);
-            // });
+            alert("Empty Fields");
+            return;
 
+        }else {
 
+            console.log(formData.getAll("category"));
+
+            await axios.post(conn + '/api/resources',
+                formData,
+                config
+            ).then((value) => {
+                console.log(value.data);
+            });
 
         }
-
-
-
 
     }
 
@@ -101,9 +134,11 @@ export const ResourceRoute = () => {
 
             </div>
 
+            <Departments />
 
 
-            <ResourceLayout />
+
+            <ResourceLayout  />
 
 
 
@@ -143,7 +178,7 @@ export const ResourceRoute = () => {
                             <label>
                                 Category
                             </label>
-                            <select value={category} required onChange={(e) => setCategory(e.target.value)} className="form-control">
+                            <select  value={category} required onChange={(e) => setCategory(e.target.value)} >
 
                                 <option value="books">Books</option>
                                 <option value="handout">Handout</option>

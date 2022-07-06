@@ -1,5 +1,10 @@
-import {Button,  Box, Modal, Typography } from '@mui/material';
+import { Button, Box, Modal, Typography, Card, Grid } from '@mui/material';
+import axios from 'axios';
 import { useState } from "react";
+import { conn } from '../../util/conn';
+import { CgOptions } from 'react-icons/cg';
+import { CourseCard } from '../../Components/CoursesCard';
+
 
 
 export const CourseRoute = () => {
@@ -7,6 +12,13 @@ export const CourseRoute = () => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+
+
+    const createCourse = () => {
+
+        axios.post(conn + "/api/")
+
+    }
 
 
     const style = {
@@ -31,15 +43,45 @@ export const CourseRoute = () => {
 
         <div className="course-route">
 
-            <div className='inner_'>
+            {/* <div className='inner_'>
 
                 No Courses created
 
                 <div>
-                    <Button variant="outlined" onClick={() => setOpen(true)}>Create New Assessment</Button>
+                    <Button variant="outlined" onClick={() => setOpen(true)}>Create New Course</Button>
                 </div>
 
-            </div>
+            </div> */}
+
+
+            <Box sx={{ width: "100%", display:"inline-flex", justifyContent:"space-between", alignItems:"center", flexDirection:"" }} p={3}>
+
+                <div className=''>
+
+                   Courses
+
+                    </div>
+
+
+                    
+                        <Button variant="outlined">Create Course</Button>
+                    
+            </Box>
+
+
+
+            <Box className='courses' p={5}>
+
+                <Box p={2}>Created Courses</Box>
+
+                <hr></hr>
+
+
+                <CourseCard />
+
+
+
+            </Box>
 
 
             <Modal
@@ -50,40 +92,27 @@ export const CourseRoute = () => {
             >
                 <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Upload Resource
+                        Create Course
                     </Typography>
                     <br></br>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                         <form>
                             <label>
-                                Title
+                                Course Title
                             </label>
-                            <input value={title} onChange={(e)=>setTitle(e.target.value)} className="form-control" type='text' placeholder="Title" />
+                            <input value={title} onChange={(e) => setTitle(e.target.value)} className="form-control" type='text' placeholder="Course Title" />
+                            <label>
+                                Course Code
+                            </label>
+                            <input value={department} onChange={(e) => setDepartment(e.target.value)} className="form-control" type='text' placeholder="Course Code" />
                             <label>
                                 Department
                             </label>
-                            <input value={department} onChange={(e)=>setDepartment(e.target.value)} className="form-control" type='text' placeholder="Department" />
-                            <label>
-                                School
-                            </label>
-                            <input value={school} onChange={(e)=>setSchool(e.target.value)} className="form-control" type='text' placeholder="School" />
-                            <label>
-                                Author
-                            </label>
-                            <input value={author} onChange={(e)=>setAuthor(e.target.value)} className="form-control" type='text' placeholder="Author" />
-                            <label>
-                                Category
-                            </label>
-                            <select value={category} onChange={(e)=>setCategory(e.target.value)} className="form-control">
+                            <input value={school} onChange={(e) => setSchool(e.target.value)} className="form-control" type='text' placeholder="Department" />
 
-                                <option value="books">Books</option>
-                                <option value="handout">Handout</option>
-                                <option value="lecturenote">Lecture Notes</option>
-                            
-                            </select>
 
-                       
-                            
+
+
                             <br></br>
                             <Button variant='outlined'>Create</Button>
                             <Button variant='outlined' color='error' onClick={handleClose}>Cancel</Button>
@@ -92,8 +121,8 @@ export const CourseRoute = () => {
                 </Box>
             </Modal>
 
-         </div>   
+        </div>
 
-            );
+    );
 
 }

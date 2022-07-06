@@ -12,7 +12,7 @@ export const Departments = () => {
 
 
     const dept = [
-        "AGR", "CVE", "EEE", "CTE", "LTS", "IMT", "MGT","CSC","BCH", "BTH"
+        "AGR", "CVE", "EEE", "CTE", "LTS", "IMT", "MGT","CSC","BCH", "BTH","CHE","BCT"
     ]
     
 
@@ -39,45 +39,17 @@ export const Departments = () => {
       
 
         <div className="department-inner">
-
-            <Chip style={style} label="Chip Filled" />
-            <Chip style={style} label="Chip Filled" />
-            <Chip style={style} label="Chip Filled" />
-            <Chip style={style} label="Chip Filled" />
-            <Chip style={style} label="Chip Filled" />
-            <Chip style={style} label="Chip Filled" />
-            <Chip style={style} label="Chip Filled" />
-            <Chip style={style} label="Chip Filled" />
-            <Chip style={style} label="Chip Filled" />
-            <Chip style={style} label="Chip Filled" />
-            <Chip style={style} label="Chip Filled" />
-            <Chip style={style} label="Chip Filled" />
-            <Chip style={style} label="Chip Filled" />
-            <Chip style={style} label="Chip Filled" />
-            <Chip style={style} label="Chip Filled" />
-            <Chip style={style} label="Chip Filled" />
-            <Chip style={style} label="Chip Filled" />
-            <Chip style={style} label="Chip Filled" />
-            <Chip style={style} label="Chip Filled" />
-            <Chip style={style} label="Chip Filled" />
-            <Chip style={style} label="Chip Filled" />
-            <Chip style={style} label="Chip Filled" />
-            <Chip style={style} label="Chip Filled" />
-            <Chip style={style} label="Chip Filled" />
-
-
-
             {
-                dept.map((val)=>{
-                    <Chip style={style} label={val} />
-                })
+                dept.map((val)=> 
+                    <Chip style={style} label={val.toString()} />
+                )
             }
             
 
         </div>
 
 
-        <Avatar   onClick={next}  sx={{backgroundColor:"white"}}><FcNext /></Avatar>
+        <Avatar color="warning"   onClick={next}  sx={{backgroundColor:"white"}}><FcNext sx={{color:"orange"}} /></Avatar>
 
         </div>
 

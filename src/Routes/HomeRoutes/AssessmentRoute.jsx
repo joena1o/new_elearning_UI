@@ -1,6 +1,7 @@
 import {Button,  Box, Modal, Typography } from '@mui/material';
 import { useState } from "react";
 import { AssessmentHeader } from '../../Components/AssessmentHeader';
+import { CreateQuizRoute } from './AssessmentRoutes/CreateQuizRoute';
 
 
 export const AssessmentRoute = () => {
@@ -34,7 +35,10 @@ export const AssessmentRoute = () => {
 
         <div className="assessment-route" style={{width:"100%"}}>
 
-            <AssessmentHeader />
+
+            <CreateQuizRoute />
+
+            {/* <AssessmentHeader />
 
             <div className='inner_'>
 
@@ -97,7 +101,7 @@ export const AssessmentRoute = () => {
                 </Box>
             </Modal>
 
-            </div>
+            </div> */}
 
 
         </div>

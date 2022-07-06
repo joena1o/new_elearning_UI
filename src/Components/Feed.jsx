@@ -2,7 +2,7 @@ import { Card, Grid, Avatar, Box, CardMedia } from "@mui/material";
 import { VscPreview } from 'react-icons/vsc';
 import { useNavigate } from "react-router";
 
-export const Feed = () => {
+export const Feed = (props) => {
 
     const navigate = useNavigate();
 
@@ -10,8 +10,8 @@ export const Feed = () => {
 
         
 
-        <Box onClick={()=>navigate("bookview")} className="feed" sx={{ width: { md: "75%", sm: "70%", lg: "67%", xs: "98%" } }} >
-            <Card variant='outlined'>
+        <Box  className="feed" sx={{ width: { md: "75%", sm: "82%", lg: "67%", xs: "94%" } }} >
+            <Card  onClick={()=>navigate(`bookview`, { state: { book: props.data } } )} variant='outlined'>
 
 
                 <div className="header">
@@ -30,10 +30,14 @@ export const Feed = () => {
 
                             <Box sx={{ width: { xs: "95%", md: "96%", sm: "95%", lg: "70%", xl: "96%" }, fontSize: "14px", paddingLeft: { xs: "12%", md: "10%", sm: "10%", lg: "7%", xl: "10%" } }}>
                                 Joe Doe<br></br>
-                                <p><small>Biotechnology</small></p><br></br>
+                                <p><small> {props.data.department}</small></p>
+                               
+
+                                <hr></hr>
 
                                 <div className='card-bod'>
-                                    The title of this book actually goes here
+                                    <p>{props.data.title}</p>
+                                    <p><small> {(props.data.description)}</small></p><br></br>
                                 </div>
 
 
@@ -46,7 +50,7 @@ export const Feed = () => {
                             </Box>
 
 
-                            {/* <CardMedia
+                            <CardMedia
                                 sx={{ margin: "30px 0 0 0" }}
                                 component="img"
                                 height="170"
@@ -65,10 +69,10 @@ export const Feed = () => {
                                     Size: 181kb
                                 </Box>
 
-                            </Box> */}
+                            </Box>
                             <br></br>
 
-                            <hr></hr>
+                            {/* <hr></hr> */}
 
 
                             <div className="card-foo" style={{ margin: "20px 0px", padding:"0 20px", width: "100%", textAlign: "end", fontSize: "15px", }}>

@@ -3,9 +3,15 @@ import groovyWalkAnimation from "../Assets/Login_popup.json";
 import { useState } from "react";
 import { conn } from "../util/conn";
 import {Link} from 'react-router-dom';
-import {Button} from '@mui/material';
+import {Button, Box} from '@mui/material';
+import {CircularProgress} from '@mui/material';
+import DialogTitle from '@mui/material/DialogTitle';
+import Dialog from '@mui/material/Dialog';
+import {Alert} from '@mui/material';
 import  axios  from "axios";
 import { useNavigate } from "react-router-dom";
+
+
 
 
 
@@ -15,23 +21,34 @@ export default function LoginCard(){
 
     const navigate = useNavigate();
 
+    
+   
 
     const Login_ = async(e)=>{
 
         e.preventDefault();
 
-        console.log(regno + password);
+        setOpen(true);
+
+        // console.log(regno + password);
 
         if(regno === "" && password === ""){
-            console.log("check");
+            setOpen(false);
+            setErrorText("Please fill in blank fields");
+            setError(true);
             return;
         }else{
             await axios.post(conn+"/api/login",{"reg":regno, "password":password}).then((value)=>{
-
-                console.log(value);
+                
+                setOpen(false);
 
                if(value.data){
-                    navigate("/home");
+
+                window.localStorage.setItem("token", JSON.stringify(value.data.token));
+                 navigate("/home");
+
+            
+
                }
 
             });
@@ -43,17 +60,21 @@ export default function LoginCard(){
 
         e.preventDefault();
 
+        setOpen(true);
+
 
         if(regno ==="" && dept ==="" && email === "" && password ==="" && cpassword === ""){
-                alert("Empty Fields")
+        
+                setErrorText("Please fill in blank fields");
+                setError(true);
+                setOpen(false);
                 return;
         }
         else{
             if(password !== cpassword){
 
-                alert(
-                    "Password do not match"
-                );
+                setErrorText("Passwords do not match");
+                setError(true);
 
                 return;
             }else{
@@ -66,6 +87,7 @@ export default function LoginCard(){
 
 
                     if(value.statusCode == 201 || value.statusCode == "201"){
+                        setOpen(false);
                         setMode("login");
                     }
 
@@ -90,12 +112,38 @@ export default function LoginCard(){
     const [cpassword, setCpass] = useState("");
 
 
+    const [displayerror, setError] = useState(false);
+    const [error, setErrorText] = useState("");
+
+
     const [isloading,setLoad] = useState(false);
+
+    const [open, setOpen] = useState(false);
 
 
     return(
 
+
+        <>
+
+
+    <Dialog onClose={()=>setOpen(false)} open={open}>
+      <Box sx={{padding:"20px"}}>
+      <CircularProgress />
+      </Box>
+      
+    </Dialog>
+
+
+    <Alert severity="error" color="error" sx={{position:"fixed", bottom:"50px", fontSize:"20px", display:(displayerror)?"unset":"none"}}>
+        {error}
+    </Alert>
+
         <div className="login-section">
+
+
+
+
 
             <div className="login-card">
 
@@ -198,6 +246,7 @@ export default function LoginCard(){
 
         </div>
 
+        </>
     );
 
 }

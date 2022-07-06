@@ -23,6 +23,9 @@ export const HomeLayout = ()=>{
                     <Route path="/" element={<RightLayout />} />
                     <Route path='resource' element={<ResourceRightLayout />} />
                     <Route path="lecture" element={<RightLayout />} />
+                    <Route path="profile" element={<RightLayout />} />
+                    <Route path='quiz' element={<RightLayout />} />
+                    <Route path='bookview' element={<ResourceRightLayout />} />
                     <Route path="course" element={<RightLayout />} />
                     
                 </Routes>

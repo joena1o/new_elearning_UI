@@ -8,6 +8,7 @@ import { PastQA } from '../Routes/HomeRoutes/PastQA';
 import { AssessmentRoute } from '../Routes/HomeRoutes/AssessmentRoute';
 import { BookView } from '../Routes/HomeRoutes/bookView';
 import { CourseRoute } from '../Routes/HomeRoutes/CourseRoute';
+import { ProfileRoute } from '../Routes/HomeRoutes/ProfileRoute';
 
 export const HomeCenterLayout = ()=>{
 
@@ -16,7 +17,7 @@ export const HomeCenterLayout = ()=>{
         <div className="main-layout" style={{height: "90vh", overflowY:"scroll"}}>
 
 
-            <Box  sx={{height: "90vh", borderRight:'1px solid #d1d1d1' }}>
+            <Box  sx={{height: "90vh" }}>
 
 
 
@@ -34,6 +35,8 @@ export const HomeCenterLayout = ()=>{
 
             <Route path='lecture'  element={<LectureRoute />} />
  
+            <Route path='profile' element={<ProfileRoute />}  />
+
 
             <Route path='resource' element={<ResourceRoute />} />
 

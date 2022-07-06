@@ -2,6 +2,7 @@ import { Button, Box, Modal, Typography } from "@mui/material";
 import { useState } from "react";
 import {conn} from '../../util/conn';
 import axios from "axios";
+import { config } from "../../util/config";
 
 
 
@@ -31,8 +32,9 @@ export const LectureRoute = () => {
             await axios.post(conn+"/api/LectureRoom",{
                 "courseTitle":title,
                 "courseCode":code,
-                "department":dept
-            }).then((value)=>{
+                "department":dept,
+               
+            },  config).then((value)=>{
 
                  console.log(value);
 
@@ -80,7 +82,7 @@ export const LectureRoute = () => {
             >
                 <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
-                       Create New Lecture
+                        Create Course
                     </Typography>
                     <br></br>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
@@ -88,28 +90,21 @@ export const LectureRoute = () => {
                             <label>
                                 Course Title
                             </label>
-                            <input className="form-control" value={title} onChange={(e)=>setTitle(e.target.value)} type='text' placeholder="Course Title" />
+                            <input value={title} onChange={(e)=>setTitle(e.target.value)} className="form-control" type='text' placeholder="Course Title" />
                             <label>
                                 Course Code
                             </label>
-                            <input className="form-control" value={code} onChange={(e)=>setCode(e.target.value)} type='text' placeholder="Course Code" />
-                            <label>
-                                School
-                            </label>
-                            <input className="form-control" value={school} onChange={(e)=>setSchool(e.target.value)} type='text' placeholder="School" />
+                            <input value={dept} onChange={(e)=>setDept(e.target.value)} className="form-control" type='text' placeholder="Course Code" />
                             <label>
                                 Department
                             </label>
-                            <input className="form-control" value={dept} onChange={(e)=>setDept(e.target.value)} type='text' placeholder="Department" />
-                            <label>
-                                Lecture Date
-                            </label>
-                            <input className="form-control" value={date} onChange={(e)=>setDate(e.target.value)} type='date' placeholder="Department" />
-                            <label>
-                                Lecture Time
-                            </label>
-                            <input className="form-control" value={time} onChange={(e)=>setTime(e.target.value)} type='time' placeholder="Department" /><br></br>
-                            <Button variant='outlined' onClick={(e)=>createLecture_(e)}>Create Lecture</Button>
+                            <input value={school} onChange={(e)=>setSchool(e.target.value)} className="form-control" type='text' placeholder="Department" />
+                            
+
+                       
+                            
+                            <br></br>
+                            <Button variant='outlined'>Create</Button>
                             <Button variant='outlined' color='error' onClick={handleClose}>Cancel</Button>
                         </form>
                     </Typography>
