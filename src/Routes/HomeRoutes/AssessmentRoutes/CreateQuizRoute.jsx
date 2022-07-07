@@ -7,14 +7,14 @@ export const CreateQuizRoute = ()=>{
         <div className='create-route-quiz'>
 
 
-            <Box className="header">
+            {/* <Box className="header">
 
                 Assessment Question
 
-            </Box>
+            </Box> */}
 
 
-            <Box className="form-box" sx={{padding:"10px 40px"}}>
+            <Box className="form-box" sx={{padding:"30px 70px"}}>
 
 
                 <Box sx={{width:"100%", display:"inline-flex", justifyContent:"space-between"}}>
@@ -28,19 +28,19 @@ export const CreateQuizRoute = ()=>{
 
                 <hr></hr>
 
-                <Box  sx={{padding:"20px"}}>
+                <Box  sx={{padding:"10px"}}>
 
 
                     <form className="form-group">
 
                         <input type="text" className="form-control" style={{height:"100px"}} placeholder="Type Instruction here or hint" />
-                        <input type="text" className="form-control" style={{height:"150px"}} placeholder="Type Question here" />
+                        <input type="text" className="form-control" style={{height:"120px"}} placeholder="Type Question here" />
 
                         <label style={{textAlign:"start"}}>Options</label><br></br>
 
                         <Box sx={{display:"inline-flex", justifyContent:"space-evenly", width:"100%"}}>
                             <Box sx={{width:"90%"}}>
-                            <input type="text" style={{height:"60px"}} className="form-control" placeholder="Option A" />
+                            <input type="text" style={{height:"40px"}} className="form-control" placeholder="Option A" />
                             </Box>
                             <Box sx={{display:"inline-flex",alignItems:"center"}}>
                             <input type="radio" name="answer" />
@@ -49,7 +49,7 @@ export const CreateQuizRoute = ()=>{
 
                         <Box sx={{display:"inline-flex", justifyContent:"space-evenly", width:"100%"}}>
                             <Box sx={{width:"90%"}}>
-                            <input type="text" style={{height:"60px"}} className="form-control" placeholder="Option B" />
+                            <input type="text" style={{height:"40px"}} className="form-control" placeholder="Option B" />
                             </Box>
                             <Box sx={{display:"inline-flex",alignItems:"center"}}>
                             <input type="radio" name="answer" />
@@ -58,7 +58,7 @@ export const CreateQuizRoute = ()=>{
 
                         <Box sx={{display:"inline-flex", justifyContent:"space-evenly", width:"100%"}}>
                             <Box sx={{width:"90%"}}>
-                            <input type="text" style={{height:"60px"}} className="form-control" placeholder="Option C" />
+                            <input type="text" style={{height:"40px"}} className="form-control" placeholder="Option C" />
                             </Box>
                             <Box sx={{display:"inline-flex",alignItems:"center"}}>
                             <input type="radio" name="answer" />
@@ -67,7 +67,7 @@ export const CreateQuizRoute = ()=>{
 
                         <Box sx={{display:"inline-flex", justifyContent:"space-evenly", width:"100%"}}>
                             <Box sx={{width:"90%"}}>
-                            <input type="text" style={{height:"60px"}} className="form-control" placeholder="Option D" />
+                            <input type="text" style={{height:"40px"}} className="form-control" placeholder="Option D" />
                             </Box>
                             <Box sx={{display:"inline-flex",alignItems:"center"}}>
                             <input type="radio" name="answer" />
@@ -76,7 +76,7 @@ export const CreateQuizRoute = ()=>{
 
                         <Box sx={{display:"inline-flex", justifyContent:"space-evenly", width:"100%"}}>
                             <Box sx={{width:"90%"}}>
-                            <input type="text" style={{height:"60px"}} className="form-control" placeholder="Option E" />
+                            <input type="text" style={{height:"40px"}} className="form-control" placeholder="Option E" />
                             </Box>
                             <Box sx={{display:"inline-flex",alignItems:"center"}}>
                             <input type="radio" name="answer" />

@@ -5,6 +5,9 @@ import { conn } from '../../util/conn';
 import { CgOptions } from 'react-icons/cg';
 import { CoursesCard } from '../../Components/CoursesCard';
 import { config } from '../../util/config';
+import {CircularProgress} from '@mui/material';
+import DialogTitle from '@mui/material/DialogTitle';
+import Dialog from '@mui/material/Dialog';
 import {useNavigate} from 'react-router-dom';
 import { useEffect } from 'react';
 import { Loader } from '../../Components/Loader';
@@ -38,6 +41,8 @@ export const CourseRoute = () => {
 
     const [courses, setCourses] = useState([]);
 
+    
+
 
     useEffect(()=>{
 
@@ -49,6 +54,12 @@ export const CourseRoute = () => {
 
         e.preventDefault();
 
+        handleClose();
+
+        setOpen(true);
+
+        
+
         await axios.post(conn + "/api/LectureRoom", {
             "courseTitle": title,
             "courseCode": code,
@@ -58,6 +69,7 @@ export const CourseRoute = () => {
             "reg": reg
         }, config).then((value) => {
 
+            setOpen(false);
 
             console.log(value.data);
 
@@ -100,6 +112,14 @@ export const CourseRoute = () => {
     return (
 
         <>
+
+<Dialog onClose={()=>setOpen(false)} open={open} sx={{zIndex:"2"}}>
+      <Box sx={{padding:"20px"}}>
+      <CircularProgress />
+      </Box>
+      
+    </Dialog>
+
 
             <div className="course-route">
 

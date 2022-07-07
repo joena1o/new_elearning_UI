@@ -44,7 +44,7 @@ export const HomeCenterLayout = ()=>{
 
             <Route path='bookview' element={<BookView />} />
 
-            <Route path='Quiz' element={<AssessmentRoute  />} />
+            <Route path='quiz/*' element={<AssessmentRoute  />} />
 
             <Route path='course' element={<CourseRoute />}  />
 

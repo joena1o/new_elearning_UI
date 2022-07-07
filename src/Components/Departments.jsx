@@ -8,9 +8,9 @@ export const Departments = () => {
         padding:"0px 5x",
         margin: '0px 5px',
         // backgroundColor:"antiquewhite",
-        //backgroundColor: '#CE7248',
+        backgroundColor: '#FCE266',
 
-        color:"white"
+        color:"black"
     }
 
 
@@ -44,7 +44,7 @@ export const Departments = () => {
         <div className="department-inner">
             {
                 dept.map((val)=> 
-                    <Chip style={style} color="warning" label={val.toString()} />
+                    <Chip style={style}  label={val.toString()} />
                 )
             }
             

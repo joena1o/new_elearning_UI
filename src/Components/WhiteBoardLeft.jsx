@@ -10,7 +10,7 @@ import { AiOutlineUsergroupAdd } from 'react-icons/ai'
 import { GrTest } from 'react-icons/gr';
 
 import { GiClassicalKnowledge } from 'react-icons/gi';
-export const SideBar = () => {
+export const WhiteLeft = () => {
 
 
     const user = window.localStorage.getItem("user_type");
@@ -91,7 +91,7 @@ export const SideBar = () => {
                         <RiHomeLine /> <span>Home</span>
                     </div>
 
-                    <div onClick={() => navigate("resource")}>
+                    <div onClick={() => navigate("/home/resource")}>
                         <GiBookshelf /> <span>Resources</span>
                     </div>
 
@@ -99,21 +99,21 @@ export const SideBar = () => {
                         <GiClassicalKnowledge /> <span>Courses</span>
                     </Box>
 
-                    <div onClick={() => navigate("lecture")}>
+                    <div onClick={() => navigate("/home/lecture")}>
                         <SiGoogleclassroom /> <span>Lecture</span>
                     </div>
 
 
                     {(user !== "student") ? (
-                        <Box onClick={() => navigate("/whiteboard")}>
+                        <Box>
                             <AiOutlineFundProjectionScreen /> <span>White Board</span>
                         </Box>) : (<></>)}
 
-                    <Box onClick={() => (user!="student")?navigate("quiz"):navigate("/assessment")}>
+                    <Box onClick={() => navigate("/home/quiz")}>
                         <GrTest /> <span>Assessment</span>
                     </Box>
 
-                    <Box onClick={() => navigate("quiz")}>
+                    <Box onClick={() => navigate("/home/quiz")}>
                         <GiArchiveResearch /> <span>Research</span>
                     </Box>
 

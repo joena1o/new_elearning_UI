@@ -95,7 +95,7 @@ export default function LoginCard(){
                 "password":password}).then((value)=>{
 
 
-                    if(value.statusCode == 201 || value.statusCode == "201"){
+                    if(value.status == 201 || value.status == "201"){
                         setOpen(false);
                         setMode("login");
                         console.log(value.data);
@@ -118,7 +118,7 @@ export default function LoginCard(){
     const [regno, setReg] = useState("");
     const [dept, setDept] = useState("");
     const [email, setEmail] = useState("");
-    const [user, setUser] = useState("");
+    const [user, setUser] = useState("student");
     const [password, setPassword] = useState("");
     const [cpassword, setCpass] = useState("");
     const [name, setName] = useState("");
@@ -220,7 +220,7 @@ export default function LoginCard(){
 
                         <div className="form-group">
                         <label>Department</label>
-                        <input type='text' value={dept} onChange={(e)=>setDept(e.target.value)} className="form-control" placeholder="Email Address" />
+                        <input type='text' value={dept} onChange={(e)=>setDept(e.target.value)} className="form-control" placeholder="Department" />
                         </div>
                         
 

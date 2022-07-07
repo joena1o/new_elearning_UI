@@ -8,6 +8,9 @@ import LandingPage from './Routes/LandingPageRoute';
 import LoginRoute from './Routes/LoginRoute';
 import HomeRoute from './Routes/HomeRoute';
 import { LectureRoute } from './Routes/LectureRoute';
+import { WhiteBoard } from './Routes/WhiteBoard';
+import { StudentAssessment } from './Routes/HomeRoutes/AssessmentRoutes/StudentAssessment/studentassessment';
+
 
 function App() {
   return (
@@ -26,6 +29,10 @@ function App() {
 
 
           <Route path='/lecture/*' element={<LectureRoute />} />
+
+          <Route path='/whiteboard' element={<WhiteBoard />}  />
+
+          <Route path='/assessment' element={<StudentAssessment />} />
 
         
 

@@ -8,6 +8,8 @@ import MenuItem from '@mui/material/MenuItem';
 
 export const CoursesCard = (props) => {
 
+    const user = window.localStorage.getItem("user_type");
+
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (e) => {
@@ -29,9 +31,7 @@ export const CoursesCard = (props) => {
             <Grid container sx={{ width: "100%", flexGrow: "1", padding: "40px", alignItems: "center" }}>
 
 
-            {/* onClick={()=>navigate("courseview")} */}
-
-                <Grid item lg={10} md={10} sm={9} xs={9} sx={{ display: "inline-flex", flexDirection: "column", textAlign: "start" }} onClick={()=>navigate("/home/courseview", { state: { book: props.data } })} >
+                <Grid item lg={10} md={10} sm={9} xs={9} sx={{ display: "inline-flex", flexDirection: "column", textAlign: "start" }} onClick={()=>navigate("/home/courseview", { state: { data: props.data } })} >
 
                     <p><b>{props.data.courseCode}</b></p>
                     <p style={{fontStyle:"italic"}}>Course Title: {props.data.courseTitle}</p>
@@ -47,14 +47,16 @@ export const CoursesCard = (props) => {
 
                 <Grid item lg={2} md={2} sm={3} xs={9} sx={{ alignItems: "center", fontSize: "24px" }}>
 
-                    <IconButton
+                   { (user!=="student")?(<IconButton
                         size="large"
                         aria-label="show more"
                         aria-haspopup="true"
                         onClick={handleClick}
                     >
                         <CgOptions />
-                    </IconButton>
+                    </IconButton>):(<></>)
+
+                   }
 
                    
 

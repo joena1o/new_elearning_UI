@@ -13,7 +13,7 @@ export default function Hero() {
 
         
             <div className="hero-info">
-                <h3 style={{fontWeight:"bold", marginBottom:'10px'}}>CONNECTED EDUCATION SPACE</h3>
+                <h3 style={{fontWeight:"bold", marginBottom:'10px'}}>CONNECTED EDUCATION SPACE</h3><br></br>
                 <div>MAU VIRTUAL LEARNING & E-RESOURCE, ALL YOUR E-LEARNING MATERIALS IN ONE PLACE</div>
                 <br></br>
                 <div>

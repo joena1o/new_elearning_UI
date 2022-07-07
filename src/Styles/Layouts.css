@@ -10,6 +10,12 @@
     
 }
 
+.whiteboardlayout{
+    width: 100%;
+    height: 89vh;
+    text-align: start;
+}
+
 .header{
     padding: 20px 0px;
 }

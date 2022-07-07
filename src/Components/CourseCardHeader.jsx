@@ -2,11 +2,13 @@ import { Card, Grid, Box, Modal, Typography, Button } from '@mui/material';
 import { CgOptions } from 'react-icons/cg';
 import { useState } from 'react';
 import IconButton from '@mui/material/IconButton';
-import { useNavigate } from 'react-router';
+import { useNavigate, useLocation } from 'react-router';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
-export const CourseCardHeader = () => {
+export const CourseCardHeader = (props) => {
+
+    const user = window.localStorage.getItem("user_type");
 
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -20,6 +22,8 @@ export const CourseCardHeader = () => {
 
     const navigate = useNavigate();
 
+    const location = useLocation();
+
     return (
 
         <div class="course-card">
@@ -29,17 +33,17 @@ export const CourseCardHeader = () => {
                 <Grid container sx={{ width: "100%", flexGrow: "1", padding: "60px 30px", alignItems: "center" }}>
 
 
-                    <Grid item lg={10} md={10} sm={9} xs={9} sx={{ display: "inline-flex", flexDirection: "column", textAlign: "start" }} onClick={() => navigate("/home/courseview")} >
+                    <Grid item lg={10} md={10} sm={9} xs={9} sx={{ display: "inline-flex", flexDirection: "column", textAlign: "start" }} >
 
-                            <p>EEE202</p>
-                            <p>Course Title:</p>
-                            <p>Department:</p>
-                            <p>Time Created:</p>
-                            <p>Class Type: Public</p>
+                        <p><b>{props.data.courseCode}</b></p>
+                        <p style={{ fontStyle: "italic" }}>Course Title: {location.state.data.courseTitle}</p>
+                        <p style={{ fontStyle: "italic" }}>Department: {location.state.data.department}</p>
+                        <p style={{ fontStyle: "italic" }}>Time Created: {location.state.data.createdAt}</p>
+                        <p style={{ fontStyle: "italic" }}>Class Type: {location.state.data.classtype}</p>
 
-                            <Box>
-                                <p style={{ color: "grey", textTransform: "uppercase", marginTop: "10px" }}><b>Number Of Students: 0</b></p>
-                            </Box>
+                        <Box>
+                            <p style={{ color: "grey", textTransform: "uppercase", marginTop: "10px" }}><b>Number Of Students: 0</b></p>
+                        </Box>
 
                     </Grid>
 
@@ -63,6 +67,47 @@ export const CourseCardHeader = () => {
                 </Grid>
 
             </Card>
+
+            <Menu
+                id="basic-menu"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                sx={{ padding: "30px 10px" }}
+                MenuListProps={{
+                    'aria-labelledby': 'basic-button',
+                }}
+            >
+
+                {
+
+                    (user === "student") ? (
+                        <>
+                            <MenuItem >
+                                Leave Class
+                            </MenuItem>
+
+                            
+                        </>
+                    ):(
+
+                        <>
+                            <MenuItem >
+                                Edit
+                            </MenuItem>
+
+                            <MenuItem >
+                                Delete
+                            </MenuItem>
+                        </>
+
+                    )
+
+                }
+
+
+
+            </Menu>
 
 
         </div>
