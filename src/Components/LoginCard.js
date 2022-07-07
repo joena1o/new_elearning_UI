@@ -42,9 +42,16 @@ export default function LoginCard(){
                 
                 setOpen(false);
 
+                console.log(value.data);
+
                if(value.data){
 
                 window.localStorage.setItem("token", JSON.stringify(value.data.token));
+                window.localStorage.setItem("user_type", value.data.acounttype);
+                window.localStorage.setItem("fullname", value.data.fullname);
+                window.localStorage.setItem("dept", value.data.department);
+                window.localStorage.setItem("reg", value.data.reg);
+                window.localStorage.setItem("id", value.data._id);
                  navigate("/home");
 
             
@@ -83,12 +90,15 @@ export default function LoginCard(){
                 "reg":regno,
                 "department":dept,
                 "email":email,
+                "acounttype": user,
+                "fullname":name,
                 "password":password}).then((value)=>{
 
 
                     if(value.statusCode == 201 || value.statusCode == "201"){
                         setOpen(false);
                         setMode("login");
+                        console.log(value.data);
                     }
 
                 console.log(value);
@@ -108,8 +118,10 @@ export default function LoginCard(){
     const [regno, setReg] = useState("");
     const [dept, setDept] = useState("");
     const [email, setEmail] = useState("");
+    const [user, setUser] = useState("");
     const [password, setPassword] = useState("");
     const [cpassword, setCpass] = useState("");
+    const [name, setName] = useState("");
 
 
     const [displayerror, setError] = useState(false);
@@ -195,7 +207,10 @@ export default function LoginCard(){
 
                    <form>
 
-                       
+                        <div className="form-group">
+                        <label>Reg No.</label>
+                        <input type='text' value={name} onChange={(e)=>setName(e.target.value)} className="form-control" placeholder="Enter Full name" />
+                        </div>
 
                         <div className="form-group">
                         <label>Reg No.</label>
@@ -218,6 +233,14 @@ export default function LoginCard(){
                         <div className="form-group">
                         <label>Enter Password</label>
                         <input type='password' value={password} onChange={(e)=>setPassword(e.target.value)} className="form-control" placeholder="Enter Password" />
+                        </div>
+
+                         <div className="form-group">
+                        <label>User Type</label>
+                        <select onClick={(e)=>setUser(e.target.value)}>
+                            <option value="student">Student</option>
+                            <option value="lecturer">Lecturer</option>
+                        </select>
                         </div>
 
                         <div className="form-group">

@@ -7,12 +7,15 @@ export const Departments = () => {
     const style = {
         padding:"0px 5x",
         margin: '0px 5px',
-        // backgroundColor:"antiquewhite"
+        // backgroundColor:"antiquewhite",
+        //backgroundColor: '#CE7248',
+
+        color:"white"
     }
 
 
     const dept = [
-        "AGR", "CVE", "EEE", "CTE", "LTS", "IMT", "MGT","CSC","BCH", "BTH","CHE","BCT"
+        "AGR", "CVE", "EEE", "CTE", "LTS", "IMT", "MGT","CSC","BCH", "BTH","CHE","BCT","AGR", "CVE", "EEE", "CTE", "LTS", "IMT", "MGT","CSC","BCH", "BTH","CHE","BCT"
     ]
     
 
@@ -41,7 +44,7 @@ export const Departments = () => {
         <div className="department-inner">
             {
                 dept.map((val)=> 
-                    <Chip style={style} label={val.toString()} />
+                    <Chip style={style} color="warning" label={val.toString()} />
                 )
             }
             

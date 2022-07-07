@@ -19,6 +19,8 @@ export const ResourceRoute = () => {
 
     });
 
+    const user = window.localStorage.getItem("user_type");
+
 
     const [title, setTitle] = useState("");
     const [department, setDepartment] = useState("");
@@ -70,6 +72,7 @@ export const ResourceRoute = () => {
             formData.append("title", title);
             formData.append("department", department);
             formData.append("school", school);
+            formData.append("user", window.localStorage.getItem("reg"))
             formData.append("description", descript)
             formData.append("category", category);
 
@@ -129,7 +132,10 @@ export const ResourceRoute = () => {
 
                 <div className='resource-route-icons'>
                     <span><MdFormatListBulleted /></span>
-                    <span onClick={() => handleOpen()}><TbUpload /></span>
+                    {(user!=="student")?(
+                        <span onClick={() => handleOpen()}><TbUpload /></span>
+                    ):(<></>)}
+                    
                 </div>
 
             </div>
@@ -181,8 +187,10 @@ export const ResourceRoute = () => {
                             <select  value={category} required onChange={(e) => setCategory(e.target.value)} >
 
                                 <option value="books">Books</option>
-                                <option value="handout">Handout</option>
-                                <option value="lecturenote">Lecture Notes</option>
+                                <option value="handout">Paper</option>
+                                <option value="journal">Journal</option>
+                                <option value="thesis">Thesis</option>
+                                <option value="pastquestions">Past Questions</option>
 
                             </select>
 

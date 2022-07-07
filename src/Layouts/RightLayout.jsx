@@ -1,8 +1,41 @@
 
 import {Box} from '@mui/material';
 import { ResourceRightCard } from '../Components/ResourceRightCard';
+import axios from 'axios';
+import { conn } from '../util/conn';
+import { config } from '../util/config';
+import { useEffect, useState } from 'react';
 
 export const RightLayout = () => {
+
+
+    useEffect(()=>{
+
+        fetchResource();
+
+    });
+
+
+    const [resources, setResource] = useState([]);
+
+
+    const fetchResource = async ()=>{
+
+        axios.get(conn+"/api/LectureRoom",config).then((value)=>{
+
+            // console.log(value.data);
+
+            if(value.status == "200" || value.status == 200){
+
+                setResource(value.data);
+
+            }
+
+
+
+        });
+
+    } 
 
     return (
 
@@ -23,14 +56,14 @@ export const RightLayout = () => {
 
 
                 <div>
-                    <ResourceRightCard />
-                    <ResourceRightCard />
-                    <ResourceRightCard />
-                    <ResourceRightCard />
-                    <ResourceRightCard />
-                    <ResourceRightCard />
-                    <ResourceRightCard />
-                    <ResourceRightCard />
+                    
+                    {
+                        (resources).map((value)=>
+                        
+                        <ResourceRightCard data={value} />
+
+                        )
+                    }
 
                 </div>
 

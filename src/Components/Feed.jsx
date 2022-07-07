@@ -29,8 +29,8 @@ export const Feed = (props) => {
                         <Grid item lg={11} md={10} sm={10} xs={10} sx={{ alignItems: "center", textAlign: "start" }}>
 
                             <Box sx={{ width: { xs: "95%", md: "96%", sm: "95%", lg: "70%", xl: "96%" }, fontSize: "14px", paddingLeft: { xs: "12%", md: "10%", sm: "10%", lg: "7%", xl: "10%" } }}>
-                                Joe Doe<br></br>
-                                <p><small> {props.data.department}</small></p>
+                                <b>Joe Doe</b><br></br>
+                                <p style={{color:"#CE7248"}}><small> {props.data.department}</small></p>
                                
 
                                 <hr></hr>

@@ -8,6 +8,8 @@ import { config } from "../../util/config";
 
 export const LectureRoute = () => {
 
+    const user = window.localStorage.getItem("user_type");
+
 
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
@@ -69,7 +71,12 @@ export const LectureRoute = () => {
             No Pending Lecture
 
             <div>
-                <Button variant="outlined" onClick={handleOpen} >Create Lecture</Button>
+                {
+
+                    (user!=="student")?(
+                    <Button variant="outlined" onClick={handleOpen} >Create Lecture</Button>
+                    ):(<></>)
+                }
                 <Button variant="outlined">Join Lecture</Button>
             </div>
 
@@ -99,6 +106,14 @@ export const LectureRoute = () => {
                                 Department
                             </label>
                             <input value={school} onChange={(e)=>setSchool(e.target.value)} className="form-control" type='text' placeholder="Department" />
+                            <label>
+                                Lecture Date
+                            </label>
+                            <input value={date} onChange={(e)=>setDate(e.target.value)} className="form-control" type='date' placeholder="Date" />
+                            <label>
+                               Lecture Time
+                            </label>
+                            <input value={time} onChange={(e)=>setTime(e.target.value)} className="form-control" type='date' placeholder="Time" />
                             
 
                        

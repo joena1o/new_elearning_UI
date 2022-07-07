@@ -1,6 +1,30 @@
 import {Avatar, Box,Card, Button} from '@mui/material';
+import axios from 'axios';
+import { conn } from '../../util/conn';
+import { config } from '../../util/config';
+import { useEffect } from 'react';
 
 export const ProfileRoute = ()=>{
+
+
+    useEffect(()=>{
+
+        FetchaActivity();
+
+    });
+
+
+    const FetchaActivity = ()=>{
+
+        axios.get(conn+"/api/resources", config).then((value)=>{
+
+
+            console.log(value.data);
+
+        });
+
+    }
+
 
     return (
 
@@ -25,6 +49,12 @@ export const ProfileRoute = ()=>{
                         </Box>
 
                 </Card>
+
+                <hr></hr>
+
+                <Box p={2}>
+                <p>Activities</p>
+                </Box>
 
             </Box>
             

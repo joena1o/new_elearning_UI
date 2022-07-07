@@ -9,6 +9,7 @@ import { AssessmentRoute } from '../Routes/HomeRoutes/AssessmentRoute';
 import { BookView } from '../Routes/HomeRoutes/bookView';
 import { CourseRoute } from '../Routes/HomeRoutes/CourseRoute';
 import { ProfileRoute } from '../Routes/HomeRoutes/ProfileRoute';
+import { CourseGroup } from '../Routes/HomeRoutes/CourseRoutes/CourseGroup';
 
 export const HomeCenterLayout = ()=>{
 
@@ -46,6 +47,8 @@ export const HomeCenterLayout = ()=>{
             <Route path='Quiz' element={<AssessmentRoute  />} />
 
             <Route path='course' element={<CourseRoute />}  />
+
+            <Route path="courseview" element={<CourseGroup />} />
 
 
 

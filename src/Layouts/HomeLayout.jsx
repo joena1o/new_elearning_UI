@@ -4,6 +4,7 @@ import { HomeCenterLayout } from "./HomeCenterLayout";
 import {RightLayout} from './RightLayout';
 import {Route,Routes} from 'react-router-dom';
 import { ResourceRightLayout } from "./ResourceRightLayout";
+import { CourseGroup } from "../Routes/HomeRoutes/CourseRoutes/CourseGroup";
 
 export const HomeLayout = ()=>{
 
@@ -24,6 +25,7 @@ export const HomeLayout = ()=>{
                     <Route path='resource' element={<ResourceRightLayout />} />
                     <Route path="lecture" element={<RightLayout />} />
                     <Route path="profile" element={<RightLayout />} />
+                    <Route path="courseview" element={<RightLayout />} />
                     <Route path='quiz' element={<RightLayout />} />
                     <Route path='bookview' element={<ResourceRightLayout />} />
                     <Route path="course" element={<RightLayout />} />

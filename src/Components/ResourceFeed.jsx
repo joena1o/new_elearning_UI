@@ -32,7 +32,7 @@ export const ResourceFeed = (prop) => {
                 </div>
 
 
-                <hr></hr>
+                <hr style={{backgroundColor:"#CE7248"}}></hr>
 
                 <Grid container direction='row' spacing={7} sx={{ alignItems: "flex-start", justifyContent: "flex-start", textAlign: "start", padding: "0px 10px" }}>
 

@@ -1,4 +1,4 @@
-import { Box } from "@mui/system";
+import { Box } from "@mui/material";
 
 export const CourseItemLayout = ()=>{
 
@@ -6,6 +6,10 @@ export const CourseItemLayout = ()=>{
 
 
         <Box sx={{width:"100%"}}>
+
+
+
+            
 
 
 

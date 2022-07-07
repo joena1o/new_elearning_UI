@@ -55,13 +55,13 @@ export const BookView = () => {
 
                     <Box className='header-column' sx={{ width: { sm: "100%", xs: "100%" } }} >
 
-                        <p>Joe Doe</p>
-                        <p>{location.state.book.department}</p>
-                        <p><small>Published: {(location.state.book.createdAt).substring(0, 10)}</small></p>
+                        <p><b>Joe Doe</b></p>
+                        <p style={{color:"#CE7248"}}>{location.state.book.department}</p>
+                        <p style={{fontStyle:"italic"}}><small>Published: {(location.state.book.createdAt).substring(0, 10)}</small></p>
 
 
                         <div className='book-detail'>
-                            <small>Course Title:</small> {location.state.book.title}
+                            <small style={{fontStyle:"italic"}}>Course Title:</small> <span style={{textTransform:"uppercase", letterSpacing:"2px"}}>{location.state.book.title}</span>
                         </div>
 
 
