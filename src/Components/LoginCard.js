@@ -42,7 +42,7 @@ export default function LoginCard(){
                 
                 setOpen(false);
 
-                console.log(value.data);
+                // console.log(value.data);
 
                if(value.data){
 

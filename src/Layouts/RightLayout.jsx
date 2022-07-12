@@ -3,10 +3,20 @@ import {Box} from '@mui/material';
 import { ResourceRightCard } from '../Components/ResourceRightCard';
 import axios from 'axios';
 import { conn } from '../util/conn';
-import { config } from '../util/config';
 import { useEffect, useState } from 'react';
+import { Loader } from '../Components/Loader';
 
 export const RightLayout = () => {
+
+
+    const token = window.localStorage.getItem("token");
+
+  const config = {
+    headers: {
+        'Content-type': 'application/json',
+        'Authorization': 'Bearer ' + JSON.parse(token)
+      }
+  };
 
 
     useEffect(()=>{
@@ -23,7 +33,7 @@ export const RightLayout = () => {
 
         axios.get(conn+"/api/LectureRoom",config).then((value)=>{
 
-            // console.log(value.data);
+    
 
             if(value.status == "200" || value.status == 200){
 
@@ -55,7 +65,9 @@ export const RightLayout = () => {
                 </div>
 
 
-                <div>
+               {
+               
+               (resources!==[])?(<div>
                     
                     {
                         (resources).map((value)=>
@@ -65,7 +77,10 @@ export const RightLayout = () => {
                         )
                     }
 
-                </div>
+                </div>):(<Loader /> )
+
+
+                }
 
                 
 

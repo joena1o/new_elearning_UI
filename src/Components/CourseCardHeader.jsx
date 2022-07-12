@@ -36,10 +36,10 @@ export const CourseCardHeader = (props) => {
                     <Grid item lg={10} md={10} sm={9} xs={9} sx={{ display: "inline-flex", flexDirection: "column", textAlign: "start" }} >
 
                         <p><b>{props.data.courseCode}</b></p>
-                        <p style={{ fontStyle: "italic" }}>Course Title: {location.state.data.courseTitle}</p>
-                        <p style={{ fontStyle: "italic" }}>Department: {location.state.data.department}</p>
-                        <p style={{ fontStyle: "italic" }}>Time Created: {location.state.data.createdAt}</p>
-                        <p style={{ fontStyle: "italic" }}>Class Type: {location.state.data.classtype}</p>
+                        <p style={{ fontStyle: "italic" }}>Course Title: {props.data.courseTitle}</p>
+                        <p style={{ fontStyle: "italic" }}>Department: {props.data.department}</p>
+                        <p style={{ fontStyle: "italic" }}>Time Created: {props.data.createdAt}</p>
+                        <p style={{ fontStyle: "italic" }}>Class Type: {props.data.classtype}</p>
 
                         <Box>
                             <p style={{ color: "grey", textTransform: "uppercase", marginTop: "10px" }}><b>Number Of Students: 0</b></p>

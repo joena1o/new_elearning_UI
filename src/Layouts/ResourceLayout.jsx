@@ -1,19 +1,18 @@
 import {Grid,Box, CircularProgress} from '@mui/material';
 import { Feed } from '../Components/Feed';
 import { ResourceFeed } from '../Components/ResourceFeed';
-import {useState, useEffec} from 'react';
+import {useState} from 'react';
 import axios from 'axios';
 import { conn } from '../util/conn';
 import { useEffect } from 'react';
 
-export const ResourceLayout = (props)=>{
+export const ResourceLayout = ()=>{
 
 
     useEffect(()=>{
-        // console.log(token);
+
         getResource();
 
-        // console.log(resource[0]['title']);
     });
 
 
@@ -33,17 +32,20 @@ export const ResourceLayout = (props)=>{
     };
 
 
-    const getResource = async (event) =>{
+    const getResource = async () =>{
 
         await axios.get(conn+"/api/resources", config).then((value)=>{
 
-            setResource((value.data));
+            
 
-            //if(value.statusText==="ok"){
+            if(value.statusText==="OK"){
+
+                setResource((value.data));
                 setStatus(false);
-           // }
+            }else{
+                setStatus(false);
+            }
 
-            // console.log(value.data);
 
         })
 
@@ -67,11 +69,11 @@ export const ResourceLayout = (props)=>{
                         ):(
 
                         
-                                resource.map((value)=>(
+                                resource.map((value, key)=>(
         
                                     <Grid item lg={4} md={6} sm={6} xs={12} sx={{width:"90%", marginBottom:"10px"}}>
         
-                                    <ResourceFeed data={value} />
+                                    <ResourceFeed data={value} key={key} />
              
                                  </Grid>
              

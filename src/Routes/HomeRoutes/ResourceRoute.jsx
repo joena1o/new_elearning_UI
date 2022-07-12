@@ -11,14 +11,6 @@ import {Departments} from '../../Components/Departments';
 
 export const ResourceRoute = () => {
 
-
-
-    useEffect(()=>{
-
-        //getResource();
-
-    });
-
     const user = window.localStorage.getItem("user_type");
 
 
@@ -31,7 +23,7 @@ export const ResourceRoute = () => {
     const [file, setFile] = useState();
     const [filename, setFilename] = useState("");
 
-    const [resource, setResource] = useState([]);
+  
 
 
     const token = window.localStorage.getItem('token');
@@ -44,21 +36,6 @@ export const ResourceRoute = () => {
           }
     };
 
-
-    const getResource = async (event) =>{
-
-        await axios.get(conn+"/api/resources", config).then((value)=>{
-
-
-            setResource(JSON.stringify(value.data));
-
-            console.log(value.data)
-
-
-
-        })
-
-    }
 
 
     const UploadResource_ = async (event) => {
