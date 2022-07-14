@@ -1,6 +1,7 @@
 import { Card, Grid, Avatar, Box, CardMedia } from "@mui/material";
 import { VscPreview } from 'react-icons/vsc';
 import { useNavigate } from "react-router";
+import solidity from '../Assets/solidity.pdf';
 
 export const Feed = (props) => {
 
@@ -8,10 +9,10 @@ export const Feed = (props) => {
 
     return (
 
-        
 
-        <Box  className="feed" sx={{ width: { md: "75%", sm: "82%", lg: "67%", xs: "94%" } }} >
-            <Card  onClick={()=>navigate(`bookview`, { state: { book: props.data } } )} variant='outlined'>
+
+        <Box className="feed" sx={{ width: { md: "75%", sm: "82%", lg: "67%", xs: "94%" } }} >
+            <Card onClick={() => navigate(`bookview`, { state: { book: props.data } })} variant='outlined'>
 
 
                 <div className="header">
@@ -30,8 +31,8 @@ export const Feed = (props) => {
 
                             <Box sx={{ width: { xs: "95%", md: "96%", sm: "95%", lg: "70%", xl: "96%" }, fontSize: "14px", paddingLeft: { xs: "12%", md: "10%", sm: "10%", lg: "7%", xl: "10%" } }}>
                                 <b>Joe Doe</b><br></br>
-                                <p style={{color:"#CE7248"}}><small> {props.data.department}</small></p>
-                               
+                                <p style={{ color: "#CE7248" }}><small> {props.data.department}</small></p>
+
 
                                 <hr></hr>
 
@@ -50,19 +51,25 @@ export const Feed = (props) => {
                             </Box>
 
 
-                            <CardMedia
+                            {/* <CardMedia
                                 sx={{ margin: "30px 0 0 0" }}
                                 component="img"
                                 height="170"
                                 image="https://imgs.search.brave.com/zqTiqsDixqo0dUMEKGIMcOspGG_78BTW2ogimEgs4LQ/rs:fit:632:225:1/g:ce/aHR0cHM6Ly90c2Uy/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5T/SGYxM3RkckVVYWhv/aXhIblNqaHRBSGFG/aiZwaWQ9QXBp"
                                 alt="green iguana"
-                            />
-                            <Box  sx={{marginBottom:"30px", padding:"10px 15px", fontSize:"14px", backgroundColor:"#d1d1d1", width:"100%", display:"inline-flex",
-                            flexDirection:{xs:"column", lg:"row", md:"row",sm:"row"},
-                            justifyContent:"space-between"}}>
+                            /> */
+                            }
+
+                            <iframe src={solidity} width="100%" height="300px"></iframe>
+
+                            <Box sx={{
+                                marginBottom: "30px", padding: "10px 15px", fontSize: "14px", backgroundColor: "#d1d1d1", width: "100%", display: "inline-flex",
+                                flexDirection: { xs: "column", lg: "row", md: "row", sm: "row" },
+                                justifyContent: "space-between"
+                            }}>
 
                                 <Box>
-                                    No of Pages: 86 
+                                    No of Pages: 86
                                 </Box>
 
                                 <Box>
@@ -75,7 +82,7 @@ export const Feed = (props) => {
                             {/* <hr></hr> */}
 
 
-                            <div className="card-foo" style={{ margin: "20px 0px", padding:"0 20px", width: "100%", textAlign: "end", fontSize: "15px", }}>
+                            <div className="card-foo" style={{ margin: "20px 0px", padding: "0 20px", width: "100%", textAlign: "end", fontSize: "15px", }}>
                                 <VscPreview style={{ fontSize: '17px', marginRight: "10px" }} />  <span>Reviews</span>
                             </div>
 

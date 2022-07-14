@@ -64,7 +64,7 @@ export const HomeFeed =()=>{
 
     return(
 
-        <div className="home-feed" style={{width:"100%"}}>
+        <div className="home-feed" style={{width:"100%", padding:"20px 0px"}}>
 
 
           {
