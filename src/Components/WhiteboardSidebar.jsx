@@ -85,7 +85,7 @@ export const WhiteBoardSidebar = ()=>{
 
                 {(user !== "student") ? (
                     <Box onClick={()=>change()}>
-                        {(video=="none")?(<BsCameraVideo />):(<BsCameraVideoOff />)} 
+                        {(video!="none")?(<BsCameraVideo />):(<BsCameraVideoOff />)} 
                     </Box>) : (<></>)}
 
                 <Box onClick={()=>navigate("/home")}>

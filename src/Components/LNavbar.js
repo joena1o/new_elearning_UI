@@ -3,8 +3,14 @@ import {Link} from 'react-router-dom';
 
 export default function LNavbar() {
 
+
+    const auth = window.localStorage.getItem("token");
+
     return (
         <div className="lnavbar">
+
+
+
 
             <div className="inner">
 
@@ -13,8 +19,26 @@ export default function LNavbar() {
                 </div>
 
                 <div className="navs">
-                    <Link to='/login'><button>Login</button></Link>
-                    <button>Sign Up</button>
+
+                    {
+
+                        (auth === "" || auth === null)?(
+                            <>
+                                    <Link to='/login'><button>Login</button></Link>
+                                    <button>Sign Up</button>
+                            </>):(
+                                    <Link to='/home'><button><b>Go to Home</b></button></Link>
+                            )
+                        
+
+
+                    }
+
+                    
+                    
+                   
+
+                    
                 </div>
 
 
