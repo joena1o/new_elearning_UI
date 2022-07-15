@@ -2,10 +2,8 @@ import Lottie from "lottie-react";
 import groovyWalkAnimation from "../Assets/Login_popup.json";
 import { useState } from "react";
 import { conn } from "../util/conn";
-import {Link} from 'react-router-dom';
 import {Button, Box} from '@mui/material';
 import {CircularProgress} from '@mui/material';
-import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
 import {Alert} from '@mui/material';
 import  axios  from "axios";
@@ -95,7 +93,7 @@ export default function LoginCard(){
                 "password":password}).then((value)=>{
 
 
-                    if(value.status == 201 || value.status == "201"){
+                    if(value.status === 201 || value.status === "201"){
                         setOpen(false);
                         setMode("login");
                         console.log(value.data);

@@ -105,7 +105,7 @@ export const ResourceRoute = () => {
 
             <div className="Banner">
 
-                Resources
+                <b style={{letterSpacing:"2px"}}>RESOURCES</b>
 
                 <div className='resource-route-icons'>
                     <span><MdFormatListBulleted /></span>

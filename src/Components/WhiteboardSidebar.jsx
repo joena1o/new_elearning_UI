@@ -1,17 +1,17 @@
 import { Box } from '@mui/material';
-import { RiHomeLine } from 'react-icons/ri';
-import { GiBookshelf, GiArchiveResearch } from 'react-icons/gi';
-import { BsJournalArrowDown } from 'react-icons/bs';
-import { GoQuestion } from 'react-icons/go';
-import { AiOutlineFundProjectionScreen } from 'react-icons/ai';
-import { SiGoogleclassroom } from 'react-icons/si';
-import { Link, useNavigate } from 'react-router-dom';
-import { AiOutlineUsergroupAdd, AiOutlineAudio } from 'react-icons/ai'
-import { GrTest } from 'react-icons/gr';
+// import { RiHomeLine } from 'react-icons/ri';
+// import { GiBookshelf, GiArchiveResearch } from 'react-icons/gi';
+// import { BsJournalArrowDown } from 'react-icons/bs';
+// import { GoQuestion } from 'react-icons/go';
+// import { AiOutlineFundProjectionScreen } from 'react-icons/ai';
+// import { SiGoogleclassroom } from 'react-icons/si';
+import {useNavigate } from 'react-router-dom';
+import { AiOutlineAudio } from 'react-icons/ai'
+//import { GrTest } from 'react-icons/gr';
 
 
 import {useState} from 'react';
-import { GiClassicalKnowledge } from 'react-icons/gi';
+//import { GiClassicalKnowledge } from 'react-icons/gi';
 import {BsSearch,BsPen,BsEraser, BsCameraVideo, BsCameraVideoOff} from 'react-icons/bs';
 import {MdOutlineClose} from 'react-icons/md';
 
@@ -29,7 +29,7 @@ export const WhiteBoardSidebar = ()=>{
 
     const change = ()=>{
 
-        if(video=="none")
+        if(video==="none")
         setVideo("unset")
         else
         setVideo("none");
@@ -85,7 +85,7 @@ export const WhiteBoardSidebar = ()=>{
 
                 {(user !== "student") ? (
                     <Box onClick={()=>change()}>
-                        {(video!="none")?(<BsCameraVideo />):(<BsCameraVideoOff />)} 
+                        {(video!=="none")?(<BsCameraVideo />):(<BsCameraVideoOff />)} 
                     </Box>) : (<></>)}
 
                 <Box onClick={()=>navigate("/home")}>
@@ -103,7 +103,7 @@ export const WhiteBoardSidebar = ()=>{
         </Box>
 
 
-        {(video=="unset")?(<Box sx={{width:"200px",height:"120px", background:"black", position:"fixed", bottom:"30px",right:"10vw", display:{video}}}>
+        {(video==="unset")?(<Box sx={{width:"200px",height:"120px", background:"black", position:"fixed", bottom:"30px",right:"10vw", display:{video}}}>
 
 
          </Box>):<></>}

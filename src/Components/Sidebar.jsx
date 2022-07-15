@@ -6,8 +6,11 @@ import { GoQuestion } from 'react-icons/go';
 import { AiOutlineFundProjectionScreen } from 'react-icons/ai';
 import { SiGoogleclassroom } from 'react-icons/si';
 import { Link, useNavigate } from 'react-router-dom';
-import { AiOutlineUsergroupAdd } from 'react-icons/ai'
-import { GrTest } from 'react-icons/gr';
+// import { AiOutlineUsergroupAdd } from 'react-icons/ai'
+// import { GrTest, GrDocumentTest } from 'react-icons/gr';
+import {useState} from 'react';
+
+import {SiPytest} from 'react-icons/si';
 
 import { GiClassicalKnowledge } from 'react-icons/gi';
 export const SideBar = () => {
@@ -71,6 +74,18 @@ export const SideBar = () => {
 
     const navigate = useNavigate();
 
+    const [index, setIndex] = useState(0);
+
+    const navChange = (rout,ind)=>{
+
+            navigate(rout)
+
+            setIndex(ind);
+
+
+
+    }
+
 
 
     return (
@@ -87,33 +102,33 @@ export const SideBar = () => {
 
                 <div className='side-navs'>
 
-                    <div onClick={() => navigate("/home")}>
+                    <div style={(index===0)?{color:"#CE7248"}:{color:"black"}} onClick={() => navChange("/home", 0)}>
                         <RiHomeLine /> <span>Home</span>
                     </div>
 
-                    <div onClick={() => navigate("resource")}>
+                    <div style={(index===1)?{color:"#CE7248"}:{color:"black"}} onClick={() => navChange("resource", 1)}>
                         <GiBookshelf /> <span>Resources</span>
                     </div>
 
-                    <Box sx={{ display: { xs: "block", lg: "none", md: "none" } }} onClick={() => navigate("course")}>
+                    <Box style={(index===2)?{color:"#CE7248"}:{color:"black"}} sx={{ display: { xs: "block", lg: "none", md: "none" } }} onClick={() => navChange("course", 2)}>
                         <GiClassicalKnowledge /> <span>Courses</span>
                     </Box>
 
-                    <div onClick={() => navigate("lecture")}>
+                    <div style={(index===3)?{color:"#CE7248"}:{color:"black"}} onClick={() => navChange("lecture", 3)}>
                         <SiGoogleclassroom /> <span>Lecture</span>
                     </div>
 
 
                     {(user !== "student") ? (
-                        <Box onClick={() => navigate("/whiteboard")}>
+                        <Box style={(index===4)?{color:"#CE7248"}:{color:"black"}} onClick={() => navChange("/whiteboard", 4)}>
                             <AiOutlineFundProjectionScreen /> <span>White Board</span>
                         </Box>) : (<></>)}
 
-                    <Box onClick={() => (user!="student")?navigate("quiz"):navigate("/assessment")}>
-                        <GrTest /> <span>Assessment</span>
+                    <Box style={(index===5)?{color:"#CE7248"}:{color:"black"}} onClick={() => (user!=="student")?navChange("quiz", 5):navChange("/assessment", 5)}>
+                        <SiPytest /> <span>Assessment</span>
                     </Box>
 
-                    <Box onClick={() => navigate("quiz")}>
+                    <Box style={(index===6)?{color:"#CE7248"}:{color:"black"}} onClick={() => navChange("quiz", 6)}>
                         <GiArchiveResearch /> <span>Research</span>
                     </Box>
 

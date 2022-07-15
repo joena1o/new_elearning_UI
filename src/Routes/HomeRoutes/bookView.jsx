@@ -43,7 +43,10 @@ export const BookView = () => {
         <div className="book-view">
 
 
-            <Card variant="outlined" sx={{ width: { lg: '75%', md: "80%", sm: "90%", xs: "100%" }, paddingTop: "30px", marginTop: { lg: "40px", md: "40px" } }}>
+            <iframe src={solidity} width="100%" style={{height:"86vh"}}> </iframe>
+
+
+            {/* <Card variant="outlined" sx={{ width: { lg: '75%', md: "80%", sm: "90%", xs: "100%" }, paddingTop: "30px", marginTop: { lg: "40px", md: "40px" } }}>
 
                 <Box className='header' sx={{ alignItems: "flex-start", justifyContent: "flex-start", display: "inline-flex" }}>
 
@@ -87,7 +90,7 @@ export const BookView = () => {
 
 
 
-            </Card>
+            </Card> */}
 
 
 

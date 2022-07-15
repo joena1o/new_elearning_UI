@@ -60,7 +60,8 @@
     display: inline-flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #e9e9e6;
+    /* background-color: #e9e9e6; */
+    border-bottom: 1px solid #d1d1d1 ;
     width: 100%;
     padding: 15px 20px;
 }

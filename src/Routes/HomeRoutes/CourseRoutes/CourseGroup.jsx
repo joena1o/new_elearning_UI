@@ -1,6 +1,8 @@
 import { Box } from "@mui/material";
 import { CourseCardHeader } from "../../../Components/CourseCardHeader";
 import {useLocation} from 'react-router-dom';
+import { HomeFeed } from "../../../Layouts/HomeFeed";
+import { CourseNav } from "./CourseNav/CourseNav";
 
 export const CourseGroup = ()=>{
 
@@ -9,13 +11,19 @@ export const CourseGroup = ()=>{
     return(
 
 
-        <Box sx={{width:"100%"}}>
+        <div style={{width:"100%"}}>
+
+            {/* <CourseNav /> */}
 
             <CourseCardHeader data={location.state.data} />
 
+            <HomeFeed />
+
+            
 
 
-        </Box>
+
+        </div>
 
     );
 

@@ -126,12 +126,11 @@ export default function HomeNavbar() {
 
                                     <Grid item lg={8} p={2}>
 
-                                        <p><b>{window.localStorage.getItem("fullname")}</b></p>
-                                        <p><b>{window.localStorage.getItem("reg")}</b></p>
+                                        <p style={{color:"grey"}}><b>{window.localStorage.getItem("fullname")}</b></p>
+                                        <p style={{color:"grey"}}><b>{window.localStorage.getItem("reg")}</b></p>
                                         <small>{window.localStorage.getItem("dept")}</small><br></br>
                                         <p><small>{window.localStorage.getItem("user_type").toUpperCase()}</small></p>
-                                       
-
+                                    
 
                                     </Grid>
 

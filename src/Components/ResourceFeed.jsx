@@ -28,7 +28,7 @@ export const ResourceFeed = (prop) => {
 
                 <div style={{ padding: "10px 10px" }}>
 
-                    <span style={{width:"100%", overflowX:"ellipsis", textOverflow:"fade"}}>{prop.data.title}</span>
+                    <span style={{width:"100%", fontSize:"15px", padding:"20px 0px", textTransform:"uppercase", overflowX:"ellipsis", textOverflow:"fade", fontWeight:"bold"}}>{prop.data.title}</span>
                     <p style={{textTransform:"uppercase"}}><small>{prop.data.category}</small></p>
                     <p><small>EEE202</small></p>
                 </div>
