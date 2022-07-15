@@ -53,7 +53,7 @@ export const Feed = (props) => {
 
                            
 
-                            <iframe src={solidity} width="100%" height="200px" scrolling="no" loading="lazy" style={{overflow:"hidden"}} ></iframe>
+                            <iframe src={solidity} width="100%" height="200px" scrolling="no"  style={{overflow:"hidden"}} ></iframe>
 
                             {/* <Box sx={{
                                 marginBottom: "30px", padding: "10px 15px", fontSize: "14px", backgroundColor: "#d1d1d1", width: "100%", display: "inline-flex",
