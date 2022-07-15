@@ -26,6 +26,7 @@ export default function HomeNavbar() {
     const style = {
         color: "#FCE266",
         justifyContent: "space-evenly",
+        letterSpacing:"2px",
         padding: '10px',
         alignItems: 'center'
     }
@@ -56,7 +57,7 @@ export default function HomeNavbar() {
 
                 <Toolbar sx={style}>
 
-                    Navbar
+                    <b>MAUCES</b>
 
 
 

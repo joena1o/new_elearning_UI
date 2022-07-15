@@ -1,4 +1,5 @@
 import { Avatar, Box, Card, Grid, CardMedia } from "@mui/material";
+import solidity from '../Assets/solidity.pdf#toolbar=0';
 
 export const ResourceFeed = (prop) => {
 
@@ -20,7 +21,8 @@ export const ResourceFeed = (prop) => {
 
 
 
-
+                <iframe src={solidity} width="100%" height="100px" style={{margin:"20px 0px"}}></iframe>
+                <hr></hr>
 
 
 

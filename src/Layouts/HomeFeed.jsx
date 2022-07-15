@@ -77,7 +77,7 @@ export const HomeFeed =()=>{
 
                 <span style={{display:"inline-flex", width:"100%", justifyContent:"center", padding:"10px"}}>
 
-                <TimeLineComponent />       
+                <TimeLineComponent index={key} len={feeds.length} />       
         
                 <Feed data={values} key={key} />
         

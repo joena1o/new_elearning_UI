@@ -1,7 +1,7 @@
 import { Card, Grid, Avatar, Box, CardMedia } from "@mui/material";
 import { VscPreview } from 'react-icons/vsc';
 import { useNavigate } from "react-router";
-import solidity from '../Assets/solidity.pdf';
+import solidity from '../Assets/solidity.pdf#toolbar=0';
 
 export const Feed = (props) => {
 
@@ -37,8 +37,8 @@ export const Feed = (props) => {
                                 <hr></hr>
 
                                 <div className='card-bod'>
-                                    <p>{props.data.title}</p>
-                                    <p><small> {(props.data.description)}</small></p><br></br>
+                                    <p><b>{props.data.title}</b></p>
+                                    <p><> {(props.data.description).substring(0, 120)}...</></p><br></br>
                                 </div>
 
 
@@ -51,18 +51,11 @@ export const Feed = (props) => {
                             </Box>
 
 
-                            {/* <CardMedia
-                                sx={{ margin: "30px 0 0 0" }}
-                                component="img"
-                                height="170"
-                                image="https://imgs.search.brave.com/zqTiqsDixqo0dUMEKGIMcOspGG_78BTW2ogimEgs4LQ/rs:fit:632:225:1/g:ce/aHR0cHM6Ly90c2Uy/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5T/SGYxM3RkckVVYWhv/aXhIblNqaHRBSGFG/aiZwaWQ9QXBp"
-                                alt="green iguana"
-                            /> */
-                            }
+                           
 
-                            <iframe src={solidity} width="100%" height="300px"></iframe>
+                            <iframe src={solidity} width="100%" height="200px" scrolling="no" loading="lazy" style={{overflow:"hidden"}} ></iframe>
 
-                            <Box sx={{
+                            {/* <Box sx={{
                                 marginBottom: "30px", padding: "10px 15px", fontSize: "14px", backgroundColor: "#d1d1d1", width: "100%", display: "inline-flex",
                                 flexDirection: { xs: "column", lg: "row", md: "row", sm: "row" },
                                 justifyContent: "space-between"
@@ -76,7 +69,9 @@ export const Feed = (props) => {
                                     Size: 181kb
                                 </Box>
 
-                            </Box>
+                            </Box> */}
+                            <br></br>
+                            <hr></hr>
                             <br></br>
 
                             {/* <hr></hr> */}
