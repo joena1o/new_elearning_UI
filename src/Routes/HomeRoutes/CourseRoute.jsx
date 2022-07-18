@@ -4,7 +4,6 @@ import { useState } from "react";
 import { conn } from '../../util/conn';
 import { CgOptions } from 'react-icons/cg';
 import { CoursesCard } from '../../Components/CoursesCard';
-import { config } from '../../util/config';
 import {CircularProgress} from '@mui/material';
 import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
@@ -49,6 +48,15 @@ export const CourseRoute = () => {
         getCourses();
 
     });
+
+    const token = window.localStorage.getItem("token");
+
+    const config = {
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': 'Bearer ' + JSON.parse(token)
+          }
+      };
 
     const createCourse = async (e) => {
 
