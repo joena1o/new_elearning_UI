@@ -129,12 +129,11 @@ export default function HomeNavbar() {
                                         <p style={{color:"grey"}}><b>{window.localStorage.getItem("fullname")}</b></p>
                                         <p style={{color:"grey"}}><b>{window.localStorage.getItem("reg")}</b></p>
                                         <small>{window.localStorage.getItem("dept")}</small><br></br>
-                                        <p><small>{window.localStorage.getItem("user_type").toUpperCase()}</small></p>
-                                    
-
+                                        <small>{window.localStorage.getItem("user_type").toUpperCase()}</small>
                                     </Grid>
-
                                 </Grid>
+
+
                             </MenuItem>
                             <MenuItem sx={{width:"100%"}} onClick={handleClose}><Button sx={{width:"100%"}} onClick={()=>navigate("profile")} variant="outlined" color="warning">Profile</Button></MenuItem>
                             <Divider />
