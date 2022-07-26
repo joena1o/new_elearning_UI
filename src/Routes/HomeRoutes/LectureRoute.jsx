@@ -77,8 +77,11 @@ export const LectureRoute = () => {
                     <Button variant="outlined" onClick={handleOpen} >Create Lecture</Button>
                     ):(<></>)
                 }
-                <Button variant="outlined">Join Lecture</Button>
+                {/* <Button variant="outlined">Join Lecture</Button> */}
             </div>
+
+
+            {/* <LectureAddFab /> */}
 
 
             <Modal

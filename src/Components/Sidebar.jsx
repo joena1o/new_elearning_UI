@@ -1,13 +1,9 @@
 import { Box } from '@mui/material';
 import { RiHomeLine } from 'react-icons/ri';
 import { GiBookshelf, GiArchiveResearch } from 'react-icons/gi';
-import { BsJournalArrowDown } from 'react-icons/bs';
-import { GoQuestion } from 'react-icons/go';
 import { AiOutlineFundProjectionScreen } from 'react-icons/ai';
 import { SiGoogleclassroom } from 'react-icons/si';
-import { Link, useNavigate } from 'react-router-dom';
-// import { AiOutlineUsergroupAdd } from 'react-icons/ai'
-// import { GrTest, GrDocumentTest } from 'react-icons/gr';
+import { useNavigate } from 'react-router-dom';
 import {useState} from 'react';
 
 import {SiPytest} from 'react-icons/si';
@@ -24,10 +20,6 @@ export const SideBar = () => {
         transition: "0.5s ease-in-out", zIndex: "2", color: "grey"
     }
 
-
-    const sideNavbar = document.querySelector(".side-navbar");
-    const sidenav = document.querySelector(".side-navs");
-    const label = document.querySelectorAll(".side-navs div span");
 
 
     function Pop() {

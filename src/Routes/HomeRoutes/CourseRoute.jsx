@@ -146,7 +146,7 @@ export const CourseRoute = () => {
 
                     <div className=''>
 
-                        Courses
+                        Registered Courses
 
                     </div>
 

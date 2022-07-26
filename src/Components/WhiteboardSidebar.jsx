@@ -1,19 +1,11 @@
 import { Box } from '@mui/material';
-// import { RiHomeLine } from 'react-icons/ri';
-// import { GiBookshelf, GiArchiveResearch } from 'react-icons/gi';
-// import { BsJournalArrowDown } from 'react-icons/bs';
-// import { GoQuestion } from 'react-icons/go';
-// import { AiOutlineFundProjectionScreen } from 'react-icons/ai';
-// import { SiGoogleclassroom } from 'react-icons/si';
 import {useNavigate } from 'react-router-dom';
 import { AiOutlineAudio } from 'react-icons/ai'
-//import { GrTest } from 'react-icons/gr';
-
-
 import {useState} from 'react';
-//import { GiClassicalKnowledge } from 'react-icons/gi';
 import {BsSearch,BsPen,BsEraser, BsCameraVideo, BsCameraVideoOff} from 'react-icons/bs';
 import {MdOutlineClose} from 'react-icons/md';
+
+
 
 export const WhiteBoardSidebar = ()=>{
 
@@ -49,9 +41,6 @@ export const WhiteBoardSidebar = ()=>{
 
 
         <Box sx={style1} className="side-navbar">
-
-
-
 
         <Box sx={{
             justifyContent: 'space-evenly', height: "100%", alignItems: "flex-start", fontSize: {

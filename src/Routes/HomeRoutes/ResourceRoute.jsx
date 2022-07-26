@@ -6,6 +6,7 @@ import { MdFormatListBulleted } from 'react-icons/md';
 import { TbUpload } from 'react-icons/tb';
 import axios from "axios";
 import {Departments} from '../../Components/Departments';
+import { CgAttachment } from "react-icons/cg";
 
 
 
@@ -20,7 +21,7 @@ export const ResourceRoute = () => {
     const [descript, setDescript] = useState("");
     const [category, setCategory] = useState("");
 
-    const [file, setFile] = useState();
+    const [attach, setFile] = useState();
     const [filename, setFilename] = useState("");
 
   
@@ -44,7 +45,7 @@ export const ResourceRoute = () => {
 
 
             const formData = new FormData();
-            formData.append("attach", file);
+            formData.append("attach", attach);
             formData.append("filename", filename);
             formData.append("title", title);
             formData.append("department", department);
@@ -67,6 +68,9 @@ export const ResourceRoute = () => {
                 formData,
                 config
             ).then((value) => {
+
+
+                /// CHECK RESPONSE
                 console.log(value.data);
             });
 
@@ -108,6 +112,8 @@ export const ResourceRoute = () => {
                 <b style={{letterSpacing:"2px"}}>RESOURCES</b>
 
                 <div className='resource-route-icons'>
+
+                    
                     <span><MdFormatListBulleted /></span>
                     {(user!=="student")?(
                         <span onClick={() => handleOpen()}><TbUpload /></span>

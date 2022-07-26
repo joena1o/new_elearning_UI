@@ -114,3 +114,14 @@
    text-align: start;
     width: 100%;
 }
+
+.cover_photo{
+
+    width: 100%;
+    background-color: grey;
+    height: 300px;
+
+}
+.course-card{
+    padding:30px;
+}

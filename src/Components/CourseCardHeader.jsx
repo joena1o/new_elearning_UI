@@ -1,10 +1,11 @@
-import { Card, Grid, Box, Modal, Typography, Button } from '@mui/material';
+import { Card, Grid, Box, Modal, Typography, Button, Avatar } from '@mui/material';
 import { CgOptions } from 'react-icons/cg';
 import { useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 import { useNavigate, useLocation } from 'react-router';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import { CoverPhoto } from './CourseCoverPhoto';
 
 export const CourseCardHeader = (props) => {
 
@@ -28,12 +29,41 @@ export const CourseCardHeader = (props) => {
 
         <div class="course-card">
 
-            <Card variant="outlined">
+            <CoverPhoto />
+
+            {/* <Card variant="outlined"> */}
 
                 <Grid container sx={{ width: "100%", flexGrow: "1", padding: "60px 30px", alignItems: "center" }}>
 
 
-                    <Grid item lg={10} md={10} sm={9} xs={9} sx={{ display: "inline-flex", flexDirection: "column", textAlign: "start" }} >
+
+                    <Grid item lg={2} md={2} sm={3} xs={9} sx={{ alignItems: "center", fontSize: "24px" }}>
+
+
+
+                    {/* <Avatar sx={{ width: { xl: 100, lg: 90, md:70, sm: 90, xs: 100 }, height: { xl: 100, lg: 90, md:70, sm: 90, xs: 100 }, backgroundColor: "antiquewhite", color: "black", fontWeight: "bold" }}>H</Avatar> */}
+
+                        {/* <IconButton
+                            size="large"
+                            aria-label="show more"
+                            aria-haspopup="true"
+                            onClick={handleClick}>
+
+                            <CgOptions />
+
+                        </IconButton> */}
+
+                    </Grid>
+
+
+                    {/* <Grid item md={1}>
+
+                    </Grid> */}
+
+
+
+
+                    <Grid item lg={10} md={9} sm={9} xs={9} sx={{ display: "inline-flex", marginTop:{lg:"-65px", md:"-50px", sm:"-75px"}, flexDirection: "column", textAlign: "start" }} >
 
                         <p><b>{props.data.courseCode}</b></p>
                         <p style={{ fontStyle: "italic" }}>Course Title: {props.data.courseTitle}</p>
@@ -48,25 +78,9 @@ export const CourseCardHeader = (props) => {
                     </Grid>
 
 
-
-                    <Grid item lg={2} md={2} sm={3} xs={9} sx={{ alignItems: "center", fontSize: "24px" }}>
-
-                        <IconButton
-                            size="large"
-                            aria-label="show more"
-                            aria-haspopup="true"
-                            onClick={handleClick}>
-
-                            <CgOptions />
-
-                        </IconButton>
-
-                    </Grid>
-
-
                 </Grid>
 
-            </Card>
+            {/* </Card> */}
 
             <Menu
                 id="basic-menu"
@@ -108,6 +122,9 @@ export const CourseCardHeader = (props) => {
 
 
             </Menu>
+
+
+            <hr></hr>
 
 
         </div>

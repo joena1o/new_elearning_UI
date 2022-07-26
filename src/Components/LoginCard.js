@@ -50,9 +50,14 @@ export default function LoginCard(){
                 window.localStorage.setItem("dept", value.data.department);
                 window.localStorage.setItem("reg", value.data.reg);
                 window.localStorage.setItem("id", value.data._id);
+                
                  navigate("/home");
 
             
+
+               }else{
+
+                // Error Response
 
                }
 
@@ -76,7 +81,7 @@ export default function LoginCard(){
                 return;
         }
         else{
-            if(password !== cpassword){
+            if(password !== cpassword && (password.length < 5) ){
 
                 setErrorText("Passwords do not match");
                 setError(true);
@@ -97,6 +102,8 @@ export default function LoginCard(){
                         setOpen(false);
                         setMode("login");
                         console.log(value.data);
+                    }else{
+                        // ERROR RESPONSE
                     }
 
                 console.log(value);

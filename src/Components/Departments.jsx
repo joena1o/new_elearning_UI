@@ -1,6 +1,6 @@
 import {FcNext, FcPrevious} from 'react-icons/fc';
 import { Chip, Avatar } from "@mui/material";
-import { margin } from '@mui/system';
+
 
 export const Departments = () => {
 
