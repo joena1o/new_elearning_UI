@@ -15,20 +15,14 @@ import { useNavigate } from "react-router-dom";
 
 export default function LoginCard(){
 
-    // const [auth, setAuth] = useState(false);
 
-    const navigate = useNavigate();
-
-    
-   
+    const navigate = useNavigate();   
 
     const Login_ = async(e)=>{
 
         e.preventDefault();
 
         setOpen(true);
-
-        // console.log(regno + password);
 
         if(regno === "" && password === ""){
             setOpen(false);
@@ -39,8 +33,6 @@ export default function LoginCard(){
             await axios.post(conn+"/api/login",{"reg":regno, "password":password}).then((value)=>{
                 
                 setOpen(false);
-
-                // console.log(value.data);
 
                if(value.data){
 
@@ -58,6 +50,7 @@ export default function LoginCard(){
                }else{
 
                 // Error Response
+
 
                }
 
@@ -158,15 +151,9 @@ export default function LoginCard(){
 
         <div className="login-section">
 
-
-
-
-
             <div className="login-card">
 
                 <div className="login-display">
-
-
                     <div>
                     <Lottie animationData={groovyWalkAnimation} />
                     </div>

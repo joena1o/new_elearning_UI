@@ -66,7 +66,7 @@ export const CourseRoute = () => {
         setOpen(true);
 
 
-        if()
+
         
 
         await axios.post(conn + "/api/LectureRoom", {

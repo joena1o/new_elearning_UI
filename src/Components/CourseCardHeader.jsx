@@ -33,17 +33,17 @@ export const CourseCardHeader = (props) => {
 
             {/* <Card variant="outlined"> */}
 
-                <Grid container sx={{ width: "100%", flexGrow: "1", padding: "60px 30px", alignItems: "center" }}>
+            <Grid container sx={{ width: "100%", flexGrow: "1", padding: "60px 30px", alignItems: "center" }}>
 
 
 
-                    <Grid item lg={2} md={2} sm={3} xs={9} sx={{ alignItems: "center", fontSize: "24px" }}>
+                <Grid item lg={2} md={2} sm={3} xs={9} sx={{ alignItems: "center", fontSize: "24px" }}>
 
 
 
                     {/* <Avatar sx={{ width: { xl: 100, lg: 90, md:70, sm: 90, xs: 100 }, height: { xl: 100, lg: 90, md:70, sm: 90, xs: 100 }, backgroundColor: "antiquewhite", color: "black", fontWeight: "bold" }}>H</Avatar> */}
 
-                        {/* <IconButton
+                    {/* <IconButton
                             size="large"
                             aria-label="show more"
                             aria-haspopup="true"
@@ -53,17 +53,19 @@ export const CourseCardHeader = (props) => {
 
                         </IconButton> */}
 
-                    </Grid>
+                </Grid>
 
 
-                    {/* <Grid item md={1}>
+                {/* <Grid item md={1}>
 
                     </Grid> */}
 
 
 
 
-                    <Grid item lg={10} md={9} sm={9} xs={9} sx={{ display: "inline-flex", marginTop:{lg:"-65px", md:"-50px", sm:"-75px"}, flexDirection: "column", textAlign: "start" }} >
+                <Grid  container lg={10} md={9} sm={9} xs={9} sx={{ display: "inline-flex", marginTop: { lg: "-65px", md: "-50px", sm: "-75px" }, flexDirection: "column", textAlign: "start" }} >
+
+                    <Grid item lg={10}>
 
                         <p><b>{props.data.courseCode}</b></p>
                         <p style={{ fontStyle: "italic" }}>Course Title: {props.data.courseTitle}</p>
@@ -75,10 +77,39 @@ export const CourseCardHeader = (props) => {
                             <p style={{ color: "grey", textTransform: "uppercase", marginTop: "10px" }}><b>Number Of Students: 0</b></p>
                         </Box>
 
+
+                        <div className='filter' style={{ marginTop: "20px" }}>
+
+                            <Button variant="outlined" color="warning" sx={{ marginRight: "5px" }}>Resources</Button>
+                            <Button variant="outlined" color="warning" sx={{ marginRight: "5px" }}>Lecture</Button>
+                            <Button variant="outlined" color="warning" sx={{ marginRight: "5px" }}>Announcement</Button>
+
+                        </div>
+
                     </Grid>
 
 
+                    {/* <Grid item lg={1}>
+
+
+                        <IconButton
+                            size="large"
+                            aria-label="show more"
+                            aria-haspopup="true"
+                            onClick={handleClick}>
+
+                            <CgOptions />
+
+                        </IconButton>
+
+
+
+                    </Grid> */}
+
                 </Grid>
+
+
+            </Grid>
 
             {/* </Card> */}
 
@@ -101,9 +132,9 @@ export const CourseCardHeader = (props) => {
                                 Leave Class
                             </MenuItem>
 
-                            
+
                         </>
-                    ):(
+                    ) : (
 
                         <>
                             <MenuItem >
@@ -122,6 +153,9 @@ export const CourseCardHeader = (props) => {
 
 
             </Menu>
+
+
+
 
 
             <hr></hr>

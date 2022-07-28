@@ -28,6 +28,7 @@ export const ResourceRoute = () => {
 
 
     const token = window.localStorage.getItem('token');
+    const fullname = window.localStorage.getItem('fullname');
 
 
     const config = {
@@ -46,13 +47,13 @@ export const ResourceRoute = () => {
 
             const formData = new FormData();
             formData.append("attach", attach);
-            formData.append("filename", filename);
             formData.append("title", title);
             formData.append("department", department);
             formData.append("school", school);
             formData.append("user", window.localStorage.getItem("reg"))
             formData.append("description", descript)
             formData.append("category", category);
+            formData.append("CreatedBy", fullname);
 
 
         if (title.length === 0 && department.length === 0 && school.length === 0 && descript.length === 0 && category.length === 0) {
@@ -64,12 +65,10 @@ export const ResourceRoute = () => {
 
             console.log(formData.getAll("category"));
 
-            await axios.post(conn + '/api/resources',
+            await axios.post(conn + 'api/v1/public',
                 formData,
                 config
             ).then((value) => {
-
-
                 /// CHECK RESPONSE
                 console.log(value.data);
             });
@@ -112,7 +111,6 @@ export const ResourceRoute = () => {
                 <b style={{letterSpacing:"2px"}}>RESOURCES</b>
 
                 <div className='resource-route-icons'>
-
                     
                     <span><MdFormatListBulleted /></span>
                     {(user!=="student")?(

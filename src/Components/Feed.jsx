@@ -11,7 +11,7 @@ export const Feed = (props) => {
 
 
 
-        <Box className="feed" sx={{ width: { md: "75%", sm: "82%", lg: "67%", xs: "94%" } }} >
+        <Box className="feed" sx={{ width: { md: "75%", sm: "82%", lg: "70%", xs: "94%", xl:"65%" } }} >
             <Card onClick={() => navigate(`bookview`, { state: { book: props.data } })} variant='outlined'>
 
 
@@ -21,7 +21,7 @@ export const Feed = (props) => {
 
                         <Grid item lg={1} md={2} sm={2} xs={2} sx={{ alignItems: "center", justifyContent: "flex-end", width: "80%" }}>
 
-                            <Avatar sx={{ width: { xl: 56, lg: 75, sm: 56, xs: 56 }, height: { xl: 56, lg: 75, sm: 56, xs: 56 }, backgroundColor: "antiquewhite", color: "black", fontWeight: "bold" }}>H</Avatar>
+                            <Avatar sx={{ width: { xl: 56, lg: 70, md:60, sm: 56, xs: 56 }, height: { xl: 56, lg: 70, md:60, sm: 56, xs: 56 }, backgroundColor: "antiquewhite", color: "black", fontWeight: "bold" }}>H</Avatar>
 
                         </Grid>
 
