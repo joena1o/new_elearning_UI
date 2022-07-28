@@ -32,6 +32,7 @@ export const CourseRoute = () => {
     const [classtype, setClass] = useState("private");
 
 
+
     const user = window.localStorage.getItem("user_type");
     const name = window.localStorage.getItem("fullname");
     const reg = window.localStorage.getItem("reg");
@@ -61,11 +62,11 @@ export const CourseRoute = () => {
     const createCourse = async (e) => {
 
         e.preventDefault();
-
         handleClose();
-
         setOpen(true);
 
+
+        if()
         
 
         await axios.post(conn + "/api/LectureRoom", {
@@ -73,22 +74,16 @@ export const CourseRoute = () => {
             "courseCode": code,
             "department": department,
             "classtype": classtype,
-            "lecturename": name,
+            "createdBy": name,
             "reg": reg
         }, config).then((value) => {
-
             setOpen(false);
-
             console.log(value.data);
-
         });
 
     }
 
     const getCourses = async () => {
-
-       
-
 
         await axios.get(conn+"/api/LectureRoom",config).then((value)=>{
 
@@ -203,15 +198,15 @@ export const CourseRoute = () => {
                                 <label>
                                     Course Title
                                 </label>
-                                <input value={title} onChange={(e) => setTitle(e.target.value)} className="form-control" type='text' placeholder="Course Title" />
+                                <input value={title} required onChange={(e) => setTitle(e.target.value)} className="form-control" type='text' placeholder="Course Title" />
                                 <label>
                                     Course Code
                                 </label>
-                                <input value={code} onChange={(e) => setCode(e.target.value)} className="form-control" type='text' placeholder="Course Code" />
+                                <input value={code} required onChange={(e) => setCode(e.target.value)} className="form-control" type='text' placeholder="Course Code" />
                                 <label>
                                     Department
                                 </label>
-                                <input value={department} onChange={(e) => setDepartment(e.target.value)} className="form-control" type='text' placeholder="Department" />
+                                <input value={department} required onChange={(e) => setDepartment(e.target.value)} className="form-control" type='text' placeholder="Department" />
 
                                 <label>
                                     Class Type
