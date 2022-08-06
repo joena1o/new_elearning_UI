@@ -1,0 +1,1 @@
+export const coursecode = ['BTH', 'CSC', 'MTH', 'OPR', 'IMTH', 'EEE', 'ASCI', 'CRP', 'PLT', 'SLT', 'ZOO', 'BIO', 'MCB', 'BCH', 'CHM', 'ICH', 'PHY', 'GLY', 'GRY', 'FSH', 'FST', 'SSC', 'MEC', 'CVE', 'CHE', 'BFI', 'IND', 'HEC', 'AGE']

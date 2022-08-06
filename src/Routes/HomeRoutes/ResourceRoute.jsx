@@ -5,8 +5,12 @@ import { ResourceLayout } from "../../Layouts/ResourceLayout";
 import { MdFormatListBulleted } from 'react-icons/md';
 import { TbUpload } from 'react-icons/tb';
 import axios from "axios";
-import {Departments} from '../../Components/Departments';
-import { CgAttachment } from "react-icons/cg";
+import { Departments } from '../../Components/Departments';
+import { CircularProgress } from '@mui/material';
+import Dialog from '@mui/material/Dialog';
+import Lottie from 'lottie-react';
+import popup from '../../Assets/96295-success-popup.json';
+import { dept } from "../../Data/Departments";
 
 
 
@@ -16,26 +20,29 @@ export const ResourceRoute = () => {
 
 
     const [title, setTitle] = useState("");
-    const [department, setDepartment] = useState("");
+    const [department, setDepartment] = useState(window.localStorage.getItem("dept"));
     const [school, setSchool] = useState("");
     const [descript, setDescript] = useState("");
     const [category, setCategory] = useState("");
-
     const [attach, setFile] = useState();
-    const [filename, setFilename] = useState("");
-
-  
 
 
-    const token = window.localStorage.getItem('token');
-    const fullname = window.localStorage.getItem('fullname');
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
+
+    const [loading, setLoad] = useState(false);
+    const [error, setError] = useState(false);
+    const [errormsg, setMsg] = useState("");
+
+    const userid = window.localStorage.getItem('id');
 
 
     const config = {
         headers: {
             'Content-type': 'application/json',
-            'Authorization': 'Bearer ' + JSON.parse(token)
-          }
+        }
     };
 
 
@@ -44,16 +51,16 @@ export const ResourceRoute = () => {
 
         event.preventDefault();
 
+        setLoad(true);
 
-            const formData = new FormData();
-            formData.append("attach", attach);
-            formData.append("title", title);
-            formData.append("department", department);
-            formData.append("school", school);
-            formData.append("user", window.localStorage.getItem("reg"))
-            formData.append("description", descript)
-            formData.append("category", category);
-            formData.append("CreatedBy", fullname);
+
+        const formData = new FormData();
+        formData.append("attach", attach);
+        formData.append("title", title);
+        formData.append("department", department);
+        formData.append("school", school);
+        formData.append("description", descript)
+        formData.append("createdBy", userid);
 
 
         if (title.length === 0 && department.length === 0 && school.length === 0 && descript.length === 0 && category.length === 0) {
@@ -61,16 +68,24 @@ export const ResourceRoute = () => {
             alert("Empty Fields");
             return;
 
-        }else {
+        } else {
 
             console.log(formData.getAll("category"));
 
-            await axios.post(conn + 'api/v1/public',
+            await axios.post(conn + '/api/v1/public',
                 formData,
                 config
             ).then((value) => {
                 /// CHECK RESPONSE
-                console.log(value.data);
+                setLoad(false);
+                setMsg(value.data.msg);
+                setError(true);
+                console.log(value.data.msg);
+            }).catch((err) => {
+                setLoad(false);
+                setMsg(err.data);
+                setError(true);
+                console.log(err.data);
             });
 
         }
@@ -78,16 +93,38 @@ export const ResourceRoute = () => {
     }
 
 
-    const saveFile = (e) => {
-        setFile(e.target.files[0]);
-        setFilename(e.target.files[0].name);
+    const EditResource = async(e)=>{
+
+        e.preventDefault();
+
+        setLoad(true);
+
+        const formData = new FormData();
+        formData.append("title", title);
+        formData.append("department", department);
+        formData.append("school", school);
+        formData.append("description", descript);
+
+
+        if(title === "" && department ==="" && school === "" && descript === ""){
+        alert("Empty fields");
+        return;
+        }else{
+            await axios.put(conn + '/api/v1/public',
+            formData).then((value)=>{
+                console.log(value.data);
+            }).catch((error)=>{
+                console.log(error.data);
+            });
+        }
+    
     }
 
 
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
 
+    const saveFile = (e) => {
+        setFile(e.target.files[0]);
+    }
 
     const style = {
         position: 'absolute',
@@ -108,37 +145,51 @@ export const ResourceRoute = () => {
 
             <div className="Banner">
 
-                <b style={{letterSpacing:"2px"}}>RESOURCES</b>
-
+                <b style={{ letterSpacing: "2px" }}>RESOURCES</b>
+                
                 <div className='resource-route-icons'>
-                    
+
                     <span><MdFormatListBulleted /></span>
-                    {(user!=="student")?(
+                    {(user !== "student") ? (
                         <span onClick={() => handleOpen()}><TbUpload /></span>
-                    ):(<></>)}
-                    
+                    ) : (<></>)}
+
                 </div>
 
             </div>
 
             <Departments />
 
+            <Dialog onClose={() => setLoad(false)} open={loading}>
+                <Box sx={{ padding: "20px" }}>
+                    <CircularProgress />
+                </Box>
+
+            </Dialog>
+
+            <Dialog onClose={() => setError(false)} open={error}>
+
+                    <div style={{width:"50px",height:"50px"}}>
+                    <Lottie animationData={popup} />
+                    </div>
+
+                <Box sx={{ padding: "20px" }}>
+                    <p>{errormsg}</p>
+                </Box>
+
+            </Dialog>
 
 
-            <ResourceLayout  />
 
-
-
-
-
+            <ResourceLayout />
 
 
             <Modal
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-            >
+                aria-describedby="modal-modal-description">
+
                 <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
                         Upload Resource
@@ -153,7 +204,13 @@ export const ResourceRoute = () => {
                             <label>
                                 Department
                             </label>
-                            <input value={department} required onChange={(e) => setDepartment(e.target.value)} className="form-control" type='text' placeholder="Department" />
+                            <select onChange={(e) => setDepartment(e.target.value)} className="form-control">
+                                    {
+                                        dept.map((val, key)=>(
+                                            <option value={val} key={key}>{val}</option>
+                                        ))
+                                    }
+                            </select>
                             <label>
                                 School
                             </label>
@@ -161,11 +218,11 @@ export const ResourceRoute = () => {
                             <label>
                                 Description
                             </label>
-                            <input value={descript} required onChange={(e) => setDescript(e.target.value)} className="form-control" type='text' placeholder="Author" />
+                            <input value={descript} required onChange={(e) => setDescript(e.target.value)} className="form-control" type='text' placeholder="Description" />
                             <label>
                                 Category
                             </label>
-                            <select  value={category} required onChange={(e) => setCategory(e.target.value)} >
+                            <select value={category} required onChange={(e) => setCategory(e.target.value)} >
 
                                 <option value="books">Books</option>
                                 <option value="handout">Paper</option>

@@ -13,15 +13,9 @@ export const CourseGroup = ()=>{
 
         <div style={{width:"100%"}}>
 
-            {/* <CourseNav /> */}
-
             <CourseCardHeader data={location.state.data} />
 
-            <HomeFeed />
-
-            
-
-
+            <HomeFeed course={true} />
 
         </div>
 

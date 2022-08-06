@@ -15,31 +15,29 @@ export const ResourceLayout = ()=>{
 
     });
 
+    const [edit, setEdit] = useState(false);
+    const handleEdit = () => setEdit(true);
+    const handleEditClose = () => setEdit(false);
+
 
     const [resource, setResource] = useState([]);
 
     const [isloading, setStatus] = useState(true);
 
 
-    const token = window.localStorage.getItem('token');
-
 
     const config = {
         headers: {
             'Content-type': 'application/json',
-            'Authorization': 'Bearer ' + JSON.parse(token)
           }
     };
 
 
     const getResource = async () =>{
 
-        await axios.get(conn+"/api/resources", config).then((value)=>{
-
-            
+        await axios.get(conn+"/api/v1/public", config).then((value)=>{
 
             if(value.statusText==="OK"){
-
                 setResource((value.data));
                 setStatus(false);
             }else{
@@ -77,25 +75,11 @@ export const ResourceLayout = ()=>{
              
                                  </Grid>
              
-        
+
                                 ))
-                            
-
-                        )
-
-
-                    }
-
-
-                
                     
-                
-                   
-
-
-                   
-
-
+                        )
+                    }
                 </Grid>
 
 

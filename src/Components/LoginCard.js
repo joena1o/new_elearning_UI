@@ -1,20 +1,21 @@
 import Lottie from "lottie-react";
 import groovyWalkAnimation from "../Assets/Login_popup.json";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { conn } from "../util/conn";
 import {Button, Box} from '@mui/material';
 import {CircularProgress} from '@mui/material';
 import Dialog from '@mui/material/Dialog';
 import {Alert} from '@mui/material';
+import { Chip, Avatar } from "@mui/material";
 import  axios  from "axios";
 import { useNavigate } from "react-router-dom";
+import { dept } from "../Data/Departments";
 
 
 
 
 
 export default function LoginCard(){
-
 
     const navigate = useNavigate();   
 
@@ -25,39 +26,43 @@ export default function LoginCard(){
         setOpen(true);
 
         if(regno === "" && password === ""){
+
             setOpen(false);
             setErrorText("Please fill in blank fields");
             setError(true);
             return;
+
         }else{
-            await axios.post(conn+"/api/login",{"reg":regno, "password":password}).then((value)=>{
-                
+
+                await axios.post(conn+"/api/v1/login",{"reg":regno, "password":password}).then((value)=>{
+            
                 setOpen(false);
 
-               if(value.data){
+               if(value.data.length > 0){
 
-                window.localStorage.setItem("token", JSON.stringify(value.data.token));
-                window.localStorage.setItem("user_type", value.data.acounttype);
-                window.localStorage.setItem("fullname", value.data.fullname);
-                window.localStorage.setItem("dept", value.data.department);
-                window.localStorage.setItem("reg", value.data.reg);
-                window.localStorage.setItem("id", value.data._id);
-                
-                 navigate("/home");
-
-            
-
-               }else{
-
-                // Error Response
-
+                window.localStorage.setItem("email", value.data[0]['email']);
+                window.localStorage.setItem("user_type", value.data[0]['accounttype']);
+                window.localStorage.setItem("fullname", value.data[0]['fullname']);
+                window.localStorage.setItem("dept", value.data[0]['department']);
+                window.localStorage.setItem("reg", value.data[0]['reg']);
+                window.localStorage.setItem("id", value.data[0]['_id']);
+              
+                  navigate("/home");
 
                }
+        
 
+            }).catch(function(error){
+                setMessage(JSON.stringify(error.response.data.msg));
+                setOpen(false);
+                openError(true);
             });
         }
 
     }
+
+
+
     
     const SignUp_ = async (e)=>{
 
@@ -66,7 +71,7 @@ export default function LoginCard(){
         setOpen(true);
 
 
-        if(regno ==="" && dept ==="" && email === "" && password ==="" && cpassword === ""){
+        if(regno ==="" && department ==="" && email === "" && password ==="" && cpassword === ""){
         
                 setErrorText("Please fill in blank fields");
                 setError(true);
@@ -80,41 +85,41 @@ export default function LoginCard(){
                 setError(true);
 
                 return;
+            
             }else{
 
-                await axios.post(conn+"/api/register", {
-                "reg":regno,
-                "department":dept,
-                "email":email,
-                "acounttype": user,
-                "fullname":name,
-                "password":password}).then((value)=>{
-
-
+                const formData = new FormData();
+                formData.append("reg",regno);
+                formData.append("department",department);
+                formData.append("email",email);
+                formData.append("accounttype",user);
+                formData.append("fullname",name)
+                formData.append("password",password)
+            
+                
+                await axios.post(conn+"/api/v1/register", formData).then((value)=>{
                     if(value.status === 201 || value.status === "201"){
                         setOpen(false);
                         setMode("login");
                         console.log(value.data);
-                    }else{
-                        // ERROR RESPONSE
                     }
+                    console.log(value);
+                }).catch(function(error){
+                    setMessage("failed");
+                    setOpen(false);
+                    openError(true);
+                });
 
-                console.log(value);
-
-            })
-
-            }
         }
-            
-            
-
+        }
+        
     }
 
 
     const [mode, setMode] = useState('login');
 
     const [regno, setReg] = useState("");
-    const [dept, setDept] = useState("");
+    const [department, setDept] = useState("");
     const [email, setEmail] = useState("");
     const [user, setUser] = useState("student");
     const [password, setPassword] = useState("");
@@ -130,16 +135,26 @@ export default function LoginCard(){
 
     const [open, setOpen] = useState(false);
 
+    const [erro, openError] = useState(false);
+
+    const [message, setMessage] = useState("");
 
     return(
 
 
         <>
 
-
-    <Dialog onClose={()=>setOpen(false)} open={open}>
+<Dialog onClose={()=>setOpen(false)} open={open}>
       <Box sx={{padding:"20px"}}>
       <CircularProgress />
+      </Box>
+      
+    </Dialog>
+
+
+    <Dialog onClose={()=>openError(false)} open={erro}>
+      <Box sx={{padding:"20px"}}>
+      <p>Login failed, review details and try again</p>
       </Box>
       
     </Dialog>
@@ -200,7 +215,7 @@ export default function LoginCard(){
                    <form>
 
                         <div className="form-group">
-                        <label>Reg No.</label>
+                        <label>Enter Fullname</label>
                         <input type='text' value={name} onChange={(e)=>setName(e.target.value)} className="form-control" placeholder="Enter Full name" />
                         </div>
 
@@ -212,11 +227,14 @@ export default function LoginCard(){
 
                         <div className="form-group">
                         <label>Department</label>
-                        <input type='text' value={dept} onChange={(e)=>setDept(e.target.value)} className="form-control" placeholder="Department" />
+                        <select className="form-control" onChange={(e)=>setDept(e.target.value)}>
+                                    {
+                                        dept.map((val, key)=>(
+                                            <option value={val} key={key}>{val}</option>
+                                        ))
+                                    }
+                        </select>
                         </div>
-                        
-
-
                         <div className="form-group">
                         <label>Email</label>
                         <input type='email' value={email} onChange={(e)=>setEmail(e.target.value)} className="form-control" placeholder="Enter Email Address" />
@@ -228,11 +246,12 @@ export default function LoginCard(){
                         </div>
 
                          <div className="form-group">
-                        <label>User Type</label>
-                        <select onClick={(e)=>setUser(e.target.value)}>
+                        <label>User Type</label><br></br>
+                        <select onClick={(e)=>setUser(e.target.value)} className="form-control">
                             <option value="student">Student</option>
                             <option value="lecturer">Lecturer</option>
                         </select>
+                
                         </div>
 
                         <div className="form-group">

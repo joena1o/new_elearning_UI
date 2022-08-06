@@ -9,43 +9,61 @@ import { Loader } from '../Components/Loader';
 export const RightLayout = () => {
 
 
-    const token = window.localStorage.getItem("token");
+
+
+  const [courses, setCourses] = useState([]);  
+    
 
   const config = {
     headers: {
         'Content-type': 'application/json',
-        'Authorization': 'Bearer ' + JSON.parse(token)
+        // 'Authorization': 'Bearer ' + JSON.parse(token)
       }
   };
 
 
+  const fetchCourses = async()=>{
+
+    await axios.get(conn + "/api/v1/courses", config).then((value) => {
+
+        if (value.status == "200" || value.status == 200) {
+            setCourses(value.data);
+            console.log(value.data);
+            // setStatus(false);
+            // setWait(false);
+        }else{
+            // setWait(false);
+        }
+    })
+
+  }
+
+
     useEffect(()=>{
 
-        fetchResource();
+     fetchCourses();
 
     });
 
 
-    const [resources, setResource] = useState([]);
+    // const [resources, setResource] = useState([]);
 
 
-    const fetchResource = async ()=>{
+    // const fetchResource = async ()=>{
 
-        axios.get(conn+"/api/LectureRoom",config).then((value)=>{
+    //     axios.get(conn+"/api/LectureRoom",config).then((value)=>{
 
-    
+    //         if(value.status == "200" || value.status == 200){
 
-            if(value.status == "200" || value.status == 200){
+    //             setResource(value.data);
 
-                setResource(value.data);
-
-            }
+    //         }
 
 
 
-        });
+    //     });
 
-    } 
+    // } 
 
     return (
 
@@ -60,26 +78,17 @@ export const RightLayout = () => {
         
                 <div className='header'>
 
-                    <b>Join Lectures</b>
+                    <b>Join Courses</b>
 
                 </div>
-
-
                {
-               
-               (resources!==[])?(<div>
-                    
+               (courses!==[])?(<div>
                     {
-                        (resources).map((value)=>
-                        
+                        (courses).map((value)=>
                         <ResourceRightCard data={value} />
-
-                        )
+                       )
                     }
-
                 </div>):(<Loader /> )
-
-
                 }
 
                 

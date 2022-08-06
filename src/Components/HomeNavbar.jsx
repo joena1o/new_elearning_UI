@@ -106,7 +106,7 @@ export default function HomeNavbar() {
                             anchorEl={anchorEl}
                             open={open}
                             onClose={handleClose}
-                            sx={{padding:"30px 10px"}}
+                            sx={{padding:"30px 20px"}}
                             MenuListProps={{
                                 'aria-labelledby': 'basic-button',
                             }}
@@ -128,7 +128,7 @@ export default function HomeNavbar() {
 
                                         <p style={{color:"grey"}}><b>{window.localStorage.getItem("fullname")}</b></p>
                                         <p style={{color:"grey"}}><b>{window.localStorage.getItem("reg")}</b></p>
-                                        <small>{window.localStorage.getItem("dept")}</small><br></br>
+                                        <small>{window.localStorage.getItem("dept")}</small><br></br><br></br>
                                         <small>{window.localStorage.getItem("user_type").toUpperCase()}</small>
                                     </Grid>
                                 </Grid>
@@ -136,8 +136,9 @@ export default function HomeNavbar() {
 
                             </MenuItem>
                             <MenuItem sx={{width:"100%"}} onClick={handleClose}><Button sx={{width:"100%"}} onClick={()=>navigate("profile")} variant="outlined" color="warning">Profile</Button></MenuItem>
-                            <Divider />
+                            {/* <Divider /> */}
 
+                            <br></br>
                             <MenuItem onClick={handleClose} p={5}>
                             <b>Account</b>
                             </MenuItem>

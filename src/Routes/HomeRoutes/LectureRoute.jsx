@@ -3,6 +3,7 @@ import { useState } from "react";
 import {conn} from '../../util/conn';
 import axios from "axios";
 import { config } from "../../util/config";
+import { dept } from "../../Data/Departments";
 
 
 
@@ -17,7 +18,7 @@ export const LectureRoute = () => {
 
     const [title, setTitle] = useState("");
     const [code, setCode] = useState("");
-    const [dept, setDept] = useState("");
+    const [department, setDept] = useState("");
     const [school, setSchool] = useState("");
     const [date, setDate] = useState("");
     const [time, setTime] = useState("");
@@ -27,7 +28,7 @@ export const LectureRoute = () => {
 
         e.preventDefault();
 
-        if(title.length === 0 && code.length === 0 && dept.length === 0 && school.length === 0 && date.length === 0 && time.length === 0 ){
+        if(title.length === 0 && code.length === 0 && department.length === 0 && school.length === 0 && date.length === 0 && time.length === 0 ){
             return;
         }else{
 
@@ -104,11 +105,17 @@ export const LectureRoute = () => {
                             <label>
                                 Course Code
                             </label>
-                            <input value={dept} onChange={(e)=>setDept(e.target.value)} className="form-control" type='text' placeholder="Course Code" />
+                            <input value={code} onChange={(e)=>setCode(e.target.value)} className="form-control" type='text' placeholder="Course Code" />
                             <label>
                                 Department
                             </label>
-                            <input value={school} onChange={(e)=>setSchool(e.target.value)} className="form-control" type='text' placeholder="Department" />
+                            <select onChange={(e) => setDept(e.target.value)} className="form-control">
+                                    {
+                                        dept.map((val, key)=>(
+                                            <option value={val} key={key}>{val}</option>
+                                        ))
+                                    }
+                                </select>
                             <label>
                                 Lecture Date
                             </label>

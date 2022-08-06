@@ -27,7 +27,7 @@ export const HomeCenterLayout = ()=>{
             <Route exact path='/' element={<>
 
                 <Departments />
-                <HomeFeed />
+                <HomeFeed course={false} />
 
 
             </>}>

@@ -1,22 +1,28 @@
 import {FcNext, FcPrevious} from 'react-icons/fc';
 import { Chip, Avatar } from "@mui/material";
+import { dept } from '../Data/Departments';
+import { GiBoltDrop } from 'react-icons/gi';
+import { useEffect } from 'react';
 
 
 export const Departments = () => {
 
+
+    useEffect(()=>{
+
+        // if(!dept.includes("All"))
+        // dept.unshift("All");
+
+    });
+
     const style = {
         padding:"0px 5x",
         margin: '0px 5px',
-        // backgroundColor:"antiquewhite",
-        backgroundColor: '#FCE266',
-
+        backgroundColor: '#d1d1d1',
+        fontWeight: "normal",
+        fontSize: "15px",
         color:"black"
     }
-
-
-    const dept = [
-        "AGR", "CVE", "EEE", "CTE", "LTS", "IMT", "MGT","CSC","BCH", "BTH","CHE","BCT","AGR", "CVE", "EEE", "CTE", "LTS", "IMT", "MGT","CSC","BCH", "BTH","CHE","BCT"
-    ]
     
 
     const prev = ()=>{

@@ -68,14 +68,16 @@ export const CourseCardHeader = (props) => {
                     <Grid item lg={10}>
 
                         <p><b>{props.data.courseCode}</b></p>
-                        <p style={{ fontStyle: "italic" }}>Course Title: {props.data.courseTitle}</p>
-                        <p style={{ fontStyle: "italic" }}>Department: {props.data.department}</p>
-                        <p style={{ fontStyle: "italic" }}>Time Created: {props.data.createdAt}</p>
-                        <p style={{ fontStyle: "italic" }}>Class Type: {props.data.classtype}</p>
+                        <p style={{fontStyle:"italic"}}>Course Title: {props.data.courseTitle}</p>
+                        <p style={{fontStyle:"italic"}}>Department: {props.data.department}</p>
+                        <p style={{fontStyle:"italic"}}>Course Content: {props.data.courseContent}</p>
+                        <p style={{fontStyle:"italic"}}>Class Type: {props.data.classType}</p>
+                        <br></br>
 
                         <Box>
                             <p style={{ color: "grey", textTransform: "uppercase", marginTop: "10px" }}><b>Number Of Students: 0</b></p>
                         </Box>
+                        <br></br>
 
 
                         <div className='filter' style={{ marginTop: "20px" }}>
