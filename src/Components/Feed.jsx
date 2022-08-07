@@ -48,9 +48,9 @@ export const Feed = (props) => {
                                 </div>
                             </Box>
 
-                            {console.log(conn+props.data.attach)}
+                            
 
-                            {(props.course==false)?<iframe title='pdf' src={conn+"/"+props.data.attach} width="100%" height="200px" scrolling="no"  style={{overflow:"hidden"}} ></iframe>:
+                            {(props.course==false)?<iframe title='pdf' src={props.data.attach} width="100%" height="200px" scrolling="no"  style={{overflow:"hidden"}} ></iframe>:
                             <></>}
                         
                             <br></br>

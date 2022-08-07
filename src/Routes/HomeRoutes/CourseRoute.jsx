@@ -1,11 +1,11 @@
-import { Button, Box, Modal, Typography, Card, Grid, Tab, Tabs } from '@mui/material';
+import { Button, Box, Modal, Typography, Tab, Tabs } from '@mui/material';
 import axios from 'axios';
 import { useState } from "react";
 import { conn } from '../../util/conn';
-import { CgOptions } from 'react-icons/cg';
+// import { CgOptions } from 'react-icons/cg';
 import { CoursesCard } from '../../Components/CoursesCard';
 import { CircularProgress } from '@mui/material';
-import DialogTitle from '@mui/material/DialogTitle';
+// import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -13,6 +13,7 @@ import { Loader } from '../../Components/Loader';
 import Lottie from "lottie-react";
 import Empty from "../../Assets/629-empty-box.json";
 import { dept } from '../../Data/Departments';
+// import { TabPanel } from '@mui/material';
 
 
 
@@ -43,13 +44,12 @@ export const CourseRoute = () => {
 
 
     const user = window.localStorage.getItem("user_type");
-
-
     const [isloading, setStatus] = useState(true);
-
     const [courses, setCourses] = useState([]);
-
     const [waiting, setWait] = useState(true);
+
+
+    const [index,setIndex] = useState("");
 
 
 
@@ -76,11 +76,9 @@ export const CourseRoute = () => {
     };
 
     const createCourse = async (e) => {
-
         e.preventDefault();
         handleClose();
         setOpen(true);
-
         await axios.post(conn + "/api/v1/courses", {
             "courseTitle": title,
             "courseCode": code,
@@ -91,28 +89,28 @@ export const CourseRoute = () => {
             "reg": reg
         }).then((value) => {
             setOpen(false);
-            console.log(value.data);
         }).catch((error) => {
-
         });
-
     }
 
     const getCourses = async () => {
-
         await axios.get(conn + "/api/v1/courses", config).then((value) => {
-
-            if (value.status == "200" || value.status == 200) {
-                setCourses(value.data);
+            if (value.status === "200" || value.status === 200) {
+                setCourses(value.data.reverse());
                 setStatus(false);
                 setWait(false);
             } else {
                 setWait(false);
             }
         })
+    }
 
 
-
+    const DeleteCourse = async (e)=>{
+        e.preventDefault();
+        await axios.delete(conn+"/api/v1/course"+index).then((value)=>{
+            console.log(value.data);
+        });
     }
 
 
@@ -156,6 +154,8 @@ export const CourseRoute = () => {
 
                 </Box>
 
+              {(value === "1")?<Box>
+
                
 
                 {(courses.length == 0) ? <>{(waiting === false) ? <div className='inner_'>
@@ -163,7 +163,7 @@ export const CourseRoute = () => {
                     No Courses created
 
 
-                    <div>
+                    <div style={{ height: "300px", margin: "30px", display: "inline-flex", justifyContent: "center" }}>
                         <Lottie animationData={Empty} />
                     </div>
 
@@ -177,38 +177,40 @@ export const CourseRoute = () => {
                     {(user === "lecturer") ? (<Box sx={{ width: "100%", display: "inline-flex", justifyContent: "space-between", alignItems: "center", flexDirection: "" }} p={3}>
 
                         <div className=''>
-
-                            <b>Registered Courses</b>
-
+                            <b></b>
                         </div>
-
-
 
                         <Button variant="outlined" onClick={() => setOpen(true)}>Create Course</Button>
 
                     </Box>) : (<></>)
                     }
 
-                    <hr style={{ margin: "30px" }}></hr>
-
                     <Box className='courses' p={5}>
 
                         <Box p={2} sx={{ textTransform: "uppercase", letterSpacing: "2px" }}><h4>Courses</h4></Box>
 
-                        {/* <hr></hr> */}
+                        <hr></hr>
 
                         {
                             (isloading) ? (
                                 <Loader />
                             ) : (
                                 courses.map((val, key) =>
-                                    <CoursesCard data={val} key={key} callback={handleOpen} callbackB={handleOpen2} />
+                                    <CoursesCard data={val} key={key} callback={handleOpen} callbackB={handleOpen2} callbackC={setIndex} />
                                 )
                             )
                         }
 
                     </Box>
 
+                </>}
+
+                </Box>:<>
+                
+                <div style={{ height:"300px", display:"inline-flex", justifyContent:"center", width:"100%"}}>
+                <Lottie animationData={Empty} />
+                </div>
+                
                 </>}
 
 
@@ -289,7 +291,7 @@ export const CourseRoute = () => {
                             <br></br>
 
                             <div style={{ display: "inline-flex", justifyContent: "space-between", width: "100%" }}>
-                                <Button variant='outlined' color="error">Create</Button>
+                                <Button variant='outlined' color="error" onClick={DeleteCourse}>Delete</Button>
                                 <Button variant='outlined' color='primary' onClick={handleClose2}>Cancel</Button>
                             </div>
 

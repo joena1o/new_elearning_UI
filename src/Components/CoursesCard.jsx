@@ -1,5 +1,5 @@
-import { Card, Grid, Box, Modal, Typography, Button} from '@mui/material';
-import { CgOptions } from 'react-icons/cg';
+import { Card, Grid, Box, Modal, Typography, Button, Tooltip} from '@mui/material';
+import { IoMdOptions } from 'react-icons/io';
 import { useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 import { useNavigate } from 'react-router';
@@ -10,8 +10,16 @@ export const CoursesCard = (props) => {
 
     const user = window.localStorage.getItem("user_type");
 
+
+    // const [open2, setOpen2] = useState(false);
+    // const handleOpen2 = () => setOpen2(true);
+    // const handleClose2 = () => setOpen2(false);
+
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
+
+
+
     const handleClick = (e) => {
         setAnchorEl(e.currentTarget);
     };
@@ -21,12 +29,20 @@ export const CoursesCard = (props) => {
 
 
 
+    const callbacks =(id)=>{
+
+         props.callbackB(true);
+         props.callbackC(id);
+
+    }
+
+
     const navigate = useNavigate();
 
 
     return (
 
-        <Card variant='outlined' p={18} sx={{marginBottom:"30px"}} >
+        <Card variant="outlined" p={18} sx={{marginBottom:"30px", borderLeft:"10px solid #CE7248"}} >
 
             <Grid container sx={{ width: "100%", flexGrow: "1", padding: "40px", alignItems: "center" }}>
 
@@ -39,9 +55,9 @@ export const CoursesCard = (props) => {
                     <p style={{fontStyle:"italic"}}>Course Content: {props.data.courseContent}</p>
                     <p style={{fontStyle:"italic"}}>Class Type: {props.data.classType}</p>
 
-                    <Box>
-                        <p style={{color:"grey",textTransform:"uppercase",marginTop:"10px"}}><b>Number Of Students: 0</b></p>
-                    </Box>
+                    {/* <Box> */}
+                        <span style={{color:"white", padding:"10px", backgroundColor:"#CE7242", textTransform:"uppercase",marginTop:"10px"}}><b>Number Of Students: {props.data.joined.length}</b></span>
+                    {/* </Box> */}
 
                 </Grid>
 
@@ -51,9 +67,12 @@ export const CoursesCard = (props) => {
                         size="large"
                         aria-label="show more"
                         aria-haspopup="true"
-                        onClick={handleClick}
-                    >
-                        <CgOptions />
+                        onClick={handleClick}>
+                            
+                        <Tooltip title="Options" placement="top-start">
+                            <IoMdOptions />
+                        </Tooltip>
+                        
                     </IconButton>):(<></>)
 
                    }
@@ -86,39 +105,11 @@ export const CoursesCard = (props) => {
                     Edit
                 </MenuItem>
 
-                <MenuItem onClick={()=> props.callbackB(true)}>
+                <MenuItem onClick={()=>callbacks(props.data._id)}>
                     Delete
                 </MenuItem>
 
             </Menu>
-
-
-            {/* <Modal
-                open={open2}
-                onClose={handleClose2}
-                aria-labelledby="modal-modal-title2"
-                aria-describedby="modal-modal-description2"
-            >
-                <Box sx={style}>
-                    <Typography id="modal-modal-title2" variant="h6" component="h2">
-                        Create Course
-                    </Typography>
-                    <br></br>
-                    <Typography id="modal-modal-description2" sx={{ mt: 2 }}>
-                        <form>
-                        
-
-                            <p>Are You Sure you want to delete this item?</p>
-
-
-
-                            <br></br>
-                            <Button variant='outlined'>Create</Button>
-                            <Button variant='outlined' color='error' onClick={handleClose2}>Cancel</Button>
-                        </form>
-                    </Typography>
-                </Box>
-            </Modal> */}
 
         </Card>
 

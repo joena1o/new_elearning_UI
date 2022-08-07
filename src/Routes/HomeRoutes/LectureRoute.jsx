@@ -93,7 +93,7 @@ export const LectureRoute = () => {
             >
                 <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Create Course
+                        Create Lecture
                     </Typography>
                     <br></br>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>

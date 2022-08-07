@@ -24,10 +24,7 @@ export const BookView = () => {
 
         <div className="book-view">
 
-
-            <iframe src={conn+"/"+location.state.book.attach} width="100%" style={{height:"86vh"}}> </iframe>
-
-
+            <iframe src={location.state.book.attach} width="100%" style={{height:"86vh"}}> </iframe>
 
         </div>
 

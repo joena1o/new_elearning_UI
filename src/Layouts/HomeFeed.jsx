@@ -1,7 +1,7 @@
 import { Feed } from "../Components/Feed";
 import { useNavigate } from "react-router";
 import {BsQuestion} from 'react-icons/bs';
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { useEffect } from "react";
 import {TimeLineComponent} from '../MuiComponents/TimeLine';
 import axios from "axios";
@@ -11,6 +11,7 @@ import {CircularProgress} from '@mui/material';
 import { Loader } from "../Components/Loader";
 import emptyjson from '../Assets/629-empty-box.json';
 import Lottie from "lottie-react";
+// import { Button } from "react-bootstrap";
 
 
 export const HomeFeed = (props)=>{
@@ -42,29 +43,31 @@ export const HomeFeed = (props)=>{
   const [filter, setFilter] = useState();
   const [empty, setEmpty] = useState(false);
 
+
+  const retry = ()=>{
+
+    setStatus(true);
+    FetchFeed();
+
+  }
+
   const FetchFeed = async ()=>{
+
+    // e.preventDefault();
+    // setStatus(false);
+
     (filter===null)?setRou("/api/v1/public"):setRou("/api/v1/public/"+filter);
     await axios.get(conn+rou).then((value)=>{
       
-      if(value.status == "200" && value.data.length > 0){
-        console.log(value.data);
+      if(value.data.length > 0){
         setFeeds(value.data.reverse());
         setStatus(false);  
         setEmpty(false);
-        console.log(value.data[0])
-        return;
       }
-
-
-      if(value.data.length == 0){
-        // setStatus(false);
-        // setEmpty(true);
-      }
-        
-      
 
     }).catch((error)=>{
-
+      setStatus(false);
+      setEmpty(true);
     });
   }
 
@@ -86,7 +89,8 @@ export const HomeFeed = (props)=>{
                 </span>
               ):<div style={{marginTop:"20vh"}}>
                 <Lottie animationData={emptyjson} />
-                <p>No public resource</p>
+                <p>Unable to fetch resources</p>
+                <p><Button variant="outlined" color="warning" onClick={retry}>Try Again</Button></p>
                 </div>
             )
           }

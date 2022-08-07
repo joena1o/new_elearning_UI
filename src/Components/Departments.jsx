@@ -1,8 +1,10 @@
 import {FcNext, FcPrevious} from 'react-icons/fc';
 import { Chip, Avatar } from "@mui/material";
 import { dept } from '../Data/Departments';
-import { GiBoltDrop } from 'react-icons/gi';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { CgOptions } from 'react-icons/cg';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
 
 export const Departments = () => {
@@ -15,6 +17,17 @@ export const Departments = () => {
 
     });
 
+    const [anchorEl, setAnchorEl] = useState(null);
+    const open = Boolean(anchorEl);
+
+    const handleClick = (e) => {
+        setAnchorEl(e.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
     const style = {
         padding:"0px 5x",
         margin: '0px 5px',
@@ -23,6 +36,18 @@ export const Departments = () => {
         fontSize: "15px",
         color:"black"
     }
+
+    const style2 = {
+        padding:"0px 5x",
+        margin: '0px 5px',
+        backgroundColor: 'yellow',
+        fontWeight: "normal",
+        fontSize: "16px",
+        fontWeight: "bold",
+        color:"black"
+    }
+
+    const [selected, setSelected] = useState("");
     
 
     const prev = ()=>{
@@ -50,15 +75,41 @@ export const Departments = () => {
         <div className="department-inner">
             {
                 dept.map((val)=> 
-                    <Chip style={style}  label={val.toString()} />
+                    <Chip style={(selected===val)?style2:style}  label={val.toString()} onClick={()=>setSelected(val.toString())} />
                 )
             }
-            
-
         </div>
 
 
         <Avatar color="warning"   onClick={next}  sx={{backgroundColor:"white"}}><FcNext sx={{color:"orange"}} /></Avatar>
+
+        <Avatar color="warning" onClick={handleClick}   sx={{backgroundColor:"white", color:"black"}}><CgOptions sx={{color:"black"}} /></Avatar>
+
+
+
+            <Menu
+                id="basic-menu"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                sx={{padding:"30px 10px"}}
+                MenuListProps={{
+                    'aria-labelledby': 'basic-button',
+                }}
+            >
+
+                {
+                    dept.map((val)=>
+                        <MenuItem onClick={()=>setSelected(val.toString())}>
+                            {val}
+                        </MenuItem>
+                    )
+                }
+                    
+
+    
+
+            </Menu>
 
         </div>
 

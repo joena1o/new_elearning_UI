@@ -28,7 +28,6 @@ export const RightLayout = () => {
 
         if (value.status == "200" || value.status == 200) {
             setCourses(value.data);
-            console.log(value.data);
             // setStatus(false);
             // setWait(false);
         }else{
@@ -45,25 +44,6 @@ export const RightLayout = () => {
 
     });
 
-
-    // const [resources, setResource] = useState([]);
-
-
-    // const fetchResource = async ()=>{
-
-    //     axios.get(conn+"/api/LectureRoom",config).then((value)=>{
-
-    //         if(value.status == "200" || value.status == 200){
-
-    //             setResource(value.data);
-
-    //         }
-
-
-
-    //     });
-
-    // } 
 
     return (
 

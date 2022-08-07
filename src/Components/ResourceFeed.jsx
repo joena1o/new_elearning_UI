@@ -11,6 +11,7 @@ import { CircularProgress } from '@mui/material';
 import popup from "../Assets/629-empty-box.json";
 import { useState } from "react";
 import axios from "axios";
+import trash from '../Assets/104230-simple-trash-clear.json';
 import { dept } from "../Data/Departments";
 
 export const ResourceFeed = (prop) => {
@@ -34,7 +35,7 @@ export const ResourceFeed = (prop) => {
 
     const [loading, setLoad] = useState(false);
     const [error, setError] = useState(false);
-    const [errormsg, setMsg] = useState("");
+    // const [errormsg, setMsg] = useState("");
 
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -52,6 +53,9 @@ export const ResourceFeed = (prop) => {
     const [attach, setFile] = useState();
 
 
+    const [msg, setMsg] = useState("");
+    const [mss, setMss] = useState(false);
+
 
     const item_id = prop.data._id;
 
@@ -67,8 +71,20 @@ export const ResourceFeed = (prop) => {
 
     const DeleteResource = async(e)=>{
 
+        e.preventDefault();
+
+        setLoad(true);
+
     
-        await axios
+        await axios.delete(conn+ '/api/v1/public/'+item_id).then((value)=>{
+            console.log(value.data);
+            setMss(true);
+            setMsg(value.data.msg);
+            setLoad(false);
+        }).catch((error)=>{
+            console.log(error.data);
+            setLoad(false);
+        })
 
 
     }
@@ -123,7 +139,7 @@ export const ResourceFeed = (prop) => {
                     <MdMoreHoriz  />
                 </div>
 
-                <iframe src={conn+"/"+prop.data.attach} width="100%" height="100px" style={{margin:"20px 0px"}}></iframe>
+                <iframe src={prop.data.attach} width="100%" height="100px" style={{margin:"20px 0px"}}></iframe>
                 <hr></hr>
 
 
@@ -251,6 +267,18 @@ export const ResourceFeed = (prop) => {
 
             </Dialog>
 
+            <Dialog onClose={() => setMss(false)} open={mss}>
+
+                    <div style={{width:"100px",height:"100px", display:"inline-flex", justifyContent:"center", alignItems:"center", margin:"100px"}}>
+                    <Lottie animationData={trash} />
+                    </div>
+
+                <Box sx={{ padding: "20px" }}>
+                    {msg}
+                </Box>
+
+            </Dialog>
+
             <Dialog onClose={() => setError(false)} open={error}>
 
                     <div style={{width:"100px",height:"100px", display:"inline-flex", justifyContent:"center", alignItems:"center", margin:"100px"}}>
@@ -286,7 +314,7 @@ export const ResourceFeed = (prop) => {
                             <br></br>
 
                             <div style={{ display: "inline-flex", justifyContent: "space-between", width: "100%" }}>
-                                <Button variant='outlined' color="error">Delete</Button>
+                                <Button variant='outlined' onClick={DeleteResource} color="error">Delete</Button>
                                 <Button variant='outlined' color='primary' onClick={handleClose2}>Cancel</Button>
                             </div>
 

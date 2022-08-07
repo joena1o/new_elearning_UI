@@ -38,6 +38,7 @@ export const ResourceLayout = ()=>{
         await axios.get(conn+"/api/v1/public", config).then((value)=>{
 
             if(value.statusText==="OK"){
+                console.log(value.data);
                 setResource((value.data));
                 setStatus(false);
             }else{
