@@ -25,7 +25,7 @@ export default function LNavbar() {
                         (auth === "" || auth === null)?(
                             <>
                                     <Link to='/login'><button>Login</button></Link>
-                                    <button>Sign Up</button>
+                                    <Link to='/login'><button>Sign Up</button></Link>
                             </>):(
                                     <Link to='/home'><button><b>Go to Home</b></button></Link>
                             )

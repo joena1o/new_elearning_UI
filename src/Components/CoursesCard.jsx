@@ -56,7 +56,7 @@ export const CoursesCard = (props) => {
                     <p style={{fontStyle:"italic"}}>Class Type: {props.data.classType}</p>
 
                     {/* <Box> */}
-                        <span style={{color:"white", padding:"10px", backgroundColor:"#CE7242", textTransform:"uppercase",marginTop:"10px"}}><b>Number Of Students: {props.data.joined.length}</b></span>
+                        <span style={{padding:"10px", textTransform:"uppercase",marginTop:"10px"}}><b>Number Of Students: {props.data.joined.length}</b></span>
                     {/* </Box> */}
 
                 </Grid>

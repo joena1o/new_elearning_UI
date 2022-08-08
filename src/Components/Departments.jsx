@@ -17,6 +17,8 @@ export const Departments = () => {
 
     });
 
+    
+
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
 
@@ -62,6 +64,14 @@ export const Departments = () => {
     }
 
 
+    const Tap = (val)=>{
+        const dept_list = document.querySelector(".department-inner");
+        setSelected(val);
+        dept_list.scrollLeft = 0;
+       
+        dept.slice(dept.indexOf(val), dept.indexOf(val)+1);
+        dept.unshift(val);
+    }
 
     return (
 
@@ -75,7 +85,7 @@ export const Departments = () => {
         <div className="department-inner">
             {
                 dept.map((val)=> 
-                    <Chip style={(selected===val)?style2:style}  label={val.toString()} onClick={()=>setSelected(val.toString())} />
+                    <Chip style={(selected===val)?style2:style}  label={val.toString()} onClick={()=>Tap(val.toString())} />
                 )
             }
         </div>
@@ -100,7 +110,7 @@ export const Departments = () => {
 
                 {
                     dept.map((val)=>
-                        <MenuItem onClick={()=>setSelected(val.toString())}>
+                        <MenuItem onClick={()=>Tap(val.toString())}>
                             {val}
                         </MenuItem>
                     )

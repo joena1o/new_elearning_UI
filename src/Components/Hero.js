@@ -2,7 +2,7 @@ import Lottie from "lottie-react";
 import groovyWalkAnimation from "../Assets/65012-learning-concept.json";
 import {Button} from '@mui/material';
 
-export default function Hero() {
+export default function Hero(props) {
 
     return (
 
@@ -17,7 +17,7 @@ export default function Hero() {
                 <div>MAU VIRTUAL LEARNING & E-RESOURCE, ALL YOUR E-LEARNING MATERIALS IN ONE PLACE</div>
                 <br></br>
                 <div>
-                    <Button variant='outlined' color='warning'>Learn</Button>
+                    <Button variant='outlined' onClick={props.callBack} color='warning'>Learn More</Button>
                 </div>
             </div>
 

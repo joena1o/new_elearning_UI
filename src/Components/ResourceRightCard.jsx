@@ -23,6 +23,13 @@ export const ResourceRightCard = (props) => {
     const department = window.localStorage.getItem("dept");
 
 
+    const buttonstyle = {
+        '&:hover':{
+            color:"black"
+        }
+    }
+
+
     const JoinCourse = async (e) => {
 
         e.preventDefault();
@@ -58,7 +65,7 @@ export const ResourceRightCard = (props) => {
                         {!(props.data.joined.find(
                             (item)=>{
                                 return item.reg === reg
-                            }))?<Button variant="text" onClick={handleOpen2} color='primary'>Join</Button>:<><Button variant="text"  color='error'>Leave Course</Button></>}
+                            }))?<Button style={buttonstyle} variant="text" onClick={handleOpen2} color='primary'>Join</Button>:<><Button variant="text"  color='error'>Leave Course</Button></>}
                     </div>
 
                 </Box>

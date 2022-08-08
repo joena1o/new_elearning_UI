@@ -13,8 +13,13 @@ import { useState } from "react";
 import axios from "axios";
 import trash from '../Assets/104230-simple-trash-clear.json';
 import { dept } from "../Data/Departments";
+import { useNavigate } from "react-router";
 
 export const ResourceFeed = (prop) => {
+
+
+
+    const navigate = useNavigate();
 
     const style = {
         position: 'absolute',
@@ -186,7 +191,7 @@ export const ResourceFeed = (prop) => {
                         }
                     
 
-                        <MenuItem>
+                        <MenuItem onClick={() => navigate(`/home/bookview`, { state: { book: prop.data } })}>
                             Preview
                         </MenuItem>
 

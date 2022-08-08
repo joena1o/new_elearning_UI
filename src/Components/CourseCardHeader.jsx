@@ -1,15 +1,21 @@
-import { Card, Grid, Box, Modal, Typography, Button, Avatar } from '@mui/material';
-import { CgOptions } from 'react-icons/cg';
-import { useState } from 'react';
-import IconButton from '@mui/material/IconButton';
+import { Card, Grid, Box, Modal, Typography, Button, Avatar, Tab, Tabs, CircularProgress } from '@mui/material';
+import {conn} from "../util/conn";
+import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { CoverPhoto } from './CourseCoverPhoto';
+import {style} from '../Styles/Modal.js';
+import Dialog from '@mui/material/Dialog';
+import axios from 'axios';
 
 export const CourseCardHeader = (props) => {
 
+
     const user = window.localStorage.getItem("user_type");
+
+    const [value, setValue] = useState('1');
+
 
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -21,9 +27,89 @@ export const CourseCardHeader = (props) => {
     };
 
 
+    const [open1, setOpen] = useState(false);
+   
+
+    
+
+    const [open2, setOpen2] = useState(false);
+    const handleOpen2 = () => setOpen2(true);
+    const handleClose2 = () => setOpen2(false);
+
+    const [open3, setOpen3] = useState(false);
+    const handleOpen3 = () => setOpen3(true);
+    const handleClose3 = () => setOpen3(false);
+
+
+    const [content, setContent] = useState("");
+    const [material, setMaterial] = useState("PDF");
+    const [code, setCode] = useState(props.data.courseCode);
+    const [doc, setDoc] = useState("");
+
+
+    const [schTime, setTime] = useState("");
+    const [schDate, setDate] = useState("");
+    const [title, setTitle] = useState("");
+
+
     const navigate = useNavigate();
 
     const location = useLocation();
+
+    const call = ()=>{
+        setValue("1");
+        props.callback(1);
+    }
+
+    const call2 = ()=>{
+        setValue("2");
+        props.callback(2);
+    }
+
+
+    const uploadResource = async(e)=>{
+
+        e.preventDefault();
+        setOpen(true);
+
+        const formdata = new FormData();
+        formdata.append("content", content);
+        formdata.append("materialType", material);
+        formdata.append("courseCode", code);
+        formdata.append("image", doc);
+        await axios.post(conn+"/api/v1/material",formdata).then((value)=>{
+            console.log(value.data);
+            setOpen(false);
+        }).catch((error)=>{
+            setOpen(false);
+            console.log(error.data);
+        })
+
+
+    }
+
+
+    const ScheduleLecture = async(e)=>{
+
+        e.preventDefault();
+        setOpen(true);
+
+        await axios.post(conn+"/api/v1/schedule", {
+            "courseTitle":title,
+            "courseCode": code,
+            "department": props.data.department,
+            "classType": "private",
+            "time": schTime,
+            "date": schDate
+        }).then((value)=>{
+            setOpen(false);
+            console.log(value.data);
+        }).catch((error)=>{
+            setOpen(false);
+            console.log(error.data);
+        })
+
+    }
 
     return (
 
@@ -31,7 +117,6 @@ export const CourseCardHeader = (props) => {
 
             <CoverPhoto />
 
-            {/* <Card variant="outlined"> */}
 
             <Grid container sx={{ width: "100%", flexGrow: "1", padding: "60px 30px", alignItems: "center" }}>
 
@@ -40,28 +125,7 @@ export const CourseCardHeader = (props) => {
                 <Grid item lg={2} md={2} sm={3} xs={9} sx={{ alignItems: "center", fontSize: "24px" }}>
 
 
-
-                    {/* <Avatar sx={{ width: { xl: 100, lg: 90, md:70, sm: 90, xs: 100 }, height: { xl: 100, lg: 90, md:70, sm: 90, xs: 100 }, backgroundColor: "antiquewhite", color: "black", fontWeight: "bold" }}>H</Avatar> */}
-
-                    {/* <IconButton
-                            size="large"
-                            aria-label="show more"
-                            aria-haspopup="true"
-                            onClick={handleClick}>
-
-                            <CgOptions />
-
-                        </IconButton> */}
-
                 </Grid>
-
-
-                {/* <Grid item md={1}>
-
-                    </Grid> */}
-
-
-
 
                 <Grid  container lg={10} md={9} sm={9} xs={9} sx={{ display: "inline-flex", marginTop: { lg: "-65px", md: "-50px", sm: "-75px" }, flexDirection: "column", textAlign: "start" }} >
 
@@ -75,45 +139,31 @@ export const CourseCardHeader = (props) => {
                         <br></br>
 
                         <Box>
-                            <p style={{ color: "grey", textTransform: "uppercase", marginTop: "10px" }}><b>Number Of Students: 0</b></p>
+                            <p style={{ color: "grey", textTransform: "uppercase", marginTop: "10px" }}><b>Number Of Students: {props.data.joined.length}</b></p>
                         </Box>
                         <br></br>
 
 
-                        <div className='filter' style={{ marginTop: "20px" }}>
+                        {(user==="lecturer")?<div className='filter' style={{ marginTop: "20px" }}>
 
-                            <Button variant="outlined" color="warning" sx={{ marginRight: "5px" }}>Resources</Button>
-                            <Button variant="outlined" color="warning" sx={{ marginRight: "5px" }}>Lecture</Button>
-                            <Button variant="outlined" color="warning" sx={{ marginRight: "5px" }}>Announcement</Button>
+                            <Button variant="outlined" color="warning" sx={{ marginRight: "5px" }} onClick={handleOpen2}>Resources</Button>
+                            <Button variant="outlined" color="warning" sx={{ marginRight: "5px" }} onClick={handleOpen3}>Lecture</Button>
+                            {/* <Button variant="outlined" color="warning" sx={{ marginRight: "5px" }}>Announcement</Button> */}
 
-                        </div>
+                        </div>:<></>}
 
                     </Grid>
 
-
-                    {/* <Grid item lg={1}>
-
-
-                        <IconButton
-                            size="large"
-                            aria-label="show more"
-                            aria-haspopup="true"
-                            onClick={handleClick}>
-
-                            <CgOptions />
-
-                        </IconButton>
-
-
-
-                    </Grid> */}
 
                 </Grid>
 
 
             </Grid>
 
-            {/* </Card> */}
+
+            
+
+        
 
             <Menu
                 id="basic-menu"
@@ -156,12 +206,94 @@ export const CourseCardHeader = (props) => {
 
             </Menu>
 
+            
+
+                <div style={{width:"100%", display:"inline-flex",justifyContent:"center"}}>
+                <Tabs value={value}  color="warning" aria-label="basic tabs example">
+                    <Tab label="Resource" value="1" onClick={()=>call()} />
+                    <Tab label="Lecture" value="2" onClick={()=>call2()} />
+                </Tabs>
+                </div>
+
+                <hr></hr>
+
+
+                
+
+
+                <Modal
+                open={open2}
+                sx={{ zIndex: "1" }}
+                onClose={handleClose2}
+                aria-labelledby="modal-modal-title2"
+                aria-describedby="modal-modal-description2">
+
+                <Box sx={style}>
+                    <Typography id="modal-modal-title2" variant="h6" component="h2">
+                        Upload Resource
+                    </Typography>
+                    <br></br>
+                    <Typography id="modal-modal-description2" sx={{ mt: 2 }}>
+                        <form>
+                           
+                           <textarea  onChange={(e)=>setContent(e.target.value)} placeholder='Content' className="form-control" />
+                           <input type="text" disabled value={props.data.courseCode} placeholder='Course Code' className="form-control" />
+                           <input type="file" onChange={(e)=>setDoc(e.target.files[0])} className="form-control" />
+
+                           <br></br>
 
 
 
+                            <div style={{ display: "inline-flex", justifyContent: "space-between", width: "100%" }}>
+                                <Button variant='outlined' color="error" onClick={(e)=>uploadResource(e)} >Upload</Button>
+                                <Button variant='outlined' color='primary' onClick={handleClose2}>Cancel</Button>
+                            </div>
 
-            <hr></hr>
+                        </form>
+                    </Typography>
+                </Box>
+            </Modal>
 
+
+            <Modal
+                open={open3}
+                onClose={handleClose3}
+                sx={{ zIndex: "1" }}
+                aria-labelledby="modal-modal-title2"
+                aria-describedby="modal-modal-description2">
+
+                <Box sx={style}>
+                    <Typography id="modal-modal-title2" variant="h6" component="h2">
+                        Schedule Lecture
+                    </Typography>
+                    <br></br>
+                    <Typography id="modal-modal-description2" sx={{ mt: 2 }}>
+                        <form>
+                           
+                            <input type="text" placeholder='Lecture Title' onChange={(e)=>setTitle(e.target.value)}  className="form-control" />
+                           <input type="time" onChange={(e)=>setTime(e.target.value)} className="form-control" />
+                           <input type="date" onChange={(e)=>setDate(e.target.value)} className="form-control" />
+
+                           <br></br>
+
+
+
+                            <div style={{ display: "inline-flex", justifyContent: "space-between", width: "100%" }}>
+                                <Button variant='outlined' color="error" onClick={(e)=>ScheduleLecture(e)}>Upload</Button>
+                                <Button variant='outlined' color='primary' onClick={handleClose3}>Cancel</Button>
+                            </div>
+
+                        </form>
+                    </Typography>
+                </Box>
+            </Modal>
+
+            <Dialog onClose={() => setOpen(false)} open={open1} sx={{ zIndex: "10" }}>
+                <Box sx={{ padding: "20px" }}>
+                    <CircularProgress />
+                </Box>
+
+                </Dialog>
 
         </div>
 

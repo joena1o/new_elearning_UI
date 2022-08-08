@@ -99,6 +99,7 @@ export const CourseRoute = () => {
                 setCourses(value.data.reverse());
                 setStatus(false);
                 setWait(false);
+                console.log(value.data);
             } else {
                 setWait(false);
             }
@@ -147,10 +148,14 @@ export const CourseRoute = () => {
 
                 <Box sx={{width:"100%",display:"inline-flex", alignItems:"center", justifyContent:"center"}}>
 
-                <Tabs value={value}  aria-label="basic tabs example">
+                {
+
+                (user === "lecturer")?<Tabs value={value}  aria-label="basic tabs example">
                     <Tab label="Created" value="1" onClick={()=>setValue("1")} />
                     <Tab label="Joined" value="2" onClick={()=>setValue("2")} />
-                </Tabs>
+                </Tabs>:<></>
+
+                }
 
                 </Box>
 
@@ -180,7 +185,7 @@ export const CourseRoute = () => {
                             <b></b>
                         </div>
 
-                        <Button variant="outlined" onClick={() => setOpen(true)}>Create Course</Button>
+                        <Button variant="outlined" color="warning" onClick={() => setOpen(true)}>Create Course</Button>
 
                     </Box>) : (<></>)
                     }
@@ -195,9 +200,12 @@ export const CourseRoute = () => {
                             (isloading) ? (
                                 <Loader />
                             ) : (
-                                courses.map((val, key) =>
-                                    <CoursesCard data={val} key={key} callback={handleOpen} callbackB={handleOpen2} callbackC={setIndex} />
-                                )
+                                (user!=="lecturer")?courses.map((val, key) =>
+                                (val.joined.find(
+                                    (item)=>{
+                                        return item.reg === reg
+                                    }))?<CoursesCard data={val} key={key} callback={handleOpen} callbackB={handleOpen2} callbackC={setIndex} />:<></>
+                                ):courses.map((val, key)=>(val.reg == reg )?<CoursesCard data={val} key={key} callback={handleOpen} callbackB={handleOpen2} callbackC={setIndex} /> :<></>)
                             )
                         }
 
@@ -235,9 +243,9 @@ export const CourseRoute = () => {
                                 </label>
                                 <input value={code} required onChange={(e) => setCode(e.target.value)} className="form-control" type='text' placeholder="Course Code" />
                                 <label>
-                                    Course Code
-                                </label>
-                                <input value={courseContent} style={{ height: "120px" }} required onChange={(e) => setContent(e.target.value)} className="form-control" type='text' placeholder="Course Content" />
+                                    Course Content
+                                </label><br></br>
+                                <textarea value={courseContent} style={{ height: "120px" }} required onChange={(e) => setContent(e.target.value)} className="form-control" type='text' placeholder="Course Content e.g Introduction to biotechnology..." />
                                 <label>
                                     Department
                                 </label>
