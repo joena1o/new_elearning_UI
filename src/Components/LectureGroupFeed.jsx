@@ -4,12 +4,20 @@ import {CgComment} from 'react-icons/cg';
 import { useNavigate } from "react-router";
 import solidity from '../Assets/solidity.pdf#toolbar=0';
 import { conn } from "../util/conn";
+import {Link} from 'react-router'
 
 export const LectureGroupFeed = (props) => {
 
     const navigate = useNavigate();
 
     const date = new Date();
+
+    const Redirect = (passcode)=>{
+
+        window.localStorage.setItem("lecture_passcode",passcode);
+        window.location = "https://cesmau.herokuapp.com";
+
+    }
 
     return (
 
@@ -51,7 +59,9 @@ export const LectureGroupFeed = (props) => {
                                 <div className='card-bod' style={{padding:"20px 0px"}}>
                                     <p><> Schedule Time: {(props.data.scheduleTime)}</></p><br></br>
                                     <p><> Schedule Date: {(props.data.scheduleDate)}</></p><br></br>
-                                    <Button variant="contained" color="warning">Join Now</Button>
+                                    <h4>Lecture Passcode: <b>{props.data.passcode}</b></h4>
+                                    <br></br>
+                                    <Button variant="contained" onClick={()=>Redirect(props.data.passcode)} color="warning">Join Now</Button>
                                 </div>
 
 

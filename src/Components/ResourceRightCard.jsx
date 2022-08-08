@@ -2,6 +2,8 @@ import { Card, Grid, Avatar, Box } from '@mui/material';
 import { FiUser } from 'react-icons/fi';
 import { Button, Modal, Typography } from "@mui/material";
 import { useState } from "react";
+import Lottie from 'lottie-react';
+import success from "../Assets/96295-success-popup.json";
 import { style } from '../Styles/Modal.js';
 import Dialog from '@mui/material/Dialog';
 import axios from 'axios';
@@ -39,6 +41,7 @@ export const ResourceRightCard = (props) => {
         }).then((value) => {
             console.log(value.data);
             setDialog(true);
+            setOpen2(false);
             setDialogMsg(value.data.msg);
         }).catch((error) => {
             console.log(error.data);
@@ -74,6 +77,10 @@ export const ResourceRightCard = (props) => {
 
 
             <Dialog onClose={() => setDialog(false)} open={dialog}>
+                <div style={{width:"100px", height:"100px"}}>
+                    <Lottie animationData={success} />
+                </div>
+                <br></br>
                 <Box sx={{ padding: "20px" }}>
                     <p>{dialogmsg}</p>
                 </Box>

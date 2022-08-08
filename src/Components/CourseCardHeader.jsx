@@ -8,11 +8,15 @@ import { CoverPhoto } from './CourseCoverPhoto';
 import {style} from '../Styles/Modal.js';
 import Dialog from '@mui/material/Dialog';
 import axios from 'axios';
+import Lottie from 'lottie-react';
+import popup from '../Assets/96295-success-popup.json';
 
 export const CourseCardHeader = (props) => {
 
 
+    const reg = window.localStorage.getItem("reg");
     const user = window.localStorage.getItem("user_type");
+
 
     const [value, setValue] = useState('1');
 
@@ -39,6 +43,10 @@ export const CourseCardHeader = (props) => {
     const [open3, setOpen3] = useState(false);
     const handleOpen3 = () => setOpen3(true);
     const handleClose3 = () => setOpen3(false);
+
+    const [open4, setOpen4] = useState(false);
+    const handleOpen4 = () => setOpen4(true);
+    const handleClose4 = () => setOpen4(false);
 
 
     const [content, setContent] = useState("");
@@ -80,6 +88,8 @@ export const CourseCardHeader = (props) => {
         await axios.post(conn+"/api/v1/material",formdata).then((value)=>{
             console.log(value.data);
             setOpen(false);
+            setOpen2(false);
+            setOpen4(true);
         }).catch((error)=>{
             setOpen(false);
             console.log(error.data);
@@ -103,6 +113,8 @@ export const CourseCardHeader = (props) => {
             "date": schDate
         }).then((value)=>{
             setOpen(false);
+            setOpen3(false);
+            setOpen4(true);
             console.log(value.data);
         }).catch((error)=>{
             setOpen(false);
@@ -144,7 +156,7 @@ export const CourseCardHeader = (props) => {
                         <br></br>
 
 
-                        {(user==="lecturer")?<div className='filter' style={{ marginTop: "20px" }}>
+                        {(user==="lecturer" && props.data.reg === reg)?<div className='filter' style={{ marginTop: "20px" }}>
 
                             <Button variant="outlined" color="warning" sx={{ marginRight: "5px" }} onClick={handleOpen2}>Resources</Button>
                             <Button variant="outlined" color="warning" sx={{ marginRight: "5px" }} onClick={handleOpen3}>Lecture</Button>
@@ -294,6 +306,21 @@ export const CourseCardHeader = (props) => {
                 </Box>
 
                 </Dialog>
+
+
+                <Dialog onClose={() => setOpen4(false)} open={open4} sx={{ zIndex: "10" }}>
+
+                <Box sx={{ padding: "20px" }}>
+                    <div style={{width:"100px", height:"100px", margin:"20px 0px"}}>
+                    <Lottie animationData={popup} />
+                    </div>
+                    Resources Upload successfully
+                </Box>
+
+                </Dialog>
+
+
+
 
         </div>
 

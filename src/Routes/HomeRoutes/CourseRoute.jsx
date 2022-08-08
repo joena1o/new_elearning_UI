@@ -40,7 +40,7 @@ export const CourseRoute = () => {
     // const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     //     setValue(newValue);
     //   };
-    
+
 
 
     const user = window.localStorage.getItem("user_type");
@@ -49,7 +49,7 @@ export const CourseRoute = () => {
     const [waiting, setWait] = useState(true);
 
 
-    const [index,setIndex] = useState("");
+    const [index, setIndex] = useState("");
 
 
 
@@ -107,9 +107,9 @@ export const CourseRoute = () => {
     }
 
 
-    const DeleteCourse = async (e)=>{
+    const DeleteCourse = async (e) => {
         e.preventDefault();
-        await axios.delete(conn+"/api/v1/course"+index).then((value)=>{
+        await axios.delete(conn + "/api/v1/course" + index).then((value) => {
             console.log(value.data);
         });
     }
@@ -146,79 +146,84 @@ export const CourseRoute = () => {
 
             <div className="course-route">
 
-                <Box sx={{width:"100%",display:"inline-flex", alignItems:"center", justifyContent:"center"}}>
+                <Box sx={{ width: "100%", display: "inline-flex", alignItems: "center", justifyContent: "center" }}>
 
-                {
+                    {
 
-                (user === "lecturer")?<Tabs value={value}  aria-label="basic tabs example">
-                    <Tab label="Created" value="1" onClick={()=>setValue("1")} />
-                    <Tab label="Joined" value="2" onClick={()=>setValue("2")} />
-                </Tabs>:<></>
+                        (user === "lecturer") ? <Tabs value={value} aria-label="basic tabs example">
+                            <Tab label="Created" value="1" onClick={() => setValue("1")} />
+                            <Tab label="Joined" value="2" onClick={() => setValue("2")} />
+                        </Tabs> : <></>
 
-                }
+                    }
 
                 </Box>
 
-              {(value === "1")?<Box>
-
-               
-
-                {(courses.length == 0) ? <>{(waiting === false) ? <div className='inner_'>
-
-                    No Courses created
+                {(value === "1") ? <Box>
 
 
-                    <div style={{ height: "300px", margin: "30px", display: "inline-flex", justifyContent: "center" }}>
-                        <Lottie animationData={Empty} />
-                    </div>
 
-                    <div>
-                        <Button variant="outlined" onClick={() => setOpen(true)}>Create New Course</Button>
-                    </div>
+                    {(courses.length == 0) ? <>{(waiting === false) ? <div className='inner_'>
 
-                </div> : <div style={{ height: "300px", margin: "30px", display: "inline-flex", justifyContent: "center" }}><CircularProgress /></div>}</> : <>
+                        No Courses created
 
 
-                    {(user === "lecturer") ? (<Box sx={{ width: "100%", display: "inline-flex", justifyContent: "space-between", alignItems: "center", flexDirection: "" }} p={3}>
-
-                        <div className=''>
-                            <b></b>
+                        <div style={{ height: "300px", margin: "30px", display: "inline-flex", justifyContent: "center" }}>
+                            <Lottie animationData={Empty} />
                         </div>
 
-                        <Button variant="outlined" color="warning" onClick={() => setOpen(true)}>Create Course</Button>
+                        <div>
+                            <Button variant="outlined" onClick={() => setOpen(true)}>Create New Course</Button>
+                        </div>
 
-                    </Box>) : (<></>)
-                    }
+                    </div> : <div style={{ height: "300px", margin: "30px", display: "inline-flex", justifyContent: "center" }}><CircularProgress /></div>}</> : <>
 
-                    <Box className='courses' p={5}>
 
-                        <Box p={2} sx={{ textTransform: "uppercase", letterSpacing: "2px" }}><h4>Courses</h4></Box>
+                        {(user === "lecturer") ? (<Box sx={{ width: "100%", display: "inline-flex", justifyContent: "space-between", alignItems: "center", flexDirection: "" }} p={3}>
 
-                        <hr></hr>
+                            <div className=''>
+                                <b></b>
+                            </div>
 
-                        {
-                            (isloading) ? (
-                                <Loader />
-                            ) : (
-                                (user!=="lecturer")?courses.map((val, key) =>
-                                (val.joined.find(
-                                    (item)=>{
-                                        return item.reg === reg
-                                    }))?<CoursesCard data={val} key={key} callback={handleOpen} callbackB={handleOpen2} callbackC={setIndex} />:<></>
-                                ):courses.map((val, key)=>(val.reg == reg )?<CoursesCard data={val} key={key} callback={handleOpen} callbackB={handleOpen2} callbackC={setIndex} /> :<></>)
-                            )
+                            <Button variant="outlined" color="warning" onClick={() => setOpen(true)}>Create Course</Button>
+
+                        </Box>) : (<></>)
                         }
 
-                    </Box>
+                        <Box className='courses' p={5}>
 
-                </>}
+                            <Box p={2} sx={{ textTransform: "uppercase", letterSpacing: "2px" }}><h4>Courses</h4></Box>
 
-                </Box>:<>
-                
-                <div style={{ height:"300px", display:"inline-flex", justifyContent:"center", width:"100%"}}>
-                <Lottie animationData={Empty} />
-                </div>
-                
+                            <hr></hr>
+
+                            {
+                                (isloading) ? (
+                                    <Loader />
+                                ) : (
+                                    (user !== "lecturer") ? courses.map((val, key) =>
+                                        (val.joined.find(
+                                            (item) => {
+                                                return item.reg === reg
+                                            })) ? <CoursesCard data={val} key={key} callback={handleOpen} callbackB={handleOpen2} callbackC={setIndex} /> : <></>
+                                    ) : courses.map((val, key) => (val.reg == reg) ? <CoursesCard data={val} key={key} callback={handleOpen} callbackB={handleOpen2} callbackC={setIndex} /> : <></>)
+                                )
+                            }
+
+                        </Box>
+
+                    </>}
+
+                </Box> : <>
+
+                    <div style={{width: "100%", padding:"30px" }}>
+                        {(user === "lecturer") ? courses.map((val, key) =>
+                            (val.joined.find(
+                                (item) => {
+                                    return item.reg === reg
+                                })) ? <CoursesCard data={val} key={key} callback={handleOpen} callbackB={handleOpen2} callbackC={setIndex} /> : <></>
+                        ) : courses.map((val, key) => (val.reg == reg) ? <CoursesCard data={val} key={key} callback={handleOpen} callbackB={handleOpen2} callbackC={setIndex} /> : <></>)}
+                    </div>
+
                 </>}
 
 

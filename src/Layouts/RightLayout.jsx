@@ -10,6 +10,7 @@ export const RightLayout = () => {
 
 
 
+const reg = window.localStorage.getItem("reg");
 
   const [courses, setCourses] = useState([]);  
     
@@ -63,9 +64,12 @@ export const RightLayout = () => {
                 </div>
                {
                (courses!==[])?(<div>
+               
                     {
                         (courses).map((value)=>
-                        <ResourceRightCard data={value} />
+                            
+                        (value.reg !== reg)?<ResourceRightCard data={value} />:<></>
+                        
                        )
                     }
                 </div>):(<Loader /> )

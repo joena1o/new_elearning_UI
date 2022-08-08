@@ -2,7 +2,9 @@
 import {Box} from '@mui/material';
 import { ResourceRightCard } from '../Components/ResourceRightCard';
 import { Feed } from '../Components/Feed';
+import Lottie from 'lottie-react';
 import { ResourceCard } from '../Components/ResourceCard';
+import success from "../Assets/96295-success-popup.json";
 
 export const ResourceRightLayout = () => {
 

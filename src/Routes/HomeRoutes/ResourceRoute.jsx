@@ -79,6 +79,7 @@ export const ResourceRoute = () => {
                 /// CHECK RESPONSE
                 setLoad(false);
                 setMsg(value.data.msg);
+                handleClose();
                 setError(true);
                 console.log(value.data.msg);
             }).catch((err) => {
@@ -169,12 +170,12 @@ export const ResourceRoute = () => {
 
             <Dialog onClose={() => setError(false)} open={error}>
 
-                    <div style={{width:"50px",height:"50px"}}>
+                    <div style={{width:"100px",height:"100px",}}>
                     <Lottie animationData={popup} />
                     </div>
 
                 <Box sx={{ padding: "20px" }}>
-                    <p>{errormsg}</p>
+                    <p>Thanks for contributing</p>
                 </Box>
 
             </Dialog>
