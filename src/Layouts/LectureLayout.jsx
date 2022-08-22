@@ -15,7 +15,7 @@ export const LectureLayout = ()=>{
                 <Grid item lg={8} md={7} sm={10} xs={10}>
                 <LectureCenterLayout />
                 </Grid>
-                <Grid item lg={3} md={4}  sx={{display:{sm:"none",lg:"block",md:"block", xs:"none"}}}>
+                <Grid item lg={3} md={2}  sx={{display:{sm:"none",lg:"block",md:"block", xs:"none"}}}>
                 <LectureChatLayout />
                 </Grid>
             </Grid>

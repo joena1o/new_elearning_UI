@@ -11,46 +11,7 @@ export const LectureDisplayLayout = ()=>{
 
            <LecturerDisplayView />
 
-           <Box className='students' p={3} spacing={1} >
-
-                <Grid container>
-
-                    <Grid item lg={3}>
-                      <StudentDisplayView />
-                    </Grid>
-
-                    <Grid item lg={3}>
-                    <StudentDisplayView />
-                    </Grid>
-
-                    <Grid item lg={3}>
-                    <StudentDisplayView />
-                    </Grid>
-
-                    <Grid item lg={3}>
-                    <StudentDisplayView />
-                    </Grid>
-
-                    <Grid item lg={3}>
-                      <StudentDisplayView />
-                    </Grid>
-
-                    <Grid item lg={3}>
-                    <StudentDisplayView />
-                    </Grid>
-
-                    <Grid item lg={3}>
-                    <StudentDisplayView />
-                    </Grid>
-
-                    <Grid item lg={3}>
-                    <StudentDisplayView />
-                    </Grid>
-
-                </Grid>
-
-
-            </Box>
+          
 
         </div>
 
