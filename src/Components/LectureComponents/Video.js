@@ -34,7 +34,7 @@ export default function Video(props) {
 
       <Box className='students' p={3} spacing={1} >
 
-        <Grid container>
+        <Grid container spacing={2}>
 
           {(user!==props.user) && <Grid item lg={3}>
             <AgoraVideoPlayer
