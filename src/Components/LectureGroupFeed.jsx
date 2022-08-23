@@ -61,7 +61,7 @@ export const LectureGroupFeed = (props) => {
                                     <p><> Schedule Date: {(props.data.scheduleDate)}</></p><br></br>
                                     <h4>Lecture Passcode: <b>{props.data.passcode}</b></h4>
                                     <br></br>
-                                    <Button variant="contained" onClick={()=>Redirect(props.data.passcode)} color="warning">Join Now</Button>
+                                    <Button variant="contained" onClick={()=>navigate("/lecture", {state:{data:props}})} color="warning">Join Now</Button>
                                 </div>
 
 

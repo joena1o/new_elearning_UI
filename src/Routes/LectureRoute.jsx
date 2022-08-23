@@ -1,7 +1,20 @@
 import { LectureLayout } from "../Layouts/LectureLayout";
 import HomeNavbar from "../Components/HomeNavbar";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 export const LectureRoute = () => {
+
+
+    const location = useLocation();
+
+    // useEffect(()=>{
+
+    //     console.log(location.state.data);
+
+    // });
+
+
 
     return (
 
@@ -10,7 +23,7 @@ export const LectureRoute = () => {
 
             <HomeNavbar />
 
-            <LectureLayout />
+            <LectureLayout data={location.state.data} />
 
         </div>
 

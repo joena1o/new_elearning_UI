@@ -7,50 +7,69 @@ export default function Video(props) {
   const { users, tracks } = props;
   const [gridSpacing, setGridSpacing] = useState(12);
 
+  const user = window.localStorage.getItem("reg");
+
   useEffect(() => {
-    setGridSpacing(Math.max(Math.floor(12 / (users.length + 1)), 4));
+
+    console.log(props.user===user);
   }, [users, tracks]);
+
+  
 
   return (
     <>
-    <Grid container >
-      <Grid item style={{width:"100%"}}>
-        <AgoraVideoPlayer
-          videoTrack={tracks[1]}
-          style={{ height: "400px", width: "100%" }}
-        />
+     {(user===props.user) && <Grid container >
+        <Grid item style={{ width: "100%" }}>
+          <AgoraVideoPlayer
+            videoTrack={tracks[1]}
+            style={{ height: "400px", width: "100%" }}
+          />
+        </Grid>
       </Grid>
-      </Grid>
-      
-      <Controls tracks={tracks} setStart={props.setStart} setInCall={props.setInCall} />
+
+     }
+
+      {(user===props.user) && <Controls tracks={tracks} setStart={props.setStart} setInCall={props.setInCall} /> }
 
 
-<Box className='students' p={3} spacing={1} >
+      <Box className='students' p={3} spacing={1} >
 
-<Grid container>
+        <Grid container>
 
-    {users.length > 0 &&
-        users.map((user) => {
-          if (user.videoTrack) {
-            return (
-              <Grid item lg={3}>
-                <AgoraVideoPlayer
-                  videoTrack={user.videoTrack}
-                  key={user.uid}
-                  style={{ height: "200px", width: "100%" }}
-                />
-              </Grid>
-            );
-          } else return null;
-        })} 
-
-    
+          {(user!==props.user) && <Grid item lg={3}>
+            <AgoraVideoPlayer
+              videoTrack={tracks[1]}
+              // key={user.uid}
+              style={{ height: "200px", width: "100%" }}
+            />
+            <Controls small={true} tracks={tracks} setStart={props.setStart} setInCall={props.setInCall} />
+          </Grid>}
+          
 
 
-</Grid>
+
+          {users.length > 0 &&
+            users.map((user) => {
+              if (user.videoTrack) {
+                return (
+                  <Grid item lg={3}>
+                    <AgoraVideoPlayer
+                      videoTrack={user.videoTrack}
+                      key={user.uid}
+                      style={{ height: "200px", width: "100%" }}
+                    />
+                  </Grid>
+                );
+              } else return null;
+            })}
 
 
-</Box>
+
+
+        </Grid>
+
+
+      </Box>
 
     </>
   );

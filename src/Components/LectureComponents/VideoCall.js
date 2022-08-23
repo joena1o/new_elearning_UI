@@ -77,7 +77,7 @@ export default function VideoCall(props) {
     <Grid container direction="column">
       
       <Grid item style={{ height: "95%" }}>
-        {start && tracks && <Video tracks={tracks} users={users} setStart={setStart} setInCall={props.setInCall} />}
+        {start && tracks && <Video tracks={tracks} users={users} user={props.datasets.createdBy} setStart={setStart} setInCall={props.setInCall} />}
         {loading && <CircularProgress />}
       </Grid>
       <Grid item style={{ height: "10%" }}>

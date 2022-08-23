@@ -64,6 +64,8 @@ export const LectureFeed = (props)=>{
         setStatus(false);
       }
 
+      console.log(value.data);
+
     }).catch((error)=>{
       setStatus(false);
       setEmpty(true);

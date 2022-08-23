@@ -109,6 +109,7 @@ export const CourseCardHeader = (props) => {
             "courseCode": code,
             "department": props.data.department,
             "classType": "private",
+            "createdBy": reg,
             "time": schTime,
             "date": schDate
         }).then((value)=>{

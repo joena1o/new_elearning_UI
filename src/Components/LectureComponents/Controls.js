@@ -2,8 +2,9 @@ import { useState } from "react";
 import { useClient } from "./settings";
 import { Grid, Button } from "@mui/material";
 import {BsCameraVideoOff, BsCameraVideo} from 'react-icons/bs';
-import {MdOutlineExitToApp} from 'react-icons/md';
+import {MdOutlineExitToApp, MdScreenShare} from 'react-icons/md';
 import {AiOutlineAudioMuted, AiOutlineAudio} from 'react-icons/ai';
+
 
 export default function Controls(props) {
   const client = useClient();
@@ -34,31 +35,42 @@ export default function Controls(props) {
   };
 
   return (
-    <Grid container  alignItems="center" style={{width:"100%", backgroundColor:"white", display:"inline-flex", fontSize:"30px", justifyContent:"space-evenly"}}>
-      <Grid item>
+    <>
+    <Grid container  style={{width:"100%", marginBottom:"10px", backgroundColor:"white",  fontSize:(!props.small)?"30px":"20px", justifyContent:"space-evenly"}}>
+      <Grid item lg={3}>
         <Button
           color={trackState.audio ? "primary" : "secondary"}
           onClick={() => mute("audio")}
         >
-          {trackState.audio ? <AiOutlineAudio style={{fontSize:"30px"}} /> : <AiOutlineAudioMuted style={{fontSize:"30px"}} />}
+          {trackState.audio ? <AiOutlineAudio style={{fontSize:(!props.small)?"30px":"20px"}} /> : <AiOutlineAudioMuted style={{fontSize:(!props.small)?"30px":"20px"}} />}
         </Button>
       </Grid>
-      <Grid item>
+      
+      {(!props.small) && <Grid item lg={3}>
+      <Button color='primary'>
+        <MdScreenShare style={{fontSize:(!props.small)?"30px":"20px",}} />
+      </Button>
+      </Grid>}
+
+      <Grid item lg={3}>
         <Button
           onClick={() => mute("video")}
         >
           {trackState.video ? 
-          <BsCameraVideo style={{fontSize:"30px",}} /> : 
-          <BsCameraVideoOff style={{fontSize:"30px",}} />}
+          <BsCameraVideo style={{fontSize:(!props.small)?"30px":"20px",}} /> : 
+          <BsCameraVideoOff style={{fontSize:(!props.small)?"30px":"20px",}} />}
         </Button>
       </Grid>
-      <Grid item>
+      <Grid item lg={3}>
         <Button
           onClick={() => leaveChannel()}
         >
-          <MdOutlineExitToApp style={{fontSize:"30px",}} />
+          <MdOutlineExitToApp style={{fontSize:(!props.small)?"30px":"20px",}} />
         </Button>
       </Grid>
     </Grid>
+
+    {/* <hr /> */}
+    </>
   );
 }

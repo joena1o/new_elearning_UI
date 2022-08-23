@@ -1,30 +1,40 @@
 import { Card, Box, Grid } from "@mui/material";
-import { FiMic } from 'react-icons/fi';
-import { TbShare } from 'react-icons/tb';
-import { BsCameraVideo } from 'react-icons/bs';
-import { TiPencil } from 'react-icons/ti';
-import { AiOutlineCloseCircle } from 'react-icons/ai';
-import { VscBroadcast } from 'react-icons/vsc';
 import VideoCall from "./LectureComponents/VideoCall";
-import { StudentDisplayView } from "./StudentDisplayView";
 import { useState } from "react";
+import { useEffect } from "react";
 
-export const LecturerDisplayView = () => {
+export const LecturerDisplayView = (props) => {
 
     const [inCall, setInCall] = useState(true);
 
+   
+
+         console.log(props.data.data.createdBy);
+
+
+
     return (
 
-        <Box p={3} className="lecturer-display-view">
+        <div className="lecture-display-layout" style={{width:"100%"}}>
+
+        <Box p={2} className="lecturer-display-view">
 
             <Card variant="outlined" sx={{  width:"100%" }}> 
 
-            <VideoCall setInCall={setInCall} />
+            <VideoCall setInCall={setInCall} datasets = {props.data.data} />
+
+            {/* {props.data.map((value)=>
+                    <p>{value.createdBy}</p>
+            )} */}
+
+            
 
             </Card>
 
 
         </Box>
+
+        </div>
 
 
 
