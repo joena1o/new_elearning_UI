@@ -19,6 +19,8 @@ export default function VideoCall(props) {
   const [loading, setStatus] = useState(true);
 
 
+  console.log(typeof(props.datasets.passcode));
+
 
   useEffect(() => {
     let init = async (name) => {
@@ -54,7 +56,7 @@ export default function VideoCall(props) {
       });
 
       try {
-        await client.join(config.appId, name, config.token, props.datasets.passcode);
+        await client.join(config.appId, name, config.token, parseInt(props.datasets.passcode));
       } catch (error) {
         console.log(error);
       }
