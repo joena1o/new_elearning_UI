@@ -59,7 +59,7 @@ export default function VideoCall(props) {
       });
 
       try {
-        await client.join(config.appId, 'main', config.token, user.room);
+        await client.join(config.appId,  user.room, config.token, null);
       } catch (error) {
         console.log(error);
       }
