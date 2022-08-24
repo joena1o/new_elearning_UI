@@ -19,7 +19,7 @@ export default function VideoCall(props) {
   const [loading, setStatus] = useState(true);
 
 
-  console.log(typeof(props.datasets.passcode));
+  console.log((props.datasets.passcode));
 
 
   useEffect(() => {
