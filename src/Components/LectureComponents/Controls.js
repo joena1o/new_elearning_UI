@@ -41,10 +41,10 @@ export default function Controls(props) {
 
   return (
     <>
-    <Grid container  style={{width:"100%", marginBottom:"10px", backgroundColor:"white",  fontSize:(!props.small)?"30px":"20px", justifyContent:"space-evenly"}}>
+    <Grid container  style={{width:"100%", marginBottom:"10px", padding:"20px", backgroundColor:"white",  fontSize:(!props.small)?"30px":"20px", justifyContent:"space-evenly"}}>
       <Grid item lg={3}>
         <Button
-          color={trackState.audio ? "primary" : "secondary"}
+          color={trackState.audio ? "warning" : "secondary"}
           onClick={() => mute("audio")}
         >
           {trackState.audio ? <AiOutlineAudio style={{fontSize:(!props.small)?"30px":"20px"}} /> : <AiOutlineAudioMuted style={{fontSize:(!props.small)?"30px":"20px"}} />}
@@ -52,13 +52,14 @@ export default function Controls(props) {
       </Grid>
       
       {(!props.small) && <Grid item lg={3}>
-      <Button color='primary'>
+      <Button color='warning'>
         <MdScreenShare style={{fontSize:(!props.small)?"30px":"20px",}} />
       </Button>
       </Grid>}
 
       <Grid item lg={3}>
         <Button
+        color="warning"
           onClick={() => mute("video")}
         >
           {trackState.video ? 
@@ -68,6 +69,7 @@ export default function Controls(props) {
       </Grid>
       <Grid item lg={3}>
         <Button
+        color="warning"
           onClick={() => leaveChannel()}
         >
           <MdOutlineExitToApp style={{fontSize:(!props.small)?"30px":"20px",}} />

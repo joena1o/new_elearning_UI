@@ -19,17 +19,11 @@ export const LecturerDisplayView = (props) => {
 
         <Box p={2} className="lecturer-display-view">
 
-            <Card variant="outlined" sx={{  width:"100%" }}> 
+            <div  style={{  width:"100%" }}> 
 
             <VideoCall setInCall={setInCall} datasets = {props.data.data} />
 
-            {/* {props.data.map((value)=>
-                    <p>{value.createdBy}</p>
-            )} */}
-
-            
-
-            </Card>
+            </div>
 
 
         </Box>

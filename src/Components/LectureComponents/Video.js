@@ -30,30 +30,13 @@ export default function Video(props) {
           />
         </Grid>
       </Grid>
-
-     {/* } */}
-
-      {(user===props.user) && <Controls tracks={tracks} setStart={props.setStart} setInCall={props.setInCall} /> }
+      
+      {<Controls tracks={tracks} setStart={props.setStart} setInCall={props.setInCall} /> }
 
 
       <Box className='students' p={3} spacing={1} >
 
         <Grid container spacing={2}>
-
-          {/* {(user!==props.user) &&  */}
-          {/* <Grid item lg={3}>
-            <AgoraVideoPlayer
-              videoTrack={tracks[1]}
-             // key={user.uid}
-              style={{ height: "200px", width: "100%" }}
-            />
-            <Controls small={true} tracks={tracks} setStart={props.setStart} setInCall={props.setInCall} />
-          </Grid> */}
-          
-          {/* } */}
-          
-
-
 
           {users.length > 0 &&
             users.map((user) => {
