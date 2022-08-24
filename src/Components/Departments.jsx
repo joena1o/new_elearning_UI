@@ -9,18 +9,29 @@ import MenuItem from '@mui/material/MenuItem';
 
 export const Departments = (props) => {
 
+    //const [dept, setD] = useState(['Biotechnology', 'Computer Science', 'Mathematics', 'Operation Research', 'Industrial Mathematics', 'Electrical engineering', 'Animal Science', 'Crop production', 'Plant Science', 'Science Laboratory Technology', 'Zoology', 'Biology Education', 'Microbiology', 'Biochemistry', 'Chemistry', 'Industrial Chemistry', 'Physics', 'Geology', 'Geography', 'Fishery', 'Food Science', 'Soil Science', 'Mathematics and Economics', 'Civil Engineering', 'Chemical Engineering', 'Banking and Finance', 'Industrial Design', 'Home Economics', 'Agric Engineering']);
+
 
     useEffect(()=>{
 
         // if(!dept.includes("All"))
         // dept.unshift("All");
 
-    });
+
+    }, [dept]);
+    
 
     
+    
+    const unshift_fun = ()=>{
+        console.log(dept);
+    }
+
 
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
+
+    
 
     const handleClick = (e) => {
         setAnchorEl(e.currentTarget);
@@ -64,13 +75,19 @@ export const Departments = (props) => {
     }
 
 
-    const Tap = (val)=>{
+    function Tap(val, info){
         const dept_list = document.querySelector(".department-inner");
         setSelected(val);
-        dept_list.scrollLeft = 0;
+        
+        console.log(typeof(dept));
        
-        dept.slice(dept.indexOf(val), dept.indexOf(val)+1);
-        dept.unshift(val);
+        dept = dept.filter(value => value !== val );
+        dept = dept.unshift(val);
+
+        dept_list.scrollLeft = 0;
+        
+        console.log((dept));
+        
     }
 
     return (
@@ -85,7 +102,7 @@ export const Departments = (props) => {
         <div className="department-inner">
             {
                 dept.map((val)=> 
-                    <Chip style={(selected===val)?style2:style}  label={val.toString()} onClick={()=>Tap(val.toString())} />
+                    <Chip style={(selected===val)?style2:style}  label={val.toString()} onClick={()=>Tap(val.toString(), this)} />
                 )
             }
         </div>
@@ -110,9 +127,9 @@ export const Departments = (props) => {
 
                 {
                     dept.map((val)=>
-                        <MenuItem onClick={()=>Tap(val.toString())}>
+                        <a style={{textDecoration:"none", color:"black"}} href={"#"+val}><MenuItem id={val} onClick={()=>Tap(val.toString())}>
                             {val}
-                        </MenuItem>
+                        </MenuItem></a>
                     )
                 }
                     

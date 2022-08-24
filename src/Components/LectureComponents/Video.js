@@ -14,6 +14,8 @@ export default function Video(props) {
     console.log(props.user===user);
   }, [users, tracks]);
 
+
+  console.log(props.user);
   
 
   return (

@@ -4,10 +4,14 @@ import { Grid, Button } from "@mui/material";
 import {BsCameraVideoOff, BsCameraVideo} from 'react-icons/bs';
 import {MdOutlineExitToApp, MdScreenShare} from 'react-icons/md';
 import {AiOutlineAudioMuted, AiOutlineAudio} from 'react-icons/ai';
+import { useNavigate } from "react-router";
 
 
 export default function Controls(props) {
   const client = useClient();
+
+  const navigate = useNavigate();
+
   const { tracks, setStart, setInCall } = props;
   const [trackState, setTrackState] = useState({ video: true, audio: true });
 
@@ -32,6 +36,7 @@ export default function Controls(props) {
     tracks[1].close();
     setStart(false);
     setInCall(false);
+    navigate("/home");
   };
 
   return (
