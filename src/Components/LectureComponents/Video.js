@@ -15,7 +15,7 @@ export default function Video(props) {
   }, [users, tracks]);
 
 
-  console.log(props.user);
+  console.log("Users Entered:" +JSON.stringify(users));
   
 
   return (
