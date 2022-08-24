@@ -28,7 +28,7 @@ function App() {
           <Route path='/home/*' element={<HomeRoute />}  />
 
 
-          <Route path='/lecture/*' element={<LectureRoute />} />
+          <Route path='/lecture/:room' element={<LectureRoute />} />
 
           <Route path='/whiteboard' element={<WhiteBoard />}  />
 

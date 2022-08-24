@@ -8,6 +8,7 @@ import {
 import { CircularProgress, Grid } from "@mui/material";
 import Video from "./Video";
 import Controls from "./Controls";
+import { useParams } from "react-router-dom";
 
 export default function VideoCall(props) {
   // const { setInCall } = props;
@@ -17,6 +18,8 @@ export default function VideoCall(props) {
   const { ready, tracks } = useMicrophoneAndCameraTracks();
 
   const [loading, setStatus] = useState(true);
+
+  const user = useParams();
 
 
   console.log((props.datasets.passcode));
@@ -56,7 +59,7 @@ export default function VideoCall(props) {
       });
 
       try {
-        await client.join(config.appId, 'main', config.token, parseInt(props.datasets.passcode));
+        await client.join(config.appId, 'main', config.token, user.room);
       } catch (error) {
         console.log(error);
       }
