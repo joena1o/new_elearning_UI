@@ -15,12 +15,14 @@ export default function Video(props) {
   }, [users, tracks]);
 
 
-  console.log("Users Entered:" +JSON.stringify(users));
+  //console.log("Users Entered:" +JSON.stringify(users));
   
 
   return (
     <>
-     {(user===props.user) && <Grid container >
+     {/* {(user===props.user) && */}
+     
+     <Grid container >
         <Grid item style={{ width: "100%" }}>
           <AgoraVideoPlayer
             videoTrack={tracks[1]}
@@ -29,7 +31,7 @@ export default function Video(props) {
         </Grid>
       </Grid>
 
-     }
+     {/* } */}
 
       {(user===props.user) && <Controls tracks={tracks} setStart={props.setStart} setInCall={props.setInCall} /> }
 
@@ -38,14 +40,17 @@ export default function Video(props) {
 
         <Grid container spacing={2}>
 
-          {(user!==props.user) && <Grid item lg={3}>
+          {/* {(user!==props.user) &&  */}
+          {/* <Grid item lg={3}>
             <AgoraVideoPlayer
               videoTrack={tracks[1]}
              // key={user.uid}
               style={{ height: "200px", width: "100%" }}
             />
             <Controls small={true} tracks={tracks} setStart={props.setStart} setInCall={props.setInCall} />
-          </Grid>}
+          </Grid> */}
+          
+          {/* } */}
           
 
 
