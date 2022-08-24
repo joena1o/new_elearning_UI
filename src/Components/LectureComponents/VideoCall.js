@@ -18,6 +18,8 @@ export default function VideoCall(props) {
 
   const [loading, setStatus] = useState(true);
 
+
+
   useEffect(() => {
     let init = async (name) => {
 
@@ -52,7 +54,7 @@ export default function VideoCall(props) {
       });
 
       try {
-        await client.join(config.appId, name, config.token, props.datasets.courseCode);
+        await client.join(config.appId, name, config.token, props.datasets.passcode);
       } catch (error) {
         console.log(error);
       }

@@ -41,7 +41,7 @@ export default function Video(props) {
           {(user!==props.user) && <Grid item lg={3}>
             <AgoraVideoPlayer
               videoTrack={tracks[1]}
-              // key={user.uid}
+             // key={user.uid}
               style={{ height: "200px", width: "100%" }}
             />
             <Controls small={true} tracks={tracks} setStart={props.setStart} setInCall={props.setInCall} />
