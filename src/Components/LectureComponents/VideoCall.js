@@ -29,7 +29,7 @@ export default function VideoCall(props) {
    const config = {mode: "rtc", codec: "vp8", appId: appId, token: token};
    const useClient = createClient(config);
    const useMicrophoneAndCameraTracks = createMicrophoneAndCameraTracks();
-   const channelName = "main";
+   const channelName = props.datasets.passcode;
 
   const [users, setUsers] = useState([]);
   const [start, setStart] = useState(false);
@@ -78,7 +78,7 @@ export default function VideoCall(props) {
       });
 
       try {
-        await client.join(config.appId, 'main', props.token, props.uid);
+        await client.join(config.appId, props.datasets.passcode, props.token, props.uid);
       } catch (error) {
         console.log(error);
       }
