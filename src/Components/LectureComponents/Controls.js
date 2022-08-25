@@ -5,6 +5,7 @@ import {BsCameraVideoOff, BsCameraVideo} from 'react-icons/bs';
 import {MdOutlineExitToApp, MdScreenShare} from 'react-icons/md';
 import {AiOutlineAudioMuted, AiOutlineAudio} from 'react-icons/ai';
 import { useNavigate } from "react-router";
+import {createScreenVideoTrack} from 'agora-rtc-react';
 
 
 export default function Controls(props) {
@@ -29,6 +30,17 @@ export default function Controls(props) {
     }
   };
 
+  const shareScreen = async()=>{
+    const screenTrack = await createScreenVideoTrack({
+      encoderConfig: "1080p_1",
+    }, "enable").then(([screenVideoTrack, screenAudioTrack])=> {
+      /** ... **/
+      client.publish([screenAudioTrack, screenVideoTrack]);
+    });
+    // const {ready, tracks} = screenTrack();
+    // client.publish(tracks[0], tracks[1]);
+  } 
+
   const leaveChannel = async () => {
     await client.leave();
     client.removeAllListeners();
@@ -52,7 +64,7 @@ export default function Controls(props) {
       </Grid>
       
       {(!props.small) && <Grid item lg={3}>
-      <Button color='warning'>
+      <Button color='warning' onClick={()=>shareScreen()}>
         <MdScreenShare style={{fontSize:(!props.small)?"30px":"20px",}} />
       </Button>
       </Grid>}
