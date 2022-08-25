@@ -116,7 +116,7 @@ export const CourseCardHeader = (props) => {
             setOpen(false);
             setOpen3(false);
             setOpen4(true);
-            console.log(value.data);
+            // console.log(value.data);
         }).catch((error)=>{
             setOpen(false);
             console.log(error.data);

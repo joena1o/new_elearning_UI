@@ -7,11 +7,6 @@ export const LecturerDisplayView = (props) => {
 
     const [inCall, setInCall] = useState(true);
 
-   
-
-         console.log(props.data.data.createdBy);
-
-
 
     return (
 
@@ -21,7 +16,7 @@ export const LecturerDisplayView = (props) => {
 
             <div  style={{  width:"100%" }}> 
 
-            <VideoCall setInCall={setInCall} datasets = {props.data.data} />
+            <VideoCall uid={props.uid} token={props.token} setInCall={setInCall} datasets = {props.data.data} />
 
             </div>
 

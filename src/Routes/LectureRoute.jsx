@@ -16,6 +16,7 @@ export const LectureRoute = () => {
 
 
 
+
     return (
 
 
@@ -23,7 +24,7 @@ export const LectureRoute = () => {
 
             <HomeNavbar />
 
-            <LectureLayout data={location.state.data} />
+            <LectureLayout data={location.state.data} token={location.state.token} uid={location.state.uid} />
 
         </div>
 

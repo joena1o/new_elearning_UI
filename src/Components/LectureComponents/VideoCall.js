@@ -1,17 +1,36 @@
 import { useState, useEffect } from "react";
-import {
-  config,
-  useClient,
-  useMicrophoneAndCameraTracks,
-  channelName,
-} from "./settings.js";
+// import {
+//   config,
+//   useClient,
+//   useMicrophoneAndCameraTracks,
+//   channelName,
+// } from "./settings.js";
 import { CircularProgress, Grid } from "@mui/material";
 import Video from "./Video";
 import Controls from "./Controls";
 import { useParams } from "react-router-dom";
+import { createClient, createMicrophoneAndCameraTracks } from "agora-rtc-react";
+
+
 
 export default function VideoCall(props) {
   // const { setInCall } = props;
+
+
+ 
+  console.log("This is the token ", props.token);
+  console.log("This is the passcode ", props.datasets.passcode);
+
+  // alert(props.token);
+
+  const appId = "ba0c7397a38640cca781bc8dbcd73063";
+  const token  = props.token;
+  // const token = null;
+   const config = {mode: "rtc", codec: "vp8", appId: appId, token: token};
+   const useClient = createClient(config);
+   const useMicrophoneAndCameraTracks = createMicrophoneAndCameraTracks();
+   const channelName = "main";
+
   const [users, setUsers] = useState([]);
   const [start, setStart] = useState(false);
   const client = useClient();
@@ -59,7 +78,7 @@ export default function VideoCall(props) {
       });
 
       try {
-        await client.join(config.appId, 'main', config.token, null);
+        await client.join(config.appId, 'main', props.token, props.uid);
       } catch (error) {
         console.log(error);
       }

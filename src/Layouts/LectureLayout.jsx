@@ -25,7 +25,7 @@ export const LectureLayout = (props) => {
 
                             <Grid item lg={9}>
 
-                            <LecturerDisplayView  data={props.data} />
+                            <LecturerDisplayView  data={props.data} token={props.token} uid={props.uid} />
 
 
                             </Grid>

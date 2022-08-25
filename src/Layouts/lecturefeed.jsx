@@ -56,7 +56,7 @@ export const LectureFeed = (props)=>{
     await axios.get(conn+"/api/v1/schedule/"+props.code).then((value)=>{
       
       if(value.data.length > 0){
-        console.log(value.data);
+        // console.log(value.data);
         setFeeds(value.data.reverse());
         setStatus(false);  
         setEmpty(false);
@@ -64,7 +64,7 @@ export const LectureFeed = (props)=>{
         setStatus(false);
       }
 
-      console.log(value.data);
+      // console.log(value.data);
 
     }).catch((error)=>{
       setStatus(false);
