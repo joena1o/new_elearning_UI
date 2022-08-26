@@ -43,7 +43,6 @@ export default function Video(props) {
 
         <Grid container spacing={2}>
 
-
         {props.uid != 1 &&  <Grid item lg={3}>
             <AgoraVideoPlayer
               videoTrack={tracks[1]}
