@@ -13,6 +13,8 @@ export const LectureGroupFeed = (props) => {
 
     const uid = Math.floor(Math.random() * 100000);
 
+    const user_curr = window.localStorage.getItem("reg");
+
     const date = new Date();
 
     const Redirect = (passcode)=>{
@@ -23,13 +25,16 @@ export const LectureGroupFeed = (props) => {
     }
 
 
-    const generateRToken = async(channel,uid)=>{
+    const generateRToken = async(channel,uid, curr)=>{
 
+        if(user_curr === curr){
+            uid = 1;
+        }
 
-        await axios.get(`https://mauce-token-server.herokuapp.com/access-token?channelName=${'main'}&uid=${uid}`)
+        await axios.get(`https://mauce-token-server.herokuapp.com/access-token?channelName=${channel}&uid=${uid}`)
         .then((value)=>{
 
-            console.log(value.data);
+            // console.log(value.data);
 
             if(value.status == "200" || value.status == 200){
                 navigate(`/lecture/${props.data.passcode}`, {state:{data:props, token:value.data, uid: uid}})
@@ -74,15 +79,15 @@ export const LectureGroupFeed = (props) => {
                                 <hr></hr>
 
                                 {
-                                    (date.toString()===props.data.scheduleDate)?console.log(date):console.log(date)
+                                    // (date.toString()===props.data.scheduleDate)?console.log(date):console.log(date)
                                 }
 
                                 <div className='card-bod' style={{padding:"20px 0px"}}>
                                     <p><> Schedule Time: {(props.data.scheduleTime)}</></p><br></br>
                                     <p><> Schedule Date: {(props.data.scheduleDate)}</></p><br></br>
-                                    <h4>Lecture Passcode: <b>{props.data.passcode}</b></h4>
+                                    {/* <h4>Lecture Passcode: <b>{props.data.passcode}</b></h4> */}
                                     <br></br>
-                                    <Button variant="contained" onClick={()=>generateRToken(props.data.passcode, uid)} color="warning">Join Now</Button>
+                                    <Button variant="contained" onClick={()=>generateRToken(props.data.courseTitle, uid, props.data.createdBy)} color="warning">Join Now</Button>
                                 </div>
 
 

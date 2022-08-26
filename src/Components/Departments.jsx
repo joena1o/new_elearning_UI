@@ -77,16 +77,11 @@ export const Departments = (props) => {
 
     function Tap(val, info){
         const dept_list = document.querySelector(".department-inner");
-        setSelected(val);
+        setSelected(val);    
         
-        console.log(typeof(dept));
-       
         dept = dept.filter(value => value !== val );
-        dept = dept.unshift(val);
-
-        dept_list.scrollLeft = 0;
-        
-        console.log((dept));
+       
+        console.log(dept);
         
     }
 

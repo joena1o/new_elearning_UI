@@ -11,18 +11,19 @@ export default function Video(props) {
 
   useEffect(() => {
 
-    console.log(props.user===user);
+    // users.filter((user)=>user.id==props.uid)
+
   }, [users, tracks]);
 
 
-  //console.log("Users Entered:" +JSON.stringify(users));
-  
+
+
 
   return (
     <>
-     {/* {(user===props.user) && */}
-     
-     <Grid container >
+      {/* {(user===props.user) && */}
+
+      {props.uid == 1 && <Grid container >
         <Grid item style={{ width: "100%" }}>
           <AgoraVideoPlayer
             videoTrack={tracks[1]}
@@ -30,17 +31,35 @@ export default function Video(props) {
           />
         </Grid>
       </Grid>
-      
-      {<Controls tracks={tracks} setStart={props.setStart} setInCall={props.setInCall} /> }
+
+      }
+
+      {props.uid == 1 && <Controls tracks={tracks} setStart={props.setStart} setInCall={props.setInCall} />}
 
 
       <Box className='students' p={3} spacing={1} >
 
+
         <Grid container spacing={2}>
+
+        {props.uid != 1 &&  <Grid item lg={3}>
+            <AgoraVideoPlayer
+              videoTrack={tracks[1]}
+              key={props.uid}
+              style={{ height: "200px", width: "100%" }}
+            />
+          </Grid> }
+
+        </Grid>
+
+        <Grid container spacing={2}>
+
+
+       
 
           {users.length > 0 &&
             users.map((user) => {
-              if (user.videoTrack) {
+              if (user.videoTrack && props.uid != user.uid){
                 return (
                   <Grid item lg={3}>
                     <AgoraVideoPlayer

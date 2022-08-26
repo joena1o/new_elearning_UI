@@ -1,13 +1,6 @@
 import { useState, useEffect } from "react";
-// import {
-//   config,
-//   useClient,
-//   useMicrophoneAndCameraTracks,
-//   channelName,
-// } from "./settings.js";
 import { CircularProgress, Grid } from "@mui/material";
 import Video from "./Video";
-import Controls from "./Controls";
 import { useParams } from "react-router-dom";
 import { createClient, createMicrophoneAndCameraTracks } from "agora-rtc-react";
 
@@ -19,7 +12,7 @@ export default function VideoCall(props) {
 
  
   console.log("This is the token ", props.token);
-  console.log("This is the passcode ", props.datasets.passcode);
+  console.log("This is the passcode ", props.datasets.courseTitle);
 
   // alert(props.token);
 
@@ -29,7 +22,7 @@ export default function VideoCall(props) {
    const config = {mode: "rtc", codec: "vp8", appId: appId, token: token};
    const useClient = createClient(config);
    const useMicrophoneAndCameraTracks = createMicrophoneAndCameraTracks();
-   const channelName = "main";
+   const channelName = props.datasets.courseTitle;
 
   const [users, setUsers] = useState([]);
   const [start, setStart] = useState(false);
@@ -56,7 +49,7 @@ export default function VideoCall(props) {
           });
         }
         if (mediaType === "audio") {
-          user.audioTrack.play();
+          user.audioTrack.stop();
         }
       });
 
@@ -78,7 +71,7 @@ export default function VideoCall(props) {
       });
 
       try {
-        await client.join(config.appId, 'main', props.token, props.uid);
+        await client.join(config.appId, props.datasets.courseTitle, props.token, props.uid);
       } catch (error) {
         console.log(error);
       }
@@ -103,7 +96,7 @@ export default function VideoCall(props) {
     <Grid container direction="column">
       
       <Grid item style={{ height: "95%" }}>
-        {start && tracks && <Video tracks={tracks} users={users} user={props.datasets.createdBy} setStart={setStart} setInCall={props.setInCall} />}
+        {start && tracks && <Video tracks={tracks} users={users} user={props.datasets.createdBy} setStart={setStart} setInCall={props.setInCall} uid={props.uid} />}
         {loading && <CircularProgress />}
       </Grid>
       <Grid item style={{ height: "10%" }}>
