@@ -34,13 +34,15 @@ export default function Video(props) {
 
       }
 
+      
+
       {props.uid == 1 && <Controls tracks={tracks} setStart={props.setStart} setInCall={props.setInCall} />}
 
 
       <Box className='students' p={3} spacing={1} >
 
-
         <Grid container spacing={2}>
+
 
         {props.uid != 1 &&  <Grid item lg={3}>
             <AgoraVideoPlayer
@@ -49,11 +51,6 @@ export default function Video(props) {
               style={{ height: "200px", width: "100%" }}
             />
           </Grid> }
-
-        </Grid>
-
-        <Grid container spacing={2}>
-
 
        
 
