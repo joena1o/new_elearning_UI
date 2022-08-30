@@ -49,8 +49,11 @@ export default function Video(props) {
               key={props.uid}
               style={{ height: "200px", width: "100%" }}
             />
+            
           </Grid> }
 
+
+          
        
 
           {users.length > 0 &&
@@ -72,6 +75,9 @@ export default function Video(props) {
 
 
         </Grid>
+
+
+        {props.uid != 1 &&<Controls small={true} tracks={tracks} setStart={props.setStart} setInCall={props.setInCall} /> }
 
 
       </Box>

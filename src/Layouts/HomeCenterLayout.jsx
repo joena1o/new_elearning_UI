@@ -1,5 +1,5 @@
 import {Box} from '@mui/material';
-import { Departments } from '../Components/Departments';
+
 import { HomeFeed } from './HomeFeed';
 import { Route, Routes} from 'react-router-dom';
 import {LectureRoute} from '../Routes/HomeRoutes/LectureRoute';
@@ -26,7 +26,7 @@ export const HomeCenterLayout = ()=>{
 
             <Route exact path='/' element={<>
 
-                <Departments />
+                
                 <HomeFeed course={false} />
 
 

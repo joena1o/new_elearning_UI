@@ -42,7 +42,7 @@ export const CoursesCard = (props) => {
 
     return (
 
-        <Card variant="outlined" p={18} sx={{marginBottom:"30px", borderLeft:"10px solid #CE7248"}} >
+        <Card variant="outlined" p={18} sx={{marginBottom:"30px", borderLeft:"10px solid #CE7248", cursor:"pointer"}} >
 
             <Grid container sx={{ width: "100%", flexGrow: "1", padding: "40px", alignItems: "center" }}>
 

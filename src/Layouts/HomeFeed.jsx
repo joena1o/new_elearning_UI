@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import {TimeLineComponent} from '../MuiComponents/TimeLine';
 import axios from "axios";
 import { conn } from "../util/conn";
+import { Departments } from '../Components/Departments';
 import {useState} from 'react';
 import {CircularProgress} from '@mui/material';
 import { Loader } from "../Components/Loader";
@@ -26,12 +27,16 @@ export const HomeFeed = (props)=>{
   };
 
 
+  const [filter, setFilter] = useState();
+
   useEffect(()=>{
 
     FetchFeed();
 
     
-  });
+  }, [filter]);
+
+
 
 
   
@@ -40,8 +45,13 @@ export const HomeFeed = (props)=>{
   const [isloading, setStatus] = useState(true);
 
   const [rou, setRou] = useState("/api/v1/public");
-  const [filter, setFilter] = useState();
+  
   const [empty, setEmpty] = useState(false);
+
+
+  const filterSearch = (value)=>{
+      setFilter(value);
+  }
 
 
   const retry = ()=>{
@@ -52,10 +62,7 @@ export const HomeFeed = (props)=>{
   }
 
   const FetchFeed = async ()=>{
-
-    // e.preventDefault();
-    // setStatus(false);
-
+  
     (filter===null)?setRou("/api/v1/public"):setRou("/api/v1/public/"+filter);
     await axios.get(conn+rou).then((value)=>{
       
@@ -73,7 +80,10 @@ export const HomeFeed = (props)=>{
 
 
     return(
+      <>
+      <Departments filter={filterSearch} />
         <div className="home-feed" style={{width:"100%", padding:"20px 0px"}}>
+          
           {
             (isloading)?(
              <Loader />
@@ -95,6 +105,7 @@ export const HomeFeed = (props)=>{
             )
           }
         </div>
+        </>
     );
 
 }
