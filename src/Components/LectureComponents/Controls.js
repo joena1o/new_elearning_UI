@@ -53,7 +53,7 @@ export default function Controls(props) {
 
   return (
     <>
-    <Grid container  style={{width:"30vw", left:"35%", right:"35%", bottom:"20%", padding:"0px 0px", backgroundColor:"grey", position:"fixed",  fontSize:(!props.small)?"30px":"20px", justifyContent:"space-evenly"}}>
+    <Grid container  style={{width:"30vw", left:"35%", right:"35%", bottom:"20%", padding:"0px 0px", backgroundColor:"grey", position:"fixed", zIndex:999,  fontSize:(!props.small)?"30px":"20px", justifyContent:"space-evenly"}}>
       <Grid item lg={3}>
         <Button
           color={trackState.audio ? "warning" : "secondary"}
