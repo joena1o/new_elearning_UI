@@ -2,25 +2,19 @@ import { Button, Box, Modal, Typography, Tab, Tabs } from '@mui/material';
 import axios from 'axios';
 import { useState } from "react";
 import { conn } from '../../util/conn';
-// import { CgOptions } from 'react-icons/cg';
 import { CoursesCard } from '../../Components/CoursesCard';
 import { CircularProgress } from '@mui/material';
-// import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
-import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { Loader } from '../../Components/Loader';
 import Lottie from "lottie-react";
 import Empty from "../../Assets/629-empty-box.json";
 import { dept } from '../../Data/Departments';
-// import { TabPanel } from '@mui/material';
 
 
 
 export const CourseRoute = () => {
 
-
-    const navigate = useNavigate();
 
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
@@ -35,11 +29,6 @@ export const CourseRoute = () => {
     const [code, setCode] = useState("");
     const [classtype, setClass] = useState("private");
     const [courseContent, setContent] = useState("");
-
-
-    // const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-    //     setValue(newValue);
-    //   };
 
 
 
@@ -163,7 +152,7 @@ export const CourseRoute = () => {
 
 
 
-                    {(courses.length == 0) ? <>{(waiting === false) ? <div className='inner_'>
+                    {(courses.length === 0) ? <>{(waiting === false) ? <div className='inner_'>
 
                         No Courses created
 
@@ -190,7 +179,7 @@ export const CourseRoute = () => {
                         </Box>) : (<></>)
                         }
 
-                        <Box className='courses' p={5}>
+                        <div className={(user === "lecturer")?'course-cont':'course-cont2'}><Box className='courses' p={5}>
 
                             <Box p={2} sx={{ textTransform: "uppercase", letterSpacing: "2px" }}><h4>Courses</h4></Box>
 
@@ -205,24 +194,24 @@ export const CourseRoute = () => {
                                             (item) => {
                                                 return item.reg === reg
                                             })) ? <CoursesCard data={val} key={key} callback={handleOpen} callbackB={handleOpen2} callbackC={setIndex} /> : <></>
-                                    ) : courses.map((val, key) => (val.reg == reg) ? <CoursesCard data={val} key={key} callback={handleOpen} callbackB={handleOpen2} callbackC={setIndex} /> : <></>)
+                                    ) : courses.map((val, key) => (val.reg === reg) ? <CoursesCard data={val} key={key} callback={handleOpen} callbackB={handleOpen2} callbackC={setIndex} /> : <></>)
                                 )
                             }
 
-                        </Box>
+                        </Box></div>
 
                     </>}
 
                 </Box> : <>
-
-                    <div style={{width: "100%", padding:"30px" }}>
+                <div className='course-cont2'>
+                    <div style={{width: "100%", padding:"30px"}}>
                         {(user === "lecturer") ? courses.map((val, key) =>
                             (val.joined.find(
                                 (item) => {
                                     return item.reg === reg
                                 })) ? <CoursesCard data={val} key={key} callback={handleOpen} callbackB={handleOpen2} callbackC={setIndex} /> : <></>
-                        ) : courses.map((val, key) => (val.reg == reg) ? <CoursesCard data={val} key={key} callback={handleOpen} callbackB={handleOpen2} callbackC={setIndex} /> : <></>)}
-                    </div>
+                        ) : courses.map((val, key) => (val.reg === reg) ? <CoursesCard data={val} key={key} callback={handleOpen} callbackB={handleOpen2} callbackC={setIndex} /> : <></>)}
+                    </div></div>
 
                 </>}
 

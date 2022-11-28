@@ -1,7 +1,7 @@
 import {FcNext, FcPrevious} from 'react-icons/fc';
 import { Chip, Avatar } from "@mui/material";
 import { dept } from '../Data/Departments';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { CgOptions } from 'react-icons/cg';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -9,23 +9,18 @@ import MenuItem from '@mui/material/MenuItem';
 
 export const Departments = (props) => {
 
-    //const [dept, setD] = useState(['Biotechnology', 'Computer Science', 'Mathematics', 'Operation Research', 'Industrial Mathematics', 'Electrical engineering', 'Animal Science', 'Crop production', 'Plant Science', 'Science Laboratory Technology', 'Zoology', 'Biology Education', 'Microbiology', 'Biochemistry', 'Chemistry', 'Industrial Chemistry', 'Physics', 'Geology', 'Geography', 'Fishery', 'Food Science', 'Soil Science', 'Mathematics and Economics', 'Civil Engineering', 'Chemical Engineering', 'Banking and Finance', 'Industrial Design', 'Home Economics', 'Agric Engineering']);
+    // useEffect(()=>{
 
+        
 
-    useEffect(()=>{
-
-        // if(!dept.includes("All"))
-        // dept.unshift("All");
-
-
-    }, [dept]);
+    // }, [dept]);
     
 
     
     
-    const unshift_fun = ()=>{
-        console.log(dept);
-    }
+    // const unshift_fun = ()=>{
+    //     console.log(dept);
+    // }
 
 
     const [anchorEl, setAnchorEl] = useState(null);
@@ -56,11 +51,12 @@ export const Departments = (props) => {
         backgroundColor: 'yellow',
         fontWeight: "normal",
         fontSize: "16px",
-        fontWeight: "bold",
         color:"black"
     }
 
     const [selected, setSelected] = useState("");
+    const [departments, setDepartments] = useState(dept);
+
     
 
     const prev = ()=>{
@@ -76,13 +72,10 @@ export const Departments = (props) => {
 
 
     function Tap(val, info){
-        const dept_list = document.querySelector(".department-inner");
+        // const dept_list = document.querySelector(".department-inner");
         setSelected(val);    
-        
         dept = dept.filter(value => value !== val );
-       
         console.log(dept);
-        
     }
 
     return (
@@ -96,7 +89,7 @@ export const Departments = (props) => {
 
         <div className="department-inner">
             {
-                dept.map((val)=> 
+                departments.map((val)=> 
                     <Chip style={(selected===val)?style2:style}  label={val.toString()} onClick={()=>Tap(val.toString(), this)} />
                 )
             }
@@ -119,7 +112,6 @@ export const Departments = (props) => {
                     'aria-labelledby': 'basic-button',
                 }}
             >
-
                 {
                     dept.map((val)=>
                         <a style={{textDecoration:"none", color:"black"}} href={"#"+val}><MenuItem id={val} onClick={()=>Tap(val.toString())}>
@@ -127,10 +119,7 @@ export const Departments = (props) => {
                         </MenuItem></a>
                     )
                 }
-                    
-
-    
-
+                
             </Menu>
 
         </div>

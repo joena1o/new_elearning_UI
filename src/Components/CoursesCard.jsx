@@ -10,11 +10,6 @@ export const CoursesCard = (props) => {
 
     const user = window.localStorage.getItem("user_type");
 
-
-    // const [open2, setOpen2] = useState(false);
-    // const handleOpen2 = () => setOpen2(true);
-    // const handleClose2 = () => setOpen2(false);
-
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
 

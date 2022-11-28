@@ -1,5 +1,5 @@
 import { Button, Box, Modal, Typography } from "@mui/material";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { conn } from '../../util/conn';
 import { ResourceLayout } from "../../Layouts/ResourceLayout";
 import { MdFormatListBulleted } from 'react-icons/md';
@@ -182,7 +182,9 @@ export const ResourceRoute = () => {
 
 
 
+            <div className="resource-cont">
             <ResourceLayout />
+            </div>
 
 
             <Modal

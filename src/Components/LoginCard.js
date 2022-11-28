@@ -6,7 +6,6 @@ import {Button, Box} from '@mui/material';
 import {CircularProgress} from '@mui/material';
 import Dialog from '@mui/material/Dialog';
 import {Alert} from '@mui/material';
-import { Chip, Avatar } from "@mui/material";
 import  axios  from "axios";
 import { useNavigate } from "react-router-dom";
 import { dept } from "../Data/Departments";

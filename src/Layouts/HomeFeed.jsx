@@ -1,30 +1,17 @@
 import { Feed } from "../Components/Feed";
-import { useNavigate } from "react-router";
-import {BsQuestion} from 'react-icons/bs';
-import { Box, Button } from "@mui/material";
+import {Button } from "@mui/material";
 import { useEffect } from "react";
 import {TimeLineComponent} from '../MuiComponents/TimeLine';
 import axios from "axios";
 import { conn } from "../util/conn";
 import { Departments } from '../Components/Departments';
 import {useState} from 'react';
-import {CircularProgress} from '@mui/material';
 import { Loader } from "../Components/Loader";
 import emptyjson from '../Assets/629-empty-box.json';
 import Lottie from "lottie-react";
-// import { Button } from "react-bootstrap";
 
 
 export const HomeFeed = (props)=>{
-
-
-
-  const config = {
-    headers: {
-        'Content-type': 'application/json',
-        // 'Authorization': 'Bearer ' + JSON.parse(token)
-      }
-  };
 
 
   const [filter, setFilter] = useState();
@@ -36,10 +23,6 @@ export const HomeFeed = (props)=>{
     
   }, [filter]);
 
-
-
-
-  
 
   const [feeds, setFeeds] = useState([]);
   const [isloading, setStatus] = useState(true);
@@ -62,16 +45,13 @@ export const HomeFeed = (props)=>{
   }
 
   const FetchFeed = async ()=>{
-  
     (filter===null)?setRou("/api/v1/public"):setRou("/api/v1/public/"+filter);
     await axios.get(conn+rou).then((value)=>{
-      
       if(value.data.length > 0){
         setFeeds(value.data.reverse());
         setStatus(false);  
         setEmpty(false);
       }
-
     }).catch((error)=>{
       setStatus(false);
       setEmpty(true);
@@ -82,7 +62,9 @@ export const HomeFeed = (props)=>{
     return(
       <>
       <Departments filter={filterSearch} />
-        <div className="home-feed" style={{width:"100%", padding:"20px 0px"}}>
+        
+        <div className="home-cont">
+          <div className="home-feed" style={{width:"100%", padding:"20px 0px"}}>
           
           {
             (isloading)?(
@@ -104,7 +86,7 @@ export const HomeFeed = (props)=>{
                 </div>
             )
           }
-        </div>
+        </div></div>
         </>
     );
 

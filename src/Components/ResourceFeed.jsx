@@ -1,9 +1,8 @@
-import { Avatar, Box, Card, Grid, CardMedia } from "@mui/material";
+import { Avatar, Box, Card, Grid } from "@mui/material";
 import { Button,  Modal, Typography } from "@mui/material";
-import solidity from '../Assets/solidity.pdf#toolbar=0';
 import Dialog from '@mui/material/Dialog';
 import { conn } from "../util/conn";
-import {MdMoreHoriz, MdMoreVert} from 'react-icons/md';
+import {MdMoreHoriz} from 'react-icons/md';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Lottie from 'lottie-react';
@@ -40,7 +39,7 @@ export const ResourceFeed = (prop) => {
 
     const [loading, setLoad] = useState(false);
     const [error, setError] = useState(false);
-    // const [errormsg, setMsg] = useState("");
+
 
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -54,8 +53,6 @@ export const ResourceFeed = (prop) => {
     const [department, setDepartment] = useState(prop.data.department);
     const [school, setSchool] = useState(prop.data.school);
     const [descript, setDescript] = useState(prop.data.description);
-    const [category, setCategory] = useState("");
-    const [attach, setFile] = useState();
 
 
     const [msg, setMsg] = useState("");
@@ -144,7 +141,7 @@ export const ResourceFeed = (prop) => {
                     <MdMoreHoriz  />
                 </div>
 
-                <iframe src={prop.data.attach} width="100%" height="100px" style={{margin:"20px 0px"}}></iframe>
+                <iframe src={prop.data.attach} title={prop.data.createdBy.fullname} width="100%" height="100px" style={{margin:"20px 0px"}}></iframe>
                 <hr></hr>
 
 

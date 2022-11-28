@@ -1,7 +1,7 @@
 import Hero from "../Components/Hero";
 import LandingFooter from "../Components/Landing-footer";
 import LNavbar from "../Components/LNavbar";
-import { Box, Modal, Button, Typography } from '@mui/material';
+import { Box, Modal,Typography } from '@mui/material';
 import { style } from '../Styles/Modal.js';
 import { useState } from "react";
 

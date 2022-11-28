@@ -4,7 +4,6 @@ import { HomeFeed } from './HomeFeed';
 import { Route, Routes} from 'react-router-dom';
 import {LectureRoute} from '../Routes/HomeRoutes/LectureRoute';
 import { ResourceRoute } from '../Routes/HomeRoutes/ResourceRoute';
-import { PastQA } from '../Routes/HomeRoutes/PastQA';
 import { AssessmentRoute } from '../Routes/HomeRoutes/AssessmentRoute';
 import { BookView } from '../Routes/HomeRoutes/bookView';
 import { CourseRoute } from '../Routes/HomeRoutes/CourseRoute';
@@ -51,16 +50,8 @@ export const HomeCenterLayout = ()=>{
             <Route path="courseview" element={<CourseGroup />} />
 
 
-
-          
-
             </Routes>
 
-
-
-
-               
-                    
 
             </Box>
 

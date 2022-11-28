@@ -54,6 +54,7 @@
     width: 100%;
     display: inline-flex;
     padding: 0;
+    overflow-y: hidden;
     margin: 0;
     justify-content: center;
     flex-direction: column;
@@ -63,4 +64,62 @@
 
 .home-feed::-webkit-scrollbar{
     width: 5px;
+}
+
+.home-cont{
+
+    height:70vh; 
+    overflow-y:scroll;
+    margin-top:3vh;
+}
+
+.home-cont::-webkit-scrollbar{
+    width: 10px;
+}
+
+.home-cont::-webkit-scrollbar-thumb{
+    width: 10px;
+    background-color: gray;
+}
+
+.resource-cont{
+    height:60vh; 
+    overflow-y:scroll;
+    margin-top:4vh;
+}
+
+.resource-cont::-webkit-scrollbar{
+    width: 10px;
+}
+
+.resource-cont::-webkit-scrollbar-thumb{
+    width: 10px;
+    background-color: gray;
+}
+
+.course-cont{
+    height:60vh; 
+    overflow-y:scroll;
+    margin-top:4vh;
+}
+.course-cont::-webkit-scrollbar{
+    width: 10px;
+}
+.course-cont::-webkit-scrollbar-thumb{
+    width: 10px;
+    background-color: gray;
+}
+
+
+.course-cont2{
+    height:70vh; 
+    overflow-y:scroll;
+    margin-top:4vh;
+}
+.course-cont2::-webkit-scrollbar{
+    width: 10px;
+}
+.course-cont2::-webkit-scrollbar-thumb{
+    width: 10px;
+    background-color: gray;
 }

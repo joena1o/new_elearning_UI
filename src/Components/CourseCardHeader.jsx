@@ -1,4 +1,4 @@
-import { Card, Grid, Box, Modal, Typography, Button, Avatar, Tab, Tabs, CircularProgress } from '@mui/material';
+import { Grid, Box, Modal, Typography, Button, Avatar, Tab, Tabs, CircularProgress } from '@mui/material';
 import {conn} from "../util/conn";
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router';
@@ -47,7 +47,6 @@ export const CourseCardHeader = (props) => {
     const [open4, setOpen4] = useState(false);
     const handleOpen4 = () => setOpen4(true);
     const handleClose4 = () => setOpen4(false);
-
 
     const [content, setContent] = useState("");
     const [material, setMaterial] = useState("PDF");
@@ -116,7 +115,6 @@ export const CourseCardHeader = (props) => {
             setOpen(false);
             setOpen3(false);
             setOpen4(true);
-            // console.log(value.data);
         }).catch((error)=>{
             setOpen(false);
             console.log(error.data);
@@ -161,7 +159,6 @@ export const CourseCardHeader = (props) => {
 
                             <Button variant="outlined" color="warning" sx={{ marginRight: "5px" }} onClick={handleOpen2}>Resources</Button>
                             <Button variant="outlined" color="warning" sx={{ marginRight: "5px" }} onClick={handleOpen3}>Lecture</Button>
-                            {/* <Button variant="outlined" color="warning" sx={{ marginRight: "5px" }}>Announcement</Button> */}
 
                         </div>:<></>}
 
