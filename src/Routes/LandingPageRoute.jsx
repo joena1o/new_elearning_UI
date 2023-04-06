@@ -22,9 +22,6 @@ export default function LandingPage() {
 
             <LandingFooter />
 
-
-
-
             <Modal
                 open={open2}
                 onClose={handleClose2}
