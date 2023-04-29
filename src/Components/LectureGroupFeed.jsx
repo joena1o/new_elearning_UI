@@ -31,11 +31,9 @@ export const LectureGroupFeed = (props) => {
             uid = 1;
         }
 
-        await axios.get(`https://mauce-token-server.herokuapp.com/access-token?channelName=${channel}&uid=${uid}`)
+        await axios.get(`{https://servertoken.fly.dev/access-token?channelName=${channel}&uid=${uid}`)
         .then((value)=>{
-
             // console.log(value.data);
-
             if(value.status == "200" || value.status == 200){
                 navigate(`/lecture/${props.data.passcode}`, {state:{data:props, token:value.data, uid: uid}})
             }

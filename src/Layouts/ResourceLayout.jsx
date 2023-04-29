@@ -13,7 +13,7 @@ export const ResourceLayout = ()=>{
 
         getResource();
 
-    });
+    }, []);
 
     const [edit, setEdit] = useState(false);
     const handleEdit = () => setEdit(true);

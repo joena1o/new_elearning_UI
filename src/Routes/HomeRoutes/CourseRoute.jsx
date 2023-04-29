@@ -47,7 +47,7 @@ export const CourseRoute = () => {
 
         getCourses();
 
-    });
+    }, []);
 
 
     const fullname = window.localStorage.getItem(

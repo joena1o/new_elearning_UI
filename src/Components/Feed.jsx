@@ -50,8 +50,8 @@ export const Feed = (props) => {
 
                             
 
-                            {(props.course==false)?<iframe title='pdf' src={props.data.attach} width="100%" height="200px" scrolling="no"  style={{overflow:"hidden"}} ></iframe>:
-                            <></>}
+                            {/* {(props.course==false)?<iframe title='pdf' src={props.data.attach} width="100%" height="200px" scrolling="no"  style={{overflow:"hidden"}} ></iframe>:
+                            <></>} */}
                         
                             <br></br>
                             {/* <hr></hr> */}

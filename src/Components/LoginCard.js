@@ -153,7 +153,7 @@ export default function LoginCard(){
 
     <Dialog onClose={()=>openError(false)} open={erro}>
       <Box sx={{padding:"20px"}}>
-      <p>Login failed, review details and try again</p>
+      <b>{message}</b>
       </Box>
       
     </Dialog>
